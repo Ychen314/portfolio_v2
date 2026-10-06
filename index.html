@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio - Teh Yu Chen</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Design tokens, then page styles -->
+  <link href="variables.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Icon sprite (line icons used by the tech pills) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-code" viewBox="0 0 24 24">
+      <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+    </symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24">
+      <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/>
+    </symbol>
+    <symbol id="i-database" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="5" rx="8" ry="3"/>
+      <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/>
+      <path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
+    </symbol>
+    <symbol id="i-branch" viewBox="0 0 24 24">
+      <circle cx="6" cy="5" r="2.2"/><circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="9" r="2.2"/>
+      <path d="M6 7.2v9.6"/><path d="M18 11.2c0 3.5-4 4.5-12 5.6"/>
+    </symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24">
+      <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+      <path d="M2 2l7.5 7.5"/><circle cx="11" cy="11" r="2"/>
+    </symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+    </symbol>
+    <symbol id="i-image" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+    </symbol>
+  </svg>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar">
+      <div class="container d-flex align-items-center justify-content-between">
+
+        <!-- Logo (left) -->
+        <a class="navbar-brand site-logo" href="index.html" aria-label="Home">
+          <img src="logo.png" alt="Logo" height="40">
+        </a>
+
+        <!-- Navigation Links & Actions (right) -->
+        <div class="header-actions d-flex align-items-center gap-2 gap-sm-3">
+          <a href="#projects" class="btn btn-site btn-site-outline">Projects</a>
+          <a href="resume.pdf" class="btn btn-site btn-site-solid" target="_blank" rel="noopener">Resume</a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== Hero Section ===== -->
+    <section class="hero" id="home">
+      <div class="hero-photo">
+        <img src="hero.jpg" alt="Teh Yu Chen">
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">TEH YU CHEN</h1>
+          <p class="hero-desc">
+            Web Technology student at UTHM with a CGPA of 3.93.
+            Passionate about building dynamic and responsive websites.
+          </p>
+          <div class="hero-actions d-flex flex-wrap gap-3">
+            <a href="#skills" class="btn btn-site btn-site-lg btn-site-solid">Explore Skills</a>
+            <a href="#projects" class="btn btn-site btn-site-lg btn-site-outline">View my work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Scroll-Driven Skills Pin Section ===== -->
+    <section class="skills-scroll-track" id="skills">
+      <div class="skills-sticky-viewport">
+
+        <div class="skills-header text-center">
+          <span class="skills-eyebrow">Tech Stack</span>
+          <h2 class="skills-title">Tools &amp; Technologies</h2>
+          <p class="skills-subtitle">Keep scrolling to bring my toolkit into orbit</p>
+        </div>
+
+        <div class="skills-stage" id="skillsStage">
+          <!-- Soft glow + orbit guide rings -->
+          <div class="stage-glow"></div>
+          <div class="orbit-ring outer"></div>
+          <div class="orbit-ring inner"></div>
+
+          <!-- Character (inline SVG) -->
+          <div class="coder" role="img" aria-label="Illustration of a developer working on a laptop">
+            <svg class="coder-svg" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+              <!-- ground shadow -->
+              <ellipse cx="120" cy="252" rx="92" ry="6" fill="rgba(0,0,0,0.10)"/>
+
+              <g class="coder-body">
+                <!-- neck -->
+                <path d="M108 124h24v30c-7 7-17 7-24 0z" fill="#e3b693"/>
+                <!-- torso (hoodie) -->
+                <path d="M50 240C50 178 76 150 120 150C164 150 190 178 190 240Z" fill="#1a1a1a"/>
+                <!-- hood / collar -->
+                <path d="M90 156C96 176 144 176 150 156" fill="none" stroke="#3a3a3a" stroke-width="6" stroke-linecap="round"/>
+                <!-- drawstrings -->
+                <path d="M111 170v18M129 170v18" stroke="#e8e8e8" stroke-width="1.6" stroke-linecap="round"/>
+                <circle cx="111" cy="189" r="1.6" fill="#e8e8e8"/>
+                <circle cx="129" cy="189" r="1.6" fill="#e8e8e8"/>
+                <!-- arms (disappear behind the laptop) -->
+                <path class="coder-arm coder-arm-l" d="M64 188L98 226" fill="none" stroke="#2e2e2e" stroke-width="24" stroke-linecap="round"/>
+                <path class="coder-arm coder-arm-r" d="M176 188L142 226" fill="none" stroke="#2e2e2e" stroke-width="24" stroke-linecap="round"/>
+              </g>
+
+              <!-- laptop (back of the lid) -->
+              <rect x="68" y="174" width="104" height="60" rx="7" fill="#e8e8e8" stroke="#000" stroke-width="2"/>
+              <circle cx="120" cy="204" r="5.5" fill="#fff" stroke="#000" stroke-width="1.6"/>
+              <rect x="60" y="232" width="120" height="7" rx="3.5" fill="#a3a3a3" stroke="#000" stroke-width="2"/>
+
+              <!-- desk -->
+              <rect x="14" y="239" width="212" height="9" rx="4.5" fill="#1a1a1a"/>
+
+              <!-- coffee mug -->
+              <rect x="192" y="222" width="16" height="17" rx="3" fill="#fff" stroke="#000" stroke-width="2"/>
+              <path d="M208 227h3a4 4 0 0 1 0 8h-3" fill="none" stroke="#000" stroke-width="2"/>
+              <g class="coder-steam" fill="none" stroke="#737373" stroke-width="1.6" stroke-linecap="round">
+                <path d="M197 216c-2-3 2-5 0-8"/>
+                <path d="M203 216c-2-3 2-5 0-8"/>
+              </g>
+
+              <!-- head -->
+              <g class="coder-head">
+                <ellipse cx="120" cy="100" rx="34" ry="38" fill="#f1cdb0"/>
+                <!-- hair -->
+                <path d="M85 100C80 64 100 52 122 52C148 52 162 70 155 100C150 86 142 78 120 78C100 78 91 86 85 100Z" fill="#1a1a1a"/>
+                <!-- headphones -->
+                <path d="M80 104C76 32 164 32 160 104" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+                <rect x="74" y="95" width="14" height="26" rx="7" fill="#000"/>
+                <rect x="152" y="95" width="14" height="26" rx="7" fill="#000"/>
+                <rect x="77" y="100" width="3" height="14" rx="1.5" fill="#fff" opacity="0.35"/>
+                <rect x="160" y="100" width="3" height="14" rx="1.5" fill="#fff" opacity="0.35"/>
+                <!-- brows -->
+                <path d="M101 91q7-4 14 0M125 91q7-4 14 0" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- glasses -->
+                <g fill="rgba(255,255,255,0.35)" stroke="#000" stroke-width="2.2">
+                  <rect x="99" y="96" width="19" height="15" rx="5.5"/>
+                  <rect x="122" y="96" width="19" height="15" rx="5.5"/>
+                </g>
+                <path d="M118 102h4" stroke="#000" stroke-width="2.2"/>
+                <!-- eyes -->
+                <g class="coder-eyes" fill="#000">
+                  <circle cx="108.5" cy="103.5" r="2.3"/>
+                  <circle cx="131.5" cy="103.5" r="2.3"/>
+                </g>
+                <!-- nose, cheeks, mouth -->
+                <path d="M120 108q-3 7 1 8" fill="none" stroke="#d29c78" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="100" cy="119" r="4" fill="#e8a48f" opacity="0.35"/>
+                <circle cx="140" cy="119" r="4" fill="#e8a48f" opacity="0.35"/>
+                <path d="M112 123q8 6 16 0" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Orbiting tech pills -->
+          <div class="tech-pills-container" id="techPillsContainer">
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-code"/></svg><span>HTML</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-code"/></svg><span>CSS</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-code"/></svg><span>JavaScript</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-terminal"/></svg><span>PHP</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-terminal"/></svg><span>Java</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-phone"/></svg><span>Flutter</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-terminal"/></svg><span>C#</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-database"/></svg><span>MySQL</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-branch"/></svg><span>GitHub</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-pen"/></svg><span>Figma</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-layout"/></svg><span>WordPress</span></div>
+            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-image"/></svg><span>Canva</span></div>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator / Progress -->
+        <div class="skills-progress-bar">
+          <div class="skills-progress-fill" id="skillsProgressFill"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== About Section ===== -->
+    <section class="site-section bg-secondary-section" id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-desc">
+          Web Technology student at UTHM focused on modern web platforms, responsive design systems, and frontend optimization.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Projects Section (alternating cards + S-path journey) ===== -->
+    <section class="projects-section" id="projects">
+
+      <div class="projects-header text-center">
+        <span class="projects-eyebrow">Selected Work</span>
+        <h2 class="projects-title">Featured Projects</h2>
+        <p class="projects-subtitle">Follow the path to see what I've built</p>
+      </div>
+
+      <div class="projects-wrap" id="projectsList">
+
+        <!-- Path + character (sized and drawn by JS) -->
+        <svg class="journey-svg" id="journeySvg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Shared head (copied into every outfit by JS so it can blink) -->
+            <g id="hd">
+              <path d="M-8 -32h16v16c-4 5-12 5-16 0z" fill="#e3b693" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+              <ellipse cx="-24" cy="-50" rx="4" ry="5.5" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
+              <ellipse cx="24" cy="-50" rx="4" ry="5.5" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
+              <ellipse cx="0" cy="-52" rx="24" ry="26" fill="#f1cdb0" stroke="#000" stroke-width="2.2"/>
+              <path d="M-25 -50C-30 -84 -6 -86 4 -82C22 -86 30 -66 25 -50C22 -61 14 -67 0 -67C-14 -67 -22 -61 -25 -50Z" fill="#1a1a1a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M-14 -58q5-3 10 0M4 -58q5-3 10 0" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+              <g fill="rgba(255,255,255,0.45)" stroke="#000" stroke-width="2">
+                <rect x="-18" y="-54" width="14" height="11" rx="4"/>
+                <rect x="4" y="-54" width="14" height="11" rx="4"/>
+              </g>
+              <path d="M-4 -49h8" stroke="#000" stroke-width="2"/>
+              <g class="eyes" fill="#000">
+                <circle cx="-10.5" cy="-48.5" r="1.9"/>
+                <circle cx="10.5" cy="-48.5" r="1.9"/>
+              </g>
+              <path d="M0 -45q-2 5 1 6" fill="none" stroke="#d29c78" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="-14" cy="-38" r="3.5" fill="#e8a48f" opacity="0.4"/>
+              <circle cx="14" cy="-38" r="3.5" fill="#e8a48f" opacity="0.4"/>
+              <path d="M-6 -35q6 5 12 0" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+            </g>
+
+            <!-- Chef hat silhouette -->
+            <g id="toque">
+              <circle cx="-15" cy="-86" r="12"/>
+              <circle cx="0" cy="-92" r="14"/>
+              <circle cx="15" cy="-86" r="12"/>
+              <rect x="-24" y="-82" width="48" height="20" rx="5"/>
+            </g>
+          </defs>
+
+          <path id="journeyRoad" class="journey-road"/>
+          <path id="journeyPath" class="journey-base"/>
+          <path id="journeyDone" class="journey-done"/>
+          <g id="journeyLinks"></g>
+          <g id="journeyStations"></g>
+
+          <!-- Character (position, tilt and scale set by JS). Origin = body centre -->
+          <g id="journeyChar" class="journey-char">
+            <g id="journeyPoof" class="poof">
+              <circle cx="-50" cy="-10" r="12"/><circle cx="-30" cy="-50" r="14"/>
+              <circle cx="30" cy="-50" r="14"/><circle cx="50" cy="-10" r="12"/>
+              <circle cx="-32" cy="34" r="13"/><circle cx="32" cy="34" r="13"/>
+            </g>
+
+            <!-- 1. Car pooling: driver in a car -->
+            <g class="outfit car active">
+              <ellipse class="shadow" cx="0" cy="70" rx="58" ry="6"/>
+              <g class="car-bob">
+                <!-- wheels -->
+                <rect x="-60" y="36" width="14" height="32" rx="5" fill="#000"/>
+                <rect x="46" y="36" width="14" height="32" rx="5" fill="#000"/>
+                <line class="tread" x1="-53" y1="40" x2="-53" y2="64"/>
+                <line class="tread" x1="53" y1="40" x2="53" y2="64"/>
+                <!-- driver -->
+                <g transform="translate(0 22) scale(0.8)">
+                  <path d="M-30 40V-4Q-30 -22 -12 -22H12Q30 -22 30 -4V40Z" fill="#1a1a1a" stroke="#000" stroke-width="2"/>
+                  <g data-head></g>
+                </g>
+                <!-- steering wheel + hands -->
+                <ellipse cx="0" cy="8" rx="13" ry="4.5" fill="none" stroke="#000" stroke-width="3"/>
+                <circle cx="-11" cy="8" r="3.5" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
+                <circle cx="11" cy="8" r="3.5" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
+                <!-- windshield -->
+                <path d="M-40 12L-29 -44Q-28 -50 -22 -50H22Q28 -50 29 -44L40 12Z" fill="rgba(255,255,255,0.4)" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+                <!-- body -->
+                <path d="M-52 62V30Q-52 14 -38 12H38Q52 14 52 30V62Q52 68 46 68H-46Q-52 68 -52 62Z" fill="#e8e8e8" stroke="#000" stroke-width="2.5"/>
+                <rect x="-18" y="30" width="36" height="14" rx="4" fill="#1a1a1a"/>
+                <path d="M-10 34h20M-10 40h20" stroke="#737373" stroke-width="1.6"/>
+                <circle cx="-36" cy="34" r="7" fill="#fff" stroke="#000" stroke-width="2.2"/>
+                <circle cx="36" cy="34" r="7" fill="#fff" stroke="#000" stroke-width="2.2"/>
+                <rect x="-12" y="52" width="24" height="9" rx="2" fill="#fff" stroke="#000" stroke-width="1.8"/>
+                <rect x="-50" y="-6" width="11" height="8" rx="2" fill="#e8e8e8" stroke="#000" stroke-width="2"/>
+                <rect x="39" y="-6" width="11" height="8" rx="2" fill="#e8e8e8" stroke="#000" stroke-width="2"/>
+              </g>
+            </g>
+
+            <!-- 2. Stock management: cap, hi-vis vest, clipboard -->
+            <g class="outfit walker">
+              <ellipse class="shadow" cx="0" cy="70" rx="32" ry="5"/>
+              <g class="bob">
+                <g class="leg leg-l"><rect x="-19" y="22" width="16" height="42" rx="6" fill="#333"/><rect x="-23" y="60" width="22" height="10" rx="5" fill="#000"/></g>
+                <g class="leg leg-r"><rect x="3" y="22" width="16" height="42" rx="6" fill="#333"/><rect x="1" y="60" width="22" height="10" rx="5" fill="#000"/></g>
+                <path d="M-30 28V-4Q-30 -22 -12 -22H12Q30 -22 30 -4V28Z" fill="#1a1a1a" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M-28 28V-2Q-28 -19 -14 -21L0 -2L14 -21Q28 -19 28 -2V28Z" fill="#d4d4d4" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M-28 10H28M-28 20H28" stroke="#000" stroke-width="3"/>
+                <g class="arm arm-l">
+                  <rect x="-43" y="-20" width="15" height="44" rx="7.5" fill="#1a1a1a" stroke="#000" stroke-width="2"/>
+                  <circle cx="-35.5" cy="27" r="6" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+                </g>
+                <g class="arm arm-r">
+                  <rect x="28" y="-20" width="15" height="44" rx="7.5" fill="#1a1a1a" stroke="#000" stroke-width="2"/>
+                  <rect x="34" y="10" width="26" height="34" rx="3" fill="#fff" stroke="#000" stroke-width="2"/>
+                  <rect x="42" y="7" width="10" height="6" rx="2" fill="#000"/>
+                  <path d="M39 22h16M39 29h16M39 36h10" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="35.5" cy="27" r="6" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+                </g>
+                <g data-head></g>
+                <path d="M-26 -62C-26 -92 26 -92 26 -62Z" fill="#111" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                <rect x="-28" y="-65" width="56" height="6" rx="3" fill="#111" stroke="#000" stroke-width="2"/>
+              </g>
+            </g>
+
+            <!-- 3. Recipe sharing: chef with a spatula -->
+            <g class="outfit walker">
+              <ellipse class="shadow" cx="0" cy="70" rx="32" ry="5"/>
+              <g class="bob">
+                <g class="leg leg-l"><rect x="-19" y="22" width="16" height="42" rx="6" fill="#525252"/><rect x="-23" y="60" width="22" height="10" rx="5" fill="#000"/></g>
+                <g class="leg leg-r"><rect x="3" y="22" width="16" height="42" rx="6" fill="#525252"/><rect x="1" y="60" width="22" height="10" rx="5" fill="#000"/></g>
+                <path d="M-30 28V-4Q-30 -22 -12 -22H12Q30 -22 30 -4V28Z" fill="#fff" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M0 -8V28" stroke="#000" stroke-width="1.8"/>
+                <circle cx="-9" cy="2" r="2.2" fill="#000"/><circle cx="-9" cy="16" r="2.2" fill="#000"/>
+                <circle cx="9" cy="2" r="2.2" fill="#000"/><circle cx="9" cy="16" r="2.2" fill="#000"/>
+                <path d="M-12 -22L0 -8L12 -22Z" fill="#a3a3a3" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
+                <g class="arm arm-l">
+                  <rect x="-43" y="-20" width="15" height="44" rx="7.5" fill="#fff" stroke="#000" stroke-width="2"/>
+                  <circle cx="-35.5" cy="27" r="6" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+                </g>
+                <g class="arm arm-r">
+                  <rect x="28" y="-20" width="15" height="44" rx="7.5" fill="#fff" stroke="#000" stroke-width="2"/>
+                  <path d="M35.5 32V-12" stroke="#737373" stroke-width="3" stroke-linecap="round"/>
+                  <rect x="31" y="-30" width="9" height="18" rx="2.5" fill="#d4d4d4" stroke="#000" stroke-width="1.8"/>
+                  <circle cx="35.5" cy="27" r="6" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+                </g>
+                <g data-head></g>
+                <use href="#toque" fill="#000" stroke="#000" stroke-width="4.4" stroke-linejoin="round"/>
+                <use href="#toque" fill="#fff"/>
+                <path d="M-24 -68H24" stroke="#000" stroke-width="1.6"/>
+              </g>
+            </g>
+
+            <!-- 4. Job portal: suit, tie, briefcase -->
+            <g class="outfit walker">
+              <ellipse class="shadow" cx="0" cy="70" rx="32" ry="5"/>
+              <g class="bob">
+                <g class="leg leg-l"><rect x="-19" y="22" width="16" height="42" rx="6" fill="#1a1a1a"/><rect x="-23" y="60" width="22" height="10" rx="5" fill="#000"/></g>
+                <g class="leg leg-r"><rect x="3" y="22" width="16" height="42" rx="6" fill="#1a1a1a"/><rect x="1" y="60" width="22" height="10" rx="5" fill="#000"/></g>
+                <path d="M-30 28V-4Q-30 -22 -12 -22H12Q30 -22 30 -4V28Z" fill="#1a1a1a" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M-11 -22L0 8L11 -22Z" fill="#fff" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M0 -16L-4 -10L0 14L4 -10Z" fill="#000"/>
+                <path d="M-12 -22L-2 10M12 -22L2 10" stroke="#525252" stroke-width="1.8" stroke-linecap="round"/>
+                <g class="arm arm-l">
+                  <rect x="-43" y="-20" width="15" height="44" rx="7.5" fill="#1a1a1a" stroke="#000" stroke-width="2"/>
+                  <circle cx="-35.5" cy="27" r="6" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+                </g>
+                <g class="arm arm-r">
+                  <rect x="28" y="-20" width="15" height="44" rx="7.5" fill="#1a1a1a" stroke="#000" stroke-width="2"/>
+                  <path d="M30 34V28h11v6" fill="none" stroke="#000" stroke-width="2.4" stroke-linejoin="round"/>
+                  <rect x="21" y="34" width="30" height="22" rx="3" fill="#737373" stroke="#000" stroke-width="2"/>
+                  <path d="M21 43h30" stroke="#000" stroke-width="1.6"/>
+                  <rect x="33" y="41" width="6" height="4" rx="1" fill="#e8e8e8" stroke="#000" stroke-width="1.2"/>
+                  <circle cx="35.5" cy="27" r="6" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+                </g>
+                <g data-head></g>
+              </g>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Row 1: left -->
+        <article class="project-row is-left">
+          <div class="project-card">
+            <div class="browser">
+              <div class="browser-bar">
+                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                <span class="browser-url">Car Pooling System</span>
+              </div>
+              <div class="browser-screen" data-label="Car Pooling System">
+                <img src="project-carpool.jpg" alt="Car Pooling System screenshot" onerror="this.remove()">
+              </div>
+            </div>
+            <div class="card-meta"><span class="card-index">01</span><span class="card-rule"></span><span>Web App</span></div>
+            <h3 class="card-title">Car Pooling System</h3>
+            <p class="card-desc">A centralized car pooling platform for UTHM students</p>
+            <ul class="card-tags"><li>PHP</li><li>MySQL</li><li>JavaScript</li></ul>
+          </div>
+        </article>
+
+        <!-- Row 2: right -->
+        <article class="project-row is-right">
+          <div class="project-card">
+            <div class="browser">
+              <div class="browser-bar">
+                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                <span class="browser-url">Stock Management System</span>
+              </div>
+              <div class="browser-screen" data-label="Stock Management System">
+                <img src="project-stock.jpg" alt="Stock Management System screenshot" onerror="this.remove()">
+              </div>
+            </div>
+            <div class="card-meta"><span class="card-index">02</span><span class="card-rule"></span><span>Business System</span></div>
+            <h3 class="card-title">Stock Management System</h3>
+            <p class="card-desc">A stock management solution for Kluang Kolo Mee Restaurant</p>
+            <ul class="card-tags"><li>PHP</li><li>MySQL</li><li>Bootstrap</li></ul>
+          </div>
+        </article>
+
+        <!-- Row 3: left -->
+        <article class="project-row is-left">
+          <div class="project-card">
+            <div class="browser">
+              <div class="browser-bar">
+                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                <span class="browser-url">Recipe Sharing Platform</span>
+              </div>
+              <div class="browser-screen" data-label="Recipe Sharing Platform">
+                <img src="project-recipe.jpg" alt="Recipe Sharing Platform screenshot" onerror="this.remove()">
+              </div>
+            </div>
+            <div class="card-meta"><span class="card-index">03</span><span class="card-rule"></span><span>Community</span></div>
+            <h3 class="card-title">Recipe Sharing Platform</h3>
+            <p class="card-desc">A platform for sharing and discovering new recipes</p>
+            <ul class="card-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          </div>
+        </article>
+
+        <!-- Row 4: right -->
+        <article class="project-row is-right">
+          <div class="project-card">
+            <div class="browser">
+              <div class="browser-bar">
+                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                <span class="browser-url">Job Portal Platform</span>
+              </div>
+              <div class="browser-screen" data-label="Job Portal Platform">
+                <img src="project-job.jpg" alt="Job Portal Platform screenshot" onerror="this.remove()">
+              </div>
+            </div>
+            <div class="card-meta"><span class="card-index">04</span><span class="card-rule"></span><span>Web Platform</span></div>
+            <h3 class="card-title">Job Portal Platform</h3>
+            <p class="card-desc">A job portal for connecting employers and job seekers</p>
+            <ul class="card-tags"><li>PHP</li><li>MySQL</li><li>Bootstrap</li></ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
