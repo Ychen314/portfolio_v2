@@ -13,42 +13,7 @@
 </head>
 <body>
 
-  <!-- Icon sprite (line icons used by the tech pills) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="i-code" viewBox="0 0 24 24">
-      <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-    </symbol>
-    <symbol id="i-terminal" viewBox="0 0 24 24">
-      <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
-    </symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24">
-      <rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/>
-    </symbol>
-    <symbol id="i-database" viewBox="0 0 24 24">
-      <ellipse cx="12" cy="5" rx="8" ry="3"/>
-      <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/>
-      <path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
-    </symbol>
-    <symbol id="i-branch" viewBox="0 0 24 24">
-      <circle cx="6" cy="5" r="2.2"/><circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="9" r="2.2"/>
-      <path d="M6 7.2v9.6"/><path d="M18 11.2c0 3.5-4 4.5-12 5.6"/>
-    </symbol>
-    <symbol id="i-pen" viewBox="0 0 24 24">
-      <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-      <path d="M2 2l7.5 7.5"/><circle cx="11" cy="11" r="2"/>
-    </symbol>
-    <symbol id="i-layout" viewBox="0 0 24 24">
-      <rect x="3" y="3" width="18" height="18" rx="2"/>
-      <line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
-    </symbol>
-    <symbol id="i-image" viewBox="0 0 24 24">
-      <rect x="3" y="3" width="18" height="18" rx="2"/>
-      <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-    </symbol>
-  </svg>
-
-  <!-- ===== Header ===== -->
+<!-- ===== Header ===== -->
   <header class="site-header" id="siteHeader">
     <nav class="navbar">
       <div class="container d-flex align-items-center justify-content-between">
@@ -77,27 +42,75 @@
 
       <div class="container hero-container">
         <div class="hero-content">
-          <h1 class="hero-title">TEH YU CHEN</h1>
-          <p class="hero-desc">
-            Web Technology student at UTHM with a CGPA of 3.93.
-            Passionate about building dynamic and responsive websites.
-          </p>
+          <h1 class="hero-title"><span>TEH YU</span><span>CHEN<span class="hero-title-period">.</span></span></h1>
+          <p class="hero-desc">I build thoughtful, responsive web experiences with a focus on clear design and useful details.</p>
+          <div class="hero-meta" aria-label="Academic information">
+          </div>
           <div class="hero-actions d-flex flex-wrap gap-3">
-            <a href="#skills" class="btn btn-site btn-site-lg btn-site-solid">Explore Skills</a>
+            <a href="#skills" class="btn btn-site btn-site-lg btn-site-solid">Explore Skills <span aria-hidden="true">↗</span></a>
             <a href="#projects" class="btn btn-site btn-site-lg btn-site-outline">View my work</a>
           </div>
         </div>
       </div>
     </section>
 
+<!-- ===== About Section (autoplay: characters deliver the content) ===== -->
+    <section class="site-section about" id="about">
+      <div class="about-stage" id="aboutStage">
+
+        <div class="container">
+          <header class="about-head text-center">
+            <span class="about-eyebrow">About Me</span>
+            <h2 class="about-title">Background &amp; Journey</h2>
+            <p class="about-subtitle">A quick introduction to my education, experience, and aspirations</p>
+          </header>
+
+          <div class="about-cards">
+            <article class="about-card">
+              <div class="card-meta"><span class="card-index">Education</span><span class="card-rule"></span></div>
+              <p class="about-text" data-split>Web Technology student at Universiti Tun Hussein Onn Malaysia (UTHM) with a CGPA of 3.93 and a strong foundation in HTML, CSS, PHP, and JavaScript.</p>
+            </article>
+            <article class="about-card">
+              <div class="card-meta"><span class="card-index">Experience</span><span class="card-rule"></span></div>
+              <p class="about-text" data-split>Experienced in building dynamic and responsive websites through academic and personal projects.</p>
+            </article>
+            <article class="about-card">
+              <div class="card-meta"><span class="card-index">Next step</span><span class="card-rule"></span></div>
+              <p class="about-text" data-split>Passionate about technology, detail-oriented, and currently seeking a 24-week internship from August 2026 to January 2027.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Lane 1: the courier delivers the three cards -->
+        <div class="about-lane" id="courierLane"></div>
+
+        <div class="container">
+          <h3 class="about-sub">Languages</h3>
+          <div class="lang-shelf">
+            <div class="lang-slot"><span class="lang-pill"><b>EN</b>English</span></div>
+            <div class="lang-slot"><span class="lang-pill"><b>MS</b>Malay</span></div>
+            <div class="lang-slot"><span class="lang-pill"><b>ZH</b>Chinese</span></div>
+            <div class="lang-slot"><span class="lang-pill"><b>YUE</b>Cantonese</span></div>
+          </div>
+        </div>
+
+        <!-- Lane 2: four characters queue up with the language pills -->
+        <div class="about-lane" id="langLane"></div>
+
+        <div class="container text-center">
+          <button type="button" class="btn btn-site btn-site-outline about-replay" id="aboutReplay" hidden>Replay</button>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Scroll-Driven Skills Pin Section ===== -->
-    <section class="skills-scroll-track" id="skills">
+    <section class="skills-scroll-track bg-secondary-section" id="skills">
       <div class="skills-sticky-viewport">
 
         <div class="skills-header text-center">
           <span class="skills-eyebrow">Tech Stack</span>
           <h2 class="skills-title">Tools &amp; Technologies</h2>
-          <p class="skills-subtitle">Keep scrolling to bring my toolkit into orbit</p>
+          <p class="skills-subtitle">Watch my toolkit come together</p>
         </div>
 
         <div class="skills-stage" id="skillsStage">
@@ -178,20 +191,19 @@
           </div>
 
           <!-- Orbiting tech pills -->
-          <div class="tech-pills-container" id="techPillsContainer">
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-code"/></svg><span>HTML</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-code"/></svg><span>CSS</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-code"/></svg><span>JavaScript</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-terminal"/></svg><span>PHP</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-terminal"/></svg><span>Java</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-phone"/></svg><span>Flutter</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-terminal"/></svg><span>C#</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-database"/></svg><span>MySQL</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-branch"/></svg><span>GitHub</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-pen"/></svg><span>Figma</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-layout"/></svg><span>WordPress</span></div>
-            <div class="tech-pill"><svg class="pill-icon" aria-hidden="true"><use href="#i-image"/></svg><span>Canva</span></div>
-          </div>
+        <div class="tech-pills-container" id="techPillsContainer">
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="" aria-hidden="true"><span>HTML</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="" aria-hidden="true"><span>CSS</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="" aria-hidden="true"><span>JavaScript</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="" aria-hidden="true"><span>PHP</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="" aria-hidden="true"><span>Java</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" alt="" aria-hidden="true"><span>Flutter</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="" aria-hidden="true"><span>C#</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="" aria-hidden="true"><span>MySQL</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="" aria-hidden="true"><span>GitHub</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="" aria-hidden="true"><span>Figma</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg" alt="" aria-hidden="true"><span>WordPress</span></div>
+          <div class="tech-pill"><img class="pill-icon" width="21" height="21" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg" alt="" aria-hidden="true"><span>Canva</span></div>
         </div>
 
         <!-- Scroll Indicator / Progress -->
@@ -199,16 +211,6 @@
           <div class="skills-progress-fill" id="skillsProgressFill"></div>
         </div>
 
-      </div>
-    </section>
-
-    <!-- ===== About Section ===== -->
-    <section class="site-section bg-secondary-section" id="about">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-desc">
-          Web Technology student at UTHM focused on modern web platforms, responsive design systems, and frontend optimization.
-        </p>
       </div>
     </section>
 
@@ -461,6 +463,326 @@
             <ul class="card-tags"><li>PHP</li><li>MySQL</li><li>Bootstrap</li></ul>
           </div>
         </article>
+
+      </div>
+    </section>
+
+    <!-- ===== Contact Section ===== -->
+    <section class="contact-section" id="contact">
+
+      <!-- Hidden template: the tech-stack character's head (copied in by JS) -->
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+          <g id="coderHeadTpl">
+            <ellipse cx="120" cy="100" rx="34" ry="38" fill="#f1cdb0"/>
+            <path d="M85 100C80 64 100 52 122 52C148 52 162 70 155 100C150 86 142 78 120 78C100 78 91 86 85 100Z" fill="#1a1a1a"/>
+            <path d="M80 104C76 32 164 32 160 104" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+            <rect x="74" y="95" width="14" height="26" rx="7" fill="#000"/>
+            <rect x="152" y="95" width="14" height="26" rx="7" fill="#000"/>
+            <rect x="77" y="100" width="3" height="14" rx="1.5" fill="#fff" opacity="0.35"/>
+            <rect x="160" y="100" width="3" height="14" rx="1.5" fill="#fff" opacity="0.35"/>
+            <path d="M101 91q7-4 14 0M125 91q7-4 14 0" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+            <g fill="rgba(255,255,255,0.35)" stroke="#000" stroke-width="2.2">
+              <rect x="99" y="96" width="19" height="15" rx="5.5"/>
+              <rect x="122" y="96" width="19" height="15" rx="5.5"/>
+            </g>
+            <path d="M118 102h4" stroke="#000" stroke-width="2.2"/>
+            <g class="coder-eyes" fill="#000">
+              <circle cx="108.5" cy="103.5" r="2.3"/>
+              <circle cx="131.5" cy="103.5" r="2.3"/>
+            </g>
+            <path d="M120 108q-3 7 1 8" fill="none" stroke="#d29c78" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="100" cy="119" r="4" fill="#e8a48f" opacity="0.35"/>
+            <circle cx="140" cy="119" r="4" fill="#e8a48f" opacity="0.35"/>
+            <path d="M112 123q8 6 16 0" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+          </g>
+        </defs>
+      </svg>
+
+      <div class="contact-header text-center">
+        <span class="contact-eyebrow">Contact</span>
+        <h2 class="contact-title">Let's Connect</h2>
+        <p class="contact-subtitle">Feel free to reach out for internship opportunities or collaborations</p>
+      </div>
+
+      <div class="contact-box">
+
+      <!-- Peeking character: back layer (normal human ratio, interactive) -->
+      <div class="contact-peek contact-peek-back" id="contactPeekBtn" role="button" tabindex="0" aria-label="Teh Yu Chen avatar - click to say hi" title="Click to say hi!">
+        <svg class="contact-peek-svg" viewBox="0 0 240 430" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ground shadow -->
+          <ellipse class="peek-ground-shadow" cx="138" cy="408" rx="58" ry="7" fill="rgba(0,0,0,0.14)"/>
+
+          <!-- SNEAKERS & FEET (Baseline y=408) -->
+          <g class="peek-shoes">
+            <!-- Left Shoe -->
+            <g class="peek-shoe-l">
+              <path d="M96 384 C96 376 104 374 116 374 C124 374 130 378 132 384 L132 398 L94 398 Z" fill="#1a1a1a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="92" y="398" width="42" height="8" rx="3" fill="#ffffff" stroke="#000" stroke-width="1.8"/>
+              <path d="M92 398 C92 390 97 386 102 386 L102 398 Z" fill="#ffffff" stroke="#000" stroke-width="1.8"/>
+              <path d="M110 380 h8 M112 386 h8 M114 392 h8" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
+            </g>
+
+            <!-- Right Shoe -->
+            <g class="peek-shoe-r">
+              <path d="M146 384 C146 376 154 374 166 374 C174 374 180 378 182 384 L182 398 L144 398 Z" fill="#1a1a1a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="142" y="398" width="42" height="8" rx="3" fill="#ffffff" stroke="#000" stroke-width="1.8"/>
+              <path d="M142 398 C142 390 147 386 152 386 L152 398 Z" fill="#ffffff" stroke="#000" stroke-width="1.8"/>
+              <path d="M160 380 h8 M162 386 h8 M164 392 h8" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
+            </g>
+          </g>
+
+          <!-- LEGS & PANTS (y=248 to 380, solid pelvic crotch) -->
+          <g class="peek-legs">
+            <path d="M98 250 L96 376 H126 L130 268 Q136 278 142 268 L146 376 H176 L174 250 Z" fill="#262626" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M95 372 H127 M145 372 H177" stroke="#000" stroke-width="1.8"/>
+            <path d="M130 268 Q136 278 142 268" fill="none" stroke="#141414" stroke-width="2"/>
+          </g>
+
+          <!-- TORSO & HOODIE (y=150 to 254) -->
+          <g class="peek-torso">
+            <!-- Neck -->
+            <path d="M124 120 h24 v32 c-7 7 -17 7 -24 0 z" fill="#e3b693" stroke="#000" stroke-width="2"/>
+            <!-- Main Hoodie Body -->
+            <path d="M88 154 Q82 205 92 252 H180 Q190 205 184 154 Q136 146 88 154 Z" fill="#1a1a1a" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+            <!-- Ribbed Waistband -->
+            <rect x="90" y="246" width="92" height="10" rx="3" fill="#141414" stroke="#000" stroke-width="1.8"/>
+            <!-- Kangaroo Pocket -->
+            <path d="M106 208 H166 L172 242 H100 Z" fill="#242424" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M100 242 L106 208 M172 242 L166 208" stroke="#383838" stroke-width="1.8"/>
+            <!-- Collar & Drawstrings -->
+            <path d="M108 154 C116 174 156 174 164 154" fill="none" stroke="#333333" stroke-width="6" stroke-linecap="round"/>
+            <path d="M128 168 v22 M144 168 v22" stroke="#e8e8e8" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="128" cy="191" r="1.8" fill="#e8e8e8"/>
+            <circle cx="144" cy="191" r="1.8" fill="#e8e8e8"/>
+          </g>
+
+          <!-- LEFT ARM (grips card edge at x=70) -->
+          <g class="peek-arm-left">
+            <path d="M88 156 Q66 182 66 218 L84 218 Q84 186 98 162 Z" fill="#1a1a1a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="60" y="214" width="24" height="8" rx="3" fill="#141414" stroke="#000" stroke-width="1.8"/>
+            <circle cx="72" cy="226" r="9" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+          </g>
+
+          <!-- RIGHT ARM (waves cheerfully on hover/poke) -->
+          <g class="peek-arm-right" id="peekArmRight">
+            <rect class="arm-r-sleeve" x="174" y="156" width="20" height="66" rx="9" fill="#1a1a1a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+            <rect class="arm-r-cuff" x="172" y="218" width="24" height="8" rx="3" fill="#141414" stroke="#000" stroke-width="1.8"/>
+            <circle class="arm-r-hand" cx="184" cy="232" r="8.5" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+          </g>
+
+          <!-- HEAD & FACE (cx=136, cy=96) -->
+          <g class="peek-head" id="peekHead">
+            <!-- Face base -->
+            <ellipse cx="136" cy="96" rx="34" ry="38" fill="#f1cdb0" stroke="#000" stroke-width="2.2"/>
+            <!-- Hair -->
+            <path d="M101 96 C96 60 116 48 138 48 C164 48 178 66 171 96 C166 82 158 74 136 74 C116 74 107 82 101 96 Z" fill="#1a1a1a" stroke="#000" stroke-width="2"/>
+            <!-- Headphones Arc -->
+            <path d="M96 100 C92 28 180 28 176 100" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+            <!-- Earcups -->
+            <rect x="90" y="91" width="14" height="26" rx="7" fill="#000"/>
+            <rect x="168" y="91" width="14" height="26" rx="7" fill="#000"/>
+            <rect x="93" y="96" width="3" height="14" rx="1.5" fill="#fff" opacity="0.35"/>
+            <rect x="176" y="96" width="3" height="14" rx="1.5" fill="#fff" opacity="0.35"/>
+            <!-- Eyebrows -->
+            <path class="peek-brow peek-brow-l" d="M117 87 q7-4 14 0" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+            <path class="peek-brow peek-brow-r" d="M141 87 q7-4 14 0" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+            <!-- Glasses Frames -->
+            <g fill="rgba(255,255,255,0.4)" stroke="#000" stroke-width="2.2">
+              <rect x="115" y="92" width="19" height="15" rx="5.5"/>
+              <rect x="138" y="92" width="19" height="15" rx="5.5"/>
+            </g>
+            <path d="M134 98 h4" stroke="#000" stroke-width="2.2"/>
+            <!-- Eyes Sclera -->
+            <ellipse cx="124.5" cy="99.5" rx="5.5" ry="4.5" fill="#ffffff" opacity="0.85"/>
+            <ellipse cx="147.5" cy="99.5" rx="5.5" ry="4.5" fill="#ffffff" opacity="0.85"/>
+            <!-- Pupils (Interactive cursor tracking group) -->
+            <g class="peek-pupils-group" id="peekPupils">
+              <circle class="peek-pupil" cx="124.5" cy="99.5" r="2.5" fill="#000"/>
+              <circle class="peek-pupil" cx="147.5" cy="99.5" r="2.5" fill="#000"/>
+              <circle cx="123.5" cy="98.5" r="0.9" fill="#fff"/>
+              <circle cx="146.5" cy="98.5" r="0.9" fill="#fff"/>
+            </g>
+            <!-- Nose -->
+            <path d="M136 104 q-3 7 1 8" fill="none" stroke="#d29c78" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- Blushing Cheeks -->
+            <circle class="peek-blush" cx="116" cy="115" r="4.5" fill="#f43f5e" opacity="0.45"/>
+            <circle class="peek-blush" cx="156" cy="115" r="4.5" fill="#f43f5e" opacity="0.45"/>
+            <!-- Mouth: Smile -->
+            <path class="peek-mouth" id="peekMouth" d="M128 119 q8 6 16 0" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+
+        <!-- The long rectangle box -->
+        <div class="contact-card">
+
+          <div class="contact-main">
+            <div class="card-meta"><span class="card-index">Channels</span><span class="card-rule"></span><span>Direct Info</span></div>
+            <h3 class="contact-card-title">Contact Information</h3>
+            <p class="contact-lead">Kindly inform me for internship opportunities via WhatsApp or Email. Thanks a lot!</p>
+
+            <ul class="contact-info">
+              <li>
+                <span class="info-icon info-icon-wa" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span>
+                  <span class="info-label">Phone / WhatsApp</span>
+                  <a class="info-value" href="tel:+60166391090">+60-166391090</a>
+                </span>
+              </li>
+              <li>
+                <span class="info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                </span>
+                <span>
+                  <span class="info-label">Email</span>
+                  <a class="info-value" href="mailto:tehyuchen0314@gmail.com">tehyuchen0314@gmail.com</a>
+                </span>
+              </li>
+              <li>
+                <span class="info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                </span>
+                <span>
+                  <span class="info-label">Address</span>
+                  <span class="info-value">Seremban, Negeri Sembilan</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-actions">
+
+            <!-- Email Me + typing character -->
+            <div class="cta cta-mail">
+              <a class="contact-btn contact-btn-mail" href="mailto:tehyuchen0314@gmail.com?subject=Internship%20Opportunity">
+                <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                <span>Email Me</span>
+                <i class="btn-arrow" aria-hidden="true">↗</i>
+              </a>
+
+              <svg class="cta-char" viewBox="20 40 200 198" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <g class="cc-body">
+                  <path d="M108 124h24v30c-7 7-17 7-24 0z" fill="#e3b693"/>
+                  <path d="M50 240C50 178 76 150 120 150C164 150 190 178 190 240Z" fill="#1a1a1a"/>
+                  <path d="M90 156C96 176 144 176 150 156" fill="none" stroke="#3a3a3a" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M111 170v18M129 170v18" stroke="#e8e8e8" stroke-width="1.6" stroke-linecap="round"/>
+                  <path class="cc-arm cc-arm-l" d="M64 188L98 226" fill="none" stroke="#2e2e2e" stroke-width="24" stroke-linecap="round"/>
+                  <path class="cc-arm cc-arm-r" d="M176 188L142 226" fill="none" stroke="#2e2e2e" stroke-width="24" stroke-linecap="round"/>
+                </g>
+                <g class="cc-laptop">
+                  <rect x="68" y="174" width="104" height="60" rx="7" fill="#e8e8e8" stroke="#000" stroke-width="2"/>
+                  <circle cx="120" cy="204" r="5.5" fill="#fff" stroke="#000" stroke-width="1.6"/>
+                  <rect x="60" y="232" width="120" height="7" rx="3.5" fill="#a3a3a3" stroke="#000" stroke-width="2"/>
+                </g>
+                <g class="coder-head" data-coder-head></g>
+
+                <!-- keys popping up while typing -->
+                <g fill="#fff" stroke="#000" stroke-width="1.6">
+                  <rect class="cc-key k1" x="66"  y="222" width="10" height="10" rx="2.5"/>
+                  <rect class="cc-key k2" x="90"  y="218" width="10" height="10" rx="2.5"/>
+                  <rect class="cc-key k3" x="140" y="218" width="10" height="10" rx="2.5"/>
+                  <rect class="cc-key k4" x="164" y="222" width="10" height="10" rx="2.5"/>
+                </g>
+
+                <!-- "typing…" bubble -->
+                <g class="cc-typing">
+                  <rect x="18" y="42" width="48" height="27" rx="13.5" fill="#fff" stroke="#000" stroke-width="2"/>
+                  <path d="M52 69l6 8 2-8z" fill="#fff" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                  <circle class="cc-dot d1" cx="31" cy="55.5" r="3.4" fill="#000"/>
+                  <circle class="cc-dot d2" cx="42" cy="55.5" r="3.4" fill="#000"/>
+                  <circle class="cc-dot d3" cx="53" cy="55.5" r="3.4" fill="#000"/>
+                </g>
+
+                <!-- flying emails -->
+                <g transform="translate(120 190)">
+                  <g class="cc-mail m1"><rect x="-11" y="-7.5" width="22" height="15" rx="2" fill="#fff" stroke="#000" stroke-width="1.8"/><path d="M-11 -6l11 8 11-8" fill="none" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/></g>
+                  <g class="cc-mail m2"><rect x="-11" y="-7.5" width="22" height="15" rx="2" fill="#fff" stroke="#000" stroke-width="1.8"/><path d="M-11 -6l11 8 11-8" fill="none" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/></g>
+                  <g class="cc-mail m3"><rect x="-11" y="-7.5" width="22" height="15" rx="2" fill="#fff" stroke="#000" stroke-width="1.8"/><path d="M-11 -6l11 8 11-8" fill="none" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/></g>
+                </g>
+              </svg>
+            </div>
+
+            <!-- WhatsApp Me + phone character -->
+            <div class="cta cta-wa">
+              <a class="contact-btn contact-btn-wa" href="https://wa.me/60166391090?text=Hi%20Yu%20Chen%2C%20I%20would%20like%20to%20discuss%20an%20internship%20opportunity." target="_blank" rel="noopener">
+                <span class="wa-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.3A9 9 0 1 0 12 3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-.9.9c-1-.4-2-1.4-2.4-2.4l.9-.9-1-2z"/></svg>
+                </span>
+                <span>WhatsApp Me</span>
+              </a>
+
+              <svg class="cta-char" viewBox="20 40 200 198" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <g class="cc-body">
+                  <path d="M108 124h24v30c-7 7-17 7-24 0z" fill="#e3b693"/>
+                  <path d="M50 240C50 178 76 150 120 150C164 150 190 178 190 240Z" fill="#1a1a1a"/>
+                  <path d="M90 156C96 176 144 176 150 156" fill="none" stroke="#3a3a3a" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M111 170v18M129 170v18" stroke="#e8e8e8" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M64 190L98 218" fill="none" stroke="#2e2e2e" stroke-width="22" stroke-linecap="round"/>
+                  <path d="M176 190L142 218" fill="none" stroke="#2e2e2e" stroke-width="22" stroke-linecap="round"/>
+                </g>
+
+                <!-- signal rings from the phone -->
+                <circle class="cc-ring r1" cx="120" cy="198" r="14" fill="none" stroke="#25D366" stroke-width="3"/>
+                <circle class="cc-ring r2" cx="120" cy="198" r="14" fill="none" stroke="#25D366" stroke-width="3"/>
+
+                <!-- phone -->
+                <g class="cc-phone">
+                  <rect x="98" y="164" width="44" height="68" rx="8" fill="#111" stroke="#000" stroke-width="2"/>
+                  <rect x="102" y="170" width="36" height="56" rx="4" fill="#fff"/>
+                  <rect x="102" y="170" width="36" height="9" rx="4" fill="#25D366"/>
+                  <rect x="105" y="184" width="19" height="7" rx="3" fill="#e8e8e8"/>
+                  <rect class="cc-sent" x="114" y="196" width="21" height="8" rx="3" fill="#d9fdd3" stroke="#25D366" stroke-width="1"/>
+                  <rect class="cc-sent2" x="105" y="208" width="16" height="7" rx="3" fill="#e8e8e8"/>
+                </g>
+
+                <!-- hands -->
+                <circle cx="98" cy="216" r="7" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+                <circle cx="142" cy="218" r="7" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+                <circle class="cc-tapring" cx="126" cy="200" r="5" fill="none" stroke="#000" stroke-width="2"/>
+                <circle class="cc-thumb" cx="138" cy="212" r="5" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
+
+                <g class="coder-head" data-coder-head></g>
+
+                <!-- message flying out -->
+                <g transform="translate(120 160)">
+                  <g class="cc-send">
+                    <rect x="-16" y="-10" width="32" height="20" rx="6" fill="#25D366" stroke="#000" stroke-width="1.8"/>
+                    <path d="M-4 10l-2 6 8-6z" fill="#25D366" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/>
+                    <path d="M-9 0l3 3 6-7M-1 0l3 3 6-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                </g>
+              </svg>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Peeking character: front layer (fingers gripping the edge at x=70) -->
+        <div class="contact-peek contact-peek-front" aria-hidden="true">
+          <svg class="contact-peek-front-svg" viewBox="0 0 240 430" xmlns="http://www.w3.org/2000/svg">
+            <g class="peek-fingers" fill="#f1cdb0" stroke="#000" stroke-width="1.8">
+              <rect x="52" y="214" width="22" height="6.5" rx="3.2"/>
+              <rect x="50" y="222" width="24" height="6.5" rx="3.2"/>
+              <rect x="52" y="230" width="22" height="6.5" rx="3.2"/>
+              <rect x="56" y="238" width="17" height="6" rx="3"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Interactive Speech Bubble -->
+        <div class="peek-speech" id="peekSpeech" aria-live="polite" role="status">
+          <div class="peek-speech-bubble">
+            <span class="peek-speech-text" id="peekSpeechText">👋 Hey there! Want to build something together?</span>
+            <button type="button" class="peek-speech-close" id="peekSpeechClose" aria-label="Close message">&times;</button>
+          </div>
+          <div class="peek-speech-tail" aria-hidden="true"></div>
+        </div>
+
+        <!-- Tooltip hint -->
+        <div class="peek-hint" id="peekHint" aria-hidden="true">Poke me! 👋</div>
 
       </div>
     </section>
