@@ -23,9 +23,30 @@ document.addEventListener("DOMContentLoaded", () => {
   // 4. About: autoplay scene with courier and language characters
   initAbout();
 
-    // 5. Contact: share the coder head across the new characters
+  // 5. Contact: share the coder head across the new characters
   initContact();
+
+  // 6. Contact: character drags the card in on first view
+  initContactIntro();
+
+  // 7. Ambient background spotlight tracking
+  let pointerTicking = false;
+  window.addEventListener("pointermove", (e) => {
+    if (!pointerTicking) {
+      requestAnimationFrame(() => {
+        document.documentElement.style.setProperty("--cursor-x", `${e.clientX}px`);
+        document.documentElement.style.setProperty("--cursor-y", `${e.clientY}px`);
+        pointerTicking = false;
+      });
+      pointerTicking = true;
+    }
+  }, { passive: true });
+
+  // 8. Hero entrance animations
+  initHeroAnimations();
 });
+
+
 
 /* ==========================================================
    SKILLS
@@ -137,8 +158,8 @@ function initSkillsScroll() {
     const narrow = stage.offsetWidth < 520;
     const columns = narrow ? 2 : 4;
     const rows = Math.ceil(pills.length / columns);
-    const cellWidth = Math.min(190, (stage.offsetWidth * 0.9) / columns);
-    const rowGap = narrow ? 52 : 66;
+    const cellWidth = Math.min(228, (stage.offsetWidth * 0.96) / columns);
+    const rowGap = narrow ? 62 : 80;
 
     configs.forEach((cfg, i) => {
       const dir = cfg.outer ? 1 : -1;
@@ -172,7 +193,7 @@ function initSkillsScroll() {
       x = rotX;
       y = rotY;
 
-      const depthScale = 0.8 + 0.2 * depth;
+      const depthScale = 0.92 + 0.22 * depth;
       const depthOpacity = 0.5 + 0.5 * depth;
 
       const scale = lerp(0.3, depthScale, e);
@@ -191,10 +212,10 @@ function initSkillsScroll() {
       const listY = (row - (rows - 1) / 2) * rowGap;
       const finalX = lerp(orbitX, listX, collect);
       const finalY = lerp(orbitY, listY, collect);
-      const finalScale = lerp(scale, 0.94, collect);
+      const finalScale = lerp(scale, 1.0, collect);
 
-      cfg.el.style.width = `${lerp(cfg.baseWidth, cellWidth * 0.98, collect).toFixed(1)}px`;
-      cfg.el.style.height = `${lerp(cfg.baseHeight, 64, collect).toFixed(1)}px`;
+      cfg.el.style.width = `${lerp(cfg.baseWidth, cellWidth - 14, collect).toFixed(1)}px`;
+      cfg.el.style.height = `${lerp(cfg.baseHeight, 68, collect).toFixed(1)}px`;
       cfg.el.style.opacity = lerp(opacity, 1, collect).toFixed(2);
       cfg.el.style.transform =
         `translate(-50%, -50%) translate(${finalX.toFixed(1)}px, ${finalY.toFixed(1)}px) scale(${finalScale.toFixed(3)})`;
@@ -1304,6 +1325,228 @@ function initContact() {
       item.addEventListener("mouseleave", () => {
         contactBox.classList.remove("is-hover-info");
       });
+    });
+  }
+}
+
+/* ==========================================================
+   CONTACT INTRO: the peek character drags the card in (once)
+   ========================================================== */
+function initContactIntro() {
+  const box = document.querySelector(".contact-box");
+  const head = document.getElementById("peekHead");
+  const backSvg = document.querySelector(".contact-peek-back svg");
+  const speech = document.getElementById("peekSpeech");
+  const speechText = document.getElementById("peekSpeechText");
+
+  if (!box || !head || !backSvg) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!("IntersectionObserver" in window)) return;
+
+  /* ---------- Tuning ---------- */
+  const TRAVEL = window.innerWidth < 860 ? 220 : 380; // px the card is dragged
+  // pull = heave strength, dur = heave ms, back = slide-back after letting go, rest = catch-breath ms
+  const CYCLES = [
+    { pull: 1.0,  dur: 420, back: 0.12, rest: 300, say: "hnnngh…" },
+    { pull: 0.95, dur: 450, back: 0.15, rest: 360, say: "so… heavy…" },
+    { pull: 0.9,  dur: 480, back: 0.18, rest: 420, say: "why is it… this big…" },
+    { pull: 0.85, dur: 520, back: 0.2,  rest: 480, say: "nearly… there…" },
+    { pull: 0.8,  dur: 560, back: 0.22, rest: 560, say: "one… more… pull…" },
+    { pull: 0.9,  dur: 800, back: 0,    rest: 0,   say: "HNNNNGH!" }
+  ];
+  const GREETING = "Phew… made it! Poke me to say hi.";
+
+  /* ---------- Tired face + dust (injected into the existing SVG) ---------- */
+  const NS = "http://www.w3.org/2000/svg";
+  const FACE = `
+    <path class="pf-brow" d="M114 90L131 84.5"/>
+    <path class="pf-brow" d="M141 84.5L158 90"/>
+    <g class="pf-lids">
+      <path class="pf-lid" d="M118.6 94.6h11.8v5.2h-11.8z"/>
+      <path class="pf-lid" d="M141.6 94.6h11.8v5.2h-11.8z"/>
+      <path class="pf-lidline" d="M118.6 99.8h11.8M141.6 99.8h11.8"/>
+    </g>
+    <g class="pf-squint">
+      <path d="M119 94.5L130 99.5L119 104.5"/>
+      <path d="M153 94.5L142 99.5L153 104.5"/>
+    </g>
+    <ellipse class="pf-pant" cx="136" cy="121.5" rx="5" ry="5.5"/>
+    <g class="pf-grit">
+      <rect x="126" y="117.5" width="20" height="8" rx="3"/>
+      <path d="M131 117.5v8M136 117.5v8M141 117.5v8"/>
+    </g>
+    <path class="pf-drop d1" d="M150 76q-3.5 5.5 0 8.5q3.5-3 0-8.5z"/>
+    <path class="pf-drop d2" d="M86 82q-3 5 0 8q3-3 0-8z"/>
+    <path class="pf-drop d3" d="M187 82q-3 5 0 8q3-3 0-8z"/>`;
+  const DUST = `<circle cx="100" cy="400" r="5"/><circle cx="100" cy="400" r="4"/><circle cx="100" cy="400" r="6"/>`;
+
+  function addGroup(parent, cls, markup, first) {
+    const g = document.createElementNS(NS, "g");
+    g.setAttribute("class", cls);
+    g.innerHTML = markup;
+    if (first) parent.insertBefore(g, parent.firstChild);
+    else parent.appendChild(g);
+  }
+
+  head.querySelectorAll('ellipse[rx="5.5"]').forEach((e) => e.classList.add("peek-sclera"));
+  addGroup(head, "pf", FACE);
+  addGroup(backSvg, "pf-dust", DUST, true);
+
+  /* ---------- Helpers ---------- */
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+  const easeOutQuad = (t) => 1 - (1 - t) * (1 - t);
+  const POSES = ["intro-surge", "intro-rest", "intro-spent"];
+
+  function setPos(x, y = 0) {
+    box.style.setProperty("--push-x", `${x.toFixed(1)}px`);
+    box.style.setProperty("--push-y", `${y.toFixed(1)}px`);
+  }
+
+  function pose(name) {
+    box.classList.remove(...POSES);
+    box.classList.add(`intro-${name}`);
+  }
+
+  function say(text) {
+    if (!speech || !speechText) return;
+    speechText.textContent = text;
+    speech.classList.add("is-visible");
+  }
+
+  function hush() {
+    if (speech) speech.classList.remove("is-visible");
+  }
+
+  // scrape = tiny vertical judder on the card while it's being dragged
+  function tween(from, to, dur, ease, scrape) {
+    return new Promise((resolve) => {
+      const t0 = performance.now();
+      (function step(now) {
+        const p = Math.min(1, (now - t0) / dur);
+        const x = from + (to - from) * ease(p);
+        const y = scrape ? Math.sin(p * Math.PI * 12) * 1.6 * (1 - p) : 0;
+        setPos(x, y);
+        if (p < 1) requestAnimationFrame(step);
+        else resolve();
+      })(t0);
+    });
+  }
+
+  function finish() {
+    box.classList.remove("intro-ready", "intro-play", ...POSES);
+    box.style.removeProperty("--push-x");
+    box.style.removeProperty("--push-y");
+  }
+
+  /* ---------- Scene ---------- */
+  const last = CYCLES.length - 1;
+  const net = CYCLES.reduce((sum, c) => sum + c.pull - c.back, 0);
+  const unit = TRAVEL / net;
+
+  async function play() {
+    try {
+      box.classList.add("intro-play");
+      say("okay… here goes…");
+      await wait(900);
+
+      let x = -TRAVEL;
+      for (let i = 0; i < CYCLES.length; i++) {
+        const c = CYCLES[i];
+
+        // heave
+        pose("surge");
+        say(c.say);
+        const to = i === last ? 0 : x + c.pull * unit;
+        await tween(x, to, c.dur, easeOutCubic, true);
+        x = to;
+
+        // let go: the card slides back a bit while he catches his breath
+        if (c.rest) {
+          pose("rest");
+          const slide = Math.min(260, c.rest * 0.5);
+          const toBack = x - c.back * unit;
+          await tween(x, toBack, slide, easeOutQuad);
+          x = toBack;
+          await wait(c.rest - slide);
+        }
+      }
+
+      // card thuds into place, character is spent
+      await tween(0, 7, 80, easeOutQuad);
+      await tween(7, 0, 200, easeOutQuad);
+      pose("spent");
+      say("phew…");
+      await wait(1300);
+    } catch (err) {
+      console.error(err);
+    }
+
+    finish();
+    say(GREETING);
+    setTimeout(() => {
+      if (speechText && speechText.textContent === GREETING) hush();
+    }, 4500);
+  }
+
+  /* ---------- Start state + trigger (first view only) ---------- */
+  box.classList.add("intro-ready", "intro-rest");
+  setPos(-TRAVEL);
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        play();
+      }
+    },
+    { threshold: 0.35 }
+  );
+  io.observe(box);
+}
+
+/* ==========================================================
+   HERO ENTRANCE ANIMATIONS
+   ========================================================== */
+function initHeroAnimations() {
+  const hero = document.getElementById("home");
+  if (!hero) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduceMotion) {
+    // Skip to final state instantly
+    hero.classList.add("hero-loaded");
+    return;
+  }
+
+  // Trigger entrance animations on next frame so CSS transitions fire
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      hero.classList.add("hero-loaded");
+    });
+  });
+
+  // Subtle mouse-parallax on the photo for a 3-D depth feeling
+  const photo = hero.querySelector(".hero-photo img");
+  if (photo) {
+    let pxTick = false;
+    hero.addEventListener("mousemove", (e) => {
+      if (pxTick) return;
+      pxTick = true;
+      requestAnimationFrame(() => {
+        const rect = hero.getBoundingClientRect();
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const dx = (e.clientX - rect.left - cx) / cx; // -1 … +1
+        const dy = (e.clientY - rect.top  - cy) / cy;
+        photo.style.transform = `scale(1) translate(${dx * -6}px, ${dy * -4}px)`;
+        pxTick = false;
+      });
+    }, { passive: true });
+
+    hero.addEventListener("mouseleave", () => {
+      photo.style.transform = "";
     });
   }
 }

@@ -104,7 +104,7 @@ body {
   width: 100%;
   height: clamp(520px, 68vh, 720px);
   min-height: 500px;
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
   border-bottom: var(--border-width) solid var(--border-color);
 
   --hero-wash: 0.1;
@@ -162,7 +162,7 @@ body {
   position: relative;
   width: min(100%, 620px);
   padding: clamp(1.75rem, 4vw, 3.25rem) clamp(1.5rem, 4vw, 3.25rem) clamp(1.75rem, 4vw, 3rem) 0;
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(0, 0, 0, 0);  /* animated in by .hero-loaded */
 }
 .hero-content::before {
   content: "01";
@@ -230,17 +230,263 @@ body {
 }
 
 /* ==========================================================
+   HERO: ENTRANCE ANIMATIONS & FLOATING CODE TOKENS
+   ========================================================== */
+
+/* ── 1. Staggered entrance: title, desc, buttons ── */
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Left border line draws itself down */
+@keyframes heroLineDraw {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0% 0); }
+}
+
+/* Typing cursor blink */
+@keyframes heroCursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Floating code token gentle drift */
+@keyframes heroTokenFloat1 {
+  0%   { transform: translateY(0px) translateX(0px) rotate(-3deg); }
+  33%  { transform: translateY(-14px) translateX(6px) rotate(2deg); }
+  66%  { transform: translateY(-8px) translateX(-4px) rotate(-1deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(-3deg); }
+}
+
+@keyframes heroTokenFloat2 {
+  0%   { transform: translateY(0px) translateX(0px) rotate(4deg); }
+  40%  { transform: translateY(-18px) translateX(-8px) rotate(-2deg); }
+  75%  { transform: translateY(-6px) translateX(5px) rotate(5deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(4deg); }
+}
+
+@keyframes heroTokenFloat3 {
+  0%   { transform: translateY(0px) rotate(0deg) scale(1); }
+  50%  { transform: translateY(-12px) rotate(8deg) scale(1.05); }
+  100% { transform: translateY(0px) rotate(0deg) scale(1); }
+}
+
+/* Radial pulse from center-right — like a WiFi/signal ping */
+@keyframes heroPulse {
+  0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0.18; }
+  60%  { opacity: 0.09; }
+  100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
+}
+
+/* ── Entrance animations triggered on .hero-loaded ── */
+.hero.hero-loaded .hero-content {
+  animation: heroLineDraw 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  border-left-color: rgba(0, 0, 0, 0.2);
+}
+
+.hero .hero-title {
+  opacity: 0;
+}
+.hero.hero-loaded .hero-title {
+  animation: heroSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+.hero .hero-desc {
+  opacity: 0;
+}
+.hero.hero-loaded .hero-desc {
+  animation: heroSlideUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+}
+
+.hero .hero-meta {
+  opacity: 0;
+}
+.hero.hero-loaded .hero-meta {
+  animation: heroSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.58s both;
+}
+
+.hero .hero-actions {
+  opacity: 0;
+}
+.hero.hero-loaded .hero-actions {
+  animation: heroSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.68s both;
+}
+
+/* ── Typing cursor after CHEN. ── */
+.hero-cursor {
+  display: inline-block;
+  width: 0.07em;
+  height: 0.82em;
+  background: var(--color-black);
+  margin-left: 0.06em;
+  vertical-align: middle;
+  border-radius: 1px;
+  opacity: 0;
+}
+
+.hero.hero-loaded .hero-cursor {
+  animation:
+    heroFadeIn 0.01s 1.1s both,
+    heroCursorBlink 0.9s step-start 1.12s infinite;
+}
+
+/* ── Photo entrance ── */
+.hero-photo img {
+  transform-origin: center right;
+}
+.hero .hero-photo img {
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.9s ease 0.1s, transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+.hero.hero-loaded .hero-photo img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Radial pulse layer ── */
+.hero-pulse {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  /* placed right-center in the photo area */
+  top: 50%;
+  right: 12%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.07);
+  transform: translate(50%, -50%) scale(0.4);
+  opacity: 0;
+}
+
+.hero-pulse.p1 { animation: heroPulse 4s ease-out 1.0s infinite; }
+.hero-pulse.p2 { animation: heroPulse 4s ease-out 2.3s infinite; }
+.hero-pulse.p3 { animation: heroPulse 4s ease-out 3.6s infinite; }
+
+/* ── Floating code tokens ── */
+.hero-tokens {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-token {
+  position: absolute;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.11);
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+  white-space: nowrap;
+}
+
+/* Token entrance — fade in after hero loads, then continuously drift */
+.hero.hero-loaded .hero-token { opacity: 1; }
+
+.hero-token:nth-child(1)  {
+  top: 12%; right: 38%;
+  animation: heroTokenFloat1 7s ease-in-out 1.4s infinite,
+             heroFadeIn 0.5s ease 1.4s both;
+}
+.hero-token:nth-child(2)  {
+  top: 28%; right: 24%;
+  animation: heroTokenFloat2 9s ease-in-out 1.7s infinite,
+             heroFadeIn 0.5s ease 1.7s both;
+}
+.hero-token:nth-child(3)  {
+  top: 52%; right: 42%;
+  animation: heroTokenFloat3 8s ease-in-out 2.0s infinite,
+             heroFadeIn 0.5s ease 2.0s both;
+}
+.hero-token:nth-child(4)  {
+  top: 68%; right: 20%;
+  animation: heroTokenFloat1 10s ease-in-out 1.6s infinite,
+             heroFadeIn 0.5s ease 1.6s both;
+}
+.hero-token:nth-child(5)  {
+  top: 18%; right: 15%;
+  animation: heroTokenFloat2 6.5s ease-in-out 2.2s infinite,
+             heroFadeIn 0.5s ease 2.2s both;
+}
+.hero-token:nth-child(6)  {
+  top: 78%; right: 34%;
+  animation: heroTokenFloat3 7.5s ease-in-out 1.9s infinite,
+             heroFadeIn 0.5s ease 1.9s both;
+}
+.hero-token:nth-child(7)  {
+  top: 38%; right: 10%;
+  animation: heroTokenFloat1 8.5s ease-in-out 2.4s infinite,
+             heroFadeIn 0.5s ease 2.4s both;
+}
+.hero-token:nth-child(8)  {
+  top: 82%; right: 8%;
+  animation: heroTokenFloat2 9.5s ease-in-out 2.1s infinite,
+             heroFadeIn 0.5s ease 2.1s both;
+}
+
+/* ── "Build line" decorative horizontal rule that scans across ── */
+@keyframes heroScanLine {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+.hero-scan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.022) 50%, transparent 100%);
+  animation: heroScanLine 6s cubic-bezier(0.4, 0, 0.6, 1) 1.2s 1 both;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero.hero-loaded .hero-title,
+  .hero.hero-loaded .hero-desc,
+  .hero.hero-loaded .hero-meta,
+  .hero.hero-loaded .hero-actions,
+  .hero.hero-loaded .hero-content,
+  .hero.hero-loaded .hero-cursor,
+  .hero.hero-loaded .hero-photo img {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    border-left-color: rgba(0, 0, 0, 0.2);
+    transition: none !important;
+  }
+  .hero-pulse, .hero-scan, .hero-token { display: none; }
+}
+
+/* ==========================================================
    SCROLL-DRIVEN SKILLS SECTION
    ========================================================== */
 .skills-scroll-track {
   position: relative;
   height: 240vh;
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
   border-top: var(--border-width) solid var(--border-color);
 }
 
 .skills-scroll-track.bg-secondary-section {
-  background: var(--bg-secondary);
+  background-color: var(--bg-secondary);
 }
 
 .skills-sticky-viewport {
@@ -315,8 +561,8 @@ body {
   position: absolute;
   left: 50%;
   top: calc(50% + clamp(2.5rem, 5vh, 3.8rem));
-  width: min(860px, 94vw);
-  height: min(clamp(280px, 52vh, 460px), calc(100% - 15rem));
+  width: min(920px, 95vw);
+  height: min(clamp(300px, 54vh, 480px), calc(100% - 14rem));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -453,11 +699,11 @@ body {
   top: 50%;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.8rem;
+  gap: 0.6rem;
+  font-size: 0.95rem;
   font-weight: var(--fw-medium);
   letter-spacing: 0.01em;
-  padding: 0.5rem 1rem 0.5rem 0.8rem;
+  padding: 0.65rem 1.25rem 0.65rem 1rem;
   color: var(--color-black);
   background: var(--color-white);
   border: var(--border-width) solid var(--color-gray-300);
@@ -474,19 +720,25 @@ body {
               box-shadow var(--transition-fast);
 }
 
+.tech-pill .pill-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
 .tech-pills-container.is-collected .tech-pill {
   isolation: isolate;
   overflow: hidden;
   justify-content: flex-start;
-  gap: 0.6rem;
-  padding: 0.6rem 0.7rem;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
   background: var(--color-white);
   border-color: var(--color-gray-300);
-  border-left: 2px solid var(--color-black);
-  border-radius: 0.9rem;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.065);
+  border-left: 3px solid var(--color-black);
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   font-weight: var(--fw-bold);
-  font-size: 0.94rem;
+  font-size: 1.05rem;
   transition: background 220ms ease, color 220ms ease, border-color 220ms ease,
               box-shadow 260ms ease, translate 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
               scale 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -513,13 +765,13 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.55rem;
-  height: 1.55rem;
+  width: 1.75rem;
+  height: 1.75rem;
   content: counter(tech-pill, decimal-leading-zero);
   color: var(--color-gray-500);
   background: var(--color-gray-100);
-  border-radius: 0.45rem;
-  font-size: 0.62rem;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
   font-weight: var(--fw-bold);
   letter-spacing: 0.03em;
   transition: color 220ms ease, background-color 220ms ease, transform 220ms ease;
@@ -530,8 +782,8 @@ body {
 .tech-pills-container.is-collected .tech-pill .pill-icon {
   position: relative;
   z-index: 1;
-  width: 25px;
-  height: 25px;
+  width: 29px;
+  height: 29px;
   transition: filter 220ms ease, transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .tech-pills-container.is-collected .tech-pill span {
@@ -609,17 +861,145 @@ background: linear-gradient(110deg,
 }
 
 /* ==========================================================
+   BACKGROUND EFFECTS: Sketchbook Grid, Doodles & Ambient Glow
+   ========================================================== */
+.hero,
+.site-section,
+.projects-section {
+  position: relative;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.08) 1.2px, transparent 0);
+  background-size: 28px 28px;
+}
+
+.skills-scroll-track,
+.contact-section {
+  position: relative;
+  background-color: var(--bg-secondary);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.09) 1.2px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* Cursor Ambient Spotlight */
+.cursor-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background: radial-gradient(
+    650px circle at var(--cursor-x, 50vw) var(--cursor-y, 50vh),
+    rgba(0, 0, 0, 0.038),
+    transparent 65%
+  );
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Floating Cartoon Background Doodles */
+.bg-doodles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.doodle {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.16);
+  user-select: none;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.doodle svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.doodle-sparkle {
+  animation: doodleTwinkle 5s ease-in-out infinite alternate;
+}
+
+.doodle-sparkle svg {
+  fill: rgba(0, 0, 0, 0.04);
+}
+
+.doodle-bracket,
+.doodle-code,
+.doodle-chat {
+  animation: doodleBob 6.5s ease-in-out infinite alternate;
+}
+
+.doodle-plus {
+  animation: doodleSpinSlow 18s linear infinite;
+}
+
+.doodle-wave,
+.doodle-signal {
+  animation: doodleSway 6s ease-in-out infinite alternate;
+}
+
+.doodle-star,
+.doodle-pin,
+.doodle-plane {
+  animation: doodleFloat 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes doodleTwinkle {
+  0%   { transform: translateY(0) scale(0.9) rotate(0deg); opacity: 0.6; }
+  50%  { transform: translateY(-7px) scale(1.12) rotate(6deg); opacity: 1; }
+  100% { transform: translateY(-13px) scale(0.95) rotate(-4deg); opacity: 0.75; }
+}
+
+@keyframes doodleBob {
+  0%   { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes doodleSpinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes doodleSway {
+  0%   { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(6px) translateY(-8px); }
+}
+
+@keyframes doodleFloat {
+  0%   { transform: translateY(0) rotate(-2deg); }
+  100% { transform: translateY(-11px) rotate(5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doodle { animation: none !important; }
+}
+
+@media (max-width: 576px) {
+  .bg-doodles { opacity: 0.6; }
+}
+
+/* ==========================================================
    SUBSEQUENT SECTIONS
    ========================================================== */
 .site-section {
   padding-block: var(--section-padding);
-  background: var(--bg-primary);
   position: relative;
   z-index: 2;
 }
 
 .bg-secondary-section {
-  background: var(--bg-secondary);
+  background-color: var(--bg-secondary);
 }
 
 .section-title {
@@ -642,7 +1022,7 @@ background: linear-gradient(110deg,
 .projects-section {
   position: relative;
   z-index: 2;
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
   border-top: var(--border-width) solid var(--border-color);
   padding-block: var(--section-padding);
 }
@@ -1127,7 +1507,7 @@ background: linear-gradient(110deg,
    ========================================================== */
 .about {
   overflow: hidden;
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
 }
 
 .about-stage { --cs: 1; position: relative; }
@@ -1142,36 +1522,14 @@ background: linear-gradient(110deg,
 .about-cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
+  gap: 1.35rem;
 }
 
-.about-card {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  min-height: 220px;
-  background: var(--color-white);
-  border: var(--border-width) solid var(--color-gray-300);
-  border-radius: var(--radius-lg);
-  padding: clamp(1.4rem, 2.4vw, 2rem);
-  box-shadow: var(--shadow-sm);
-  opacity: 0;
-  transform: translateY(14px) scale(0.96);
-  transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
 
-.about-card::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 9rem;
-  height: 9rem;
-  right: -3.4rem;
-  bottom: -4.4rem;
-  border: 1px solid var(--color-gray-200);
-  border-radius: 50%;
-  box-shadow: 0 0 0 1.1rem var(--color-white), 0 0 0 1.2rem var(--color-gray-200), 0 0 0 2.3rem var(--color-white), 0 0 0 2.4rem var(--color-gray-200);
-  opacity: 0.8;
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0 var(--color-black);
 }
 
 .about-card:nth-child(2) { transform: translateY(26px) scale(0.96); }
@@ -1179,27 +1537,157 @@ background: linear-gradient(110deg,
 .about-card:nth-child(2).is-in, .about-card:nth-child(3).is-in { transform: none; }
 .about-card.is-in { opacity: 1; transform: none; }
 
-.about-card .card-meta {
-  position: relative;
-  margin: 0 0 1.4rem;
+/* Subtle top parcel tape sticker on each card */
+.about-card::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 24px;
+  width: 44px;
+  height: 14px;
+  background: rgba(235, 235, 235, 0.9);
+  border: 1px dashed rgba(0, 0, 0, 0.35);
+  transform: rotate(-2deg);
+  border-radius: 2px;
+  pointer-events: none;
+}
+.about-card:nth-child(2)::after {
+  left: auto;
+  right: 28px;
+  transform: rotate(3deg);
+  background: rgba(224, 242, 254, 0.9);
+}
+.about-card:nth-child(3)::after {
+  left: 36px;
+  transform: rotate(-1.5deg);
+  background: rgba(220, 252, 231, 0.9);
 }
 
-.about-card .card-index {
+/* Card Header Row */
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--bg-primary);
+  border: 1.5px solid var(--color-black);
+  border-radius: var(--radius-pill);
+  padding: 0.22rem 0.65rem 0.22rem 0.32rem;
+  box-shadow: 2px 2px 0 var(--color-black);
+}
+
+.card-num {
+  display: inline-grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+.card-category {
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
   text-transform: uppercase;
-  letter-spacing: var(--ls-wide);
+  letter-spacing: 0.08em;
+  color: var(--color-black);
 }
 
-.about-card .card-rule { background: var(--color-gray-300); }
+.card-stamp {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-grid;
+  place-items: center;
+  background: var(--bg-primary);
+  border: 1.5px solid var(--color-black);
+  border-radius: 0.65rem;
+  box-shadow: 2px 2px 0 var(--color-black);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
+.about-card:hover .card-stamp {
+  transform: rotate(-6deg) scale(1.12);
+}
+
+.stamp-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  display: block;
+}
+
+/* Highlight Pill */
+.card-highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #fef9c3;
+  border: 1.5px solid var(--color-black);
+  border-radius: 0.55rem;
+  padding: 0.25rem 0.65rem;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  color: var(--color-black);
+  margin-bottom: 0.85rem;
+  align-self: flex-start;
+  box-shadow: 1.5px 1.5px 0 var(--color-black);
+}
+
+.card-highlight-pill.pill-cyan {
+  background: #e0f2fe;
+}
+
+.card-highlight-pill.pill-green {
+  background: #dcfce7;
+}
+
+.pill-star {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.pill-pulse-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 1px solid #000;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.35);
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.75; }
+}
+
+.pill-divider {
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+.pill-sub {
+  color: #475569;
+  font-weight: var(--fw-medium);
+}
+
+/* Card Body Text */
 .about-text {
   position: relative;
-  max-width: 34rem;
-  margin: 0;
-  font-size: clamp(1rem, 1.25vw, 1.15rem);
-  line-height: 1.75;
+  margin: 0 0 1.15rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: var(--text-primary);
+  flex-grow: 1;
 }
 
 .about-text .w {
@@ -1211,6 +1699,131 @@ background: linear-gradient(110deg,
 }
 
 .about-card.is-in .w { opacity: 1; transform: none; }
+
+/* Mini Tags Row */
+.card-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding-top: 0.75rem;
+  border-top: 1.5px dashed var(--color-gray-300);
+}
+
+.mini-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: var(--fw-bold);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  background: var(--bg-primary);
+  border: 1px solid var(--color-gray-400);
+  color: var(--color-black);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- About cards ---------- */
+.about-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 270px;
+  padding: clamp(1.4rem, 2.4vw, 1.9rem);
+  background: var(--color-white);
+  border: var(--border-width) solid var(--color-gray-300);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  transition: opacity 0.5s ease,
+              transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.about-card:nth-child(2) { transform: translateY(26px) scale(0.96); }
+.about-card:nth-child(3) { transform: translateY(42px) scale(0.96); }
+.about-card:nth-child(2).is-in,
+.about-card:nth-child(3).is-in { transform: none; }
+.about-card.is-in { opacity: 1; transform: none; }
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-gray-400);
+}
+
+/* meta row reuses the project-card pattern */
+.about-card .card-meta { margin: 0 0 1.6rem; }
+
+/* 1. Title: the headline */
+.about-card-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+/* 2. Kicker: one muted line of context */
+.about-card-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1.1rem;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-muted);
+}
+
+.status-dot {
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-black);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%      { transform: scale(1.25); opacity: 0.7; }
+}
+
+/* 3. Description: smaller and secondary */
+.about-text {
+  position: relative;
+  flex-grow: 1;
+  margin: 0 0 1.4rem;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.about-text .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.5s ease;
+  transition-delay: calc(var(--i) * 35ms + 0.2s);
+}
+
+.about-card.is-in .w { opacity: 1; transform: none; }
+
+/* Tags: reuse .card-tags, just tuned for this card */
+.about-card .card-tags {
+  margin: 0;
+  padding-top: 1.1rem;
+  border-top: var(--border-width) solid var(--color-gray-200);
+}
+
+.about-card .card-tags li.is-solid {
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+}
 
 /* ---------- Lanes ---------- */
 .about-lane {
@@ -1657,7 +2270,7 @@ background: linear-gradient(110deg,
   position: relative;
   z-index: 2;
   overflow: hidden;
-  background: var(--bg-secondary);
+  background-color: var(--bg-secondary);
   border-top: var(--border-width) solid var(--border-color);
   padding-block: var(--section-padding);
 }
@@ -2390,4 +3003,447 @@ a.info-value:hover { text-decoration: underline; text-underline-offset: 3px; }
     animation: none;
     background-position: 50% 50%;
   }
+}
+
+/* ==========================================================
+   CONTACT INTRO: character drags the card in (plays once)
+   Classes are toggled by initContactIntro() in main.js
+   ========================================================== */
+
+/* Before the intro: card + character wait off to the left, invisible */
+.contact-box.intro-ready .contact-card,
+.contact-box.intro-ready .contact-peek {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.contact-box.intro-ready .contact-card {
+  pointer-events: none;
+  transform: translate(var(--push-x, 0px), var(--push-y, 0px));
+}
+
+.contact-box.intro-ready .contact-peek {
+  pointer-events: none;
+  transform: translateX(var(--push-x, 0px));
+  transition: opacity 0.3s ease;
+}
+
+.contact-box.intro-ready.intro-play .contact-card,
+.contact-box.intro-ready.intro-play .contact-peek {
+  opacity: 1;
+}
+
+.contact-box.intro-ready.intro-play .contact-card {
+  transition: opacity 0.3s ease;
+}
+
+.contact-box.intro-ready .peek-hint,
+.contact-box.intro-ready .peek-speech-close { display: none; }
+
+/* Body leans back around the hand that grips the card edge */
+.contact-box.intro-ready .contact-peek svg {
+  transform-origin: 30% 52.6%;
+  transition: transform 0.3s cubic-bezier(0.34, 1.4, 0.5, 1);
+}
+.contact-box.intro-surge .contact-peek svg { transform: rotate(14deg); }
+.contact-box.intro-rest  .contact-peek svg { transform: rotate(7deg); }
+.contact-box.intro-spent .contact-peek svg { transform: rotate(0deg); }
+
+/* Speech bubble follows the character while he moves */
+.contact-box.intro-ready .peek-speech {
+  transform: translate(var(--push-x, 0px), 10px) scale(0.85);
+  transition: opacity 0.25s ease;
+}
+.contact-box.intro-ready .peek-speech.is-visible {
+  transform: translate(var(--push-x, 0px), 0) scale(1);
+}
+
+/* ---------- Tired face (group injected by JS) ---------- */
+.pf { display: none; }
+.contact-box.intro-ready .pf { display: inline; }
+
+.contact-box.intro-ready .peek-brow,
+.contact-box.intro-ready .peek-mouth { display: none; }
+
+.pf-brow { fill: none; stroke: #1a1a1a; stroke-width: 2.4; stroke-linecap: round; }
+.pf-lid { fill: #f7e1d0; }
+.pf-lidline { fill: none; stroke: #000; stroke-width: 1.8; stroke-linecap: round; }
+.pf-squint path { fill: none; stroke: #000; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.pf-grit rect { fill: #fff; stroke: #000; stroke-width: 2; }
+.pf-grit path { fill: none; stroke: #000; stroke-width: 1.3; }
+.pf-pant { fill: #7f1d1d; stroke: #000; stroke-width: 2; }
+
+/* resting look: droopy lids + gasping mouth. straining look: >_< + gritted teeth */
+.pf-squint, .pf-grit { display: none; }
+.contact-box.intro-surge .pf-squint,
+.contact-box.intro-surge .pf-grit { display: inline; }
+.contact-box.intro-surge .pf-lids,
+.contact-box.intro-surge .pf-pant,
+.contact-box.intro-surge .peek-pupils-group,
+.contact-box.intro-surge .peek-sclera { display: none; }
+
+.pf-pant {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pfPant 0.55s ease-in-out infinite alternate;
+}
+@keyframes pfPant {
+  from { transform: scale(1, 0.75); }
+  to   { transform: scale(1.1, 1.15); }
+}
+
+/* sweat */
+.pf-drop {
+  fill: #7dd3fc;
+  stroke: #000;
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pfDrip 1s ease-in infinite;
+}
+.pf-drop.d2 { --dx: -14px; animation-delay: 0.3s; }
+.pf-drop.d3 { --dx: 14px;  animation-delay: 0.6s; }
+.contact-box.intro-surge .pf-drop { animation-duration: 0.6s; }
+@keyframes pfDrip {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20%  { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx, 0px), 20px) scale(0.9); }
+}
+
+/* dust kicked up by his heels while he drags */
+.pf-dust { display: none; }
+.contact-box.intro-surge .pf-dust { display: inline; }
+.pf-dust circle {
+  fill: #e8e8e8;
+  stroke: #a3a3a3;
+  stroke-width: 1.4;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pfDust 0.5s ease-out infinite;
+}
+.pf-dust circle:nth-child(2) { animation-delay: 0.17s; }
+.pf-dust circle:nth-child(3) { animation-delay: 0.34s; }
+@keyframes pfDust {
+  0%   { opacity: 0.9; transform: translate(0, 0) scale(0.5); }
+  100% { opacity: 0;   transform: translate(-26px, -8px) scale(1.7); }
+}
+
+/* ---------- Body acting ---------- */
+.contact-box.intro-surge .peek-head { animation: introStrain 0.1s linear infinite alternate; }
+.contact-box.intro-rest  .peek-head { animation: introPant 0.7s ease-in-out infinite; }
+.contact-box.intro-spent .peek-head { animation: introSlump 1.1s ease-in-out infinite; }
+
+@keyframes introStrain {
+  from { transform: translate(-1px, 1px) rotate(-2deg); }
+  to   { transform: translate(1px, 0) rotate(2.5deg); }
+}
+@keyframes introPant {
+  0%, 100% { transform: translateY(4px) rotate(7deg); }
+  50%      { transform: translateY(1px) rotate(5deg); }
+}
+@keyframes introSlump {
+  0%, 100% { transform: translateY(7px) rotate(11deg); }
+  50%      { transform: translateY(4px) rotate(9deg); }
+}
+
+.contact-box.intro-ready .peek-torso {
+  transform-origin: 50% 100%;
+  animation: introHeave 0.5s ease-in-out infinite alternate;
+}
+.contact-box.intro-surge .peek-torso { animation-duration: 0.2s; }
+@keyframes introHeave {
+  from { transform: scaleY(1); }
+  to   { transform: scaleY(1.025); }
+}
+
+.contact-box.intro-surge .peek-shoe-l { animation: introStep 0.22s ease-in-out infinite alternate; }
+.contact-box.intro-surge .peek-shoe-r { animation: introStep 0.22s ease-in-out 0.11s infinite alternate-reverse; }
+@keyframes introStep {
+  from { transform: translateX(-5px); }
+  to   { transform: translateX(5px); }
+}
+
+/* free arm just dangles */
+.contact-box.intro-ready .peek-arm-right {
+  transform-origin: 50% 0;
+  animation: introDangle 0.8s ease-in-out infinite alternate;
+}
+.contact-box.intro-surge .peek-arm-right { animation-duration: 0.25s; }
+@keyframes introDangle {
+  from { transform: rotate(6deg); }
+  to   { transform: rotate(-10deg); }
+}
+
+/* ==========================================================
+   BACKGROUND REDESIGN: "Sketchbook desk"
+   Load AFTER style.css:
+     <link href="variables.css" rel="stylesheet">
+     <link href="style.css" rel="stylesheet">
+     <link href="background.css" rel="stylesheet">
+
+   Idea: every section is a different page of the same sketchbook,
+   drawn only in black / white / gray line work (same language as the
+   characters, hard-offset shadows and dashed rules).
+
+     Hero      graph paper + ripple rings + halftone corner
+     About     ruled notebook page with margin line + binder holes
+     Skills    radar / orbit sheet that matches the pill orbit
+     Projects  blueprint hatch in the side margins + a ruler edge
+     Contact   halftone corners + caution-tape footer edge
+
+   Turn the whole thing up or down with ONE number: --bg-strength
+   ========================================================== */
+
+:root {
+  --ink: 0, 0, 0;              /* rgb triplet, flips automatically in dark theme */
+  --bg-strength: 1;            /* 0.6 = subtler, 1 = default, 1.4 = louder */
+
+  --a-faint:  calc(0.05 * var(--bg-strength));
+  --a-soft:   calc(0.10 * var(--bg-strength));
+  --a-mid:    calc(0.18 * var(--bg-strength));
+  --a-strong: calc(0.32 * var(--bg-strength));
+}
+
+:root[data-theme="dark"] {
+  --ink: 255, 255, 255;
+}
+
+/* ==========================================================
+   DOODLES: bigger, darker, still playful
+   ========================================================== */
+.doodle {
+  color: rgba(var(--ink), calc(0.30 * var(--bg-strength)));
+  scale: 1.35; /* independent of the transform used by the float animations */
+}
+
+.doodle svg { stroke-width: 2; }
+.doodle-sparkle svg { fill: rgba(var(--ink), 0.08); }
+
+/* ==========================================================
+   HERO: graph paper + ripple rings + halftone corner
+   ========================================================== */
+.hero {
+  --bg-strength: 1.4; /* slightly reduced transparency (clearer/richer lines) */
+  --a-faint:  calc(0.055 * var(--bg-strength));
+  --a-soft:   calc(0.11 * var(--bg-strength));
+  --a-mid:    calc(0.20 * var(--bg-strength));
+  --a-strong: calc(0.32 * var(--bg-strength));
+  isolation: isolate;
+  background-image: none; /* the old dot grid was hidden under the photo anyway */
+}
+
+/* Grid + ripple rings sit ABOVE the photo's white fade so they show on the text side */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  background-image:
+    /* major grid */
+    linear-gradient(rgba(var(--ink), var(--a-soft)) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--ink), var(--a-soft)) 1px, transparent 1px),
+    /* minor grid */
+    linear-gradient(rgba(var(--ink), var(--a-faint)) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--ink), var(--a-faint)) 1px, transparent 1px),
+    /* ripples spreading from the top-left corner */
+    repeating-radial-gradient(circle at 0 0, transparent 0 46px, rgba(var(--ink), var(--a-mid)) 46px 47px);
+  background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px, auto;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 50%, transparent 84%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 50%, transparent 84%);
+}
+
+/* Halftone dots fading out of the bottom-left corner (full-bleed, behind the text) */
+.hero-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.45;  
+  background: radial-gradient(circle, rgba(var(--ink), var(--a-strong)) 1.5px, transparent 2px) 0 0 / 11px 11px;
+  -webkit-mask-image:
+    radial-gradient(circle 460px at 0% 100%, #000 0%, transparent 100%),
+    radial-gradient(circle 200px at 34% 0%, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+  mask-image:
+    radial-gradient(circle 460px at 0% 100%, #000 0%, transparent 100%),
+    radial-gradient(circle 200px at 34% 0%, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+}
+
+/* ==========================================================
+   ABOUT: ruled notebook page
+   ========================================================== */
+.site-section.about {
+  background-image: radial-gradient(circle at 1px 1px, rgba(var(--ink), 0.05) 1.2px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* Ruled lines + binder holes, fading out at the top and bottom edges */
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    /* binder holes */
+    radial-gradient(circle at 50% 50%,
+      rgba(var(--ink), 0.04) 0 6px,
+      rgba(var(--ink), var(--a-strong)) 6px 7px,
+      transparent 7px),
+    /* ruled lines */
+    repeating-linear-gradient(180deg, transparent 0 31px, rgba(var(--ink), var(--a-soft)) 31px 32px);
+  background-size: 16px 150px, auto;
+  background-position: 2.2% 20px, 0 0;
+  background-repeat: repeat-y, repeat;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+/* Double margin line, like a school notebook */
+.about::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 6.5%;
+  z-index: -1;
+  width: 5px;
+  pointer-events: none;
+  border-inline: 1px solid rgba(var(--ink), var(--a-mid));
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+/* ==========================================================
+   SKILLS: radar sheet that echoes the orbiting pills
+   ========================================================== */
+.skills-scroll-track {
+  isolation: isolate;
+  background-image: radial-gradient(circle at 1px 1px, rgba(var(--ink), 0.12) 1.2px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.skills-sticky-viewport::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    /* crosshair */
+    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(var(--ink), var(--a-mid)) calc(50% - 0.5px) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(180deg, transparent calc(50% + 3.2rem - 0.5px), rgba(var(--ink), var(--a-mid)) calc(50% + 3.2rem - 0.5px) calc(50% + 3.2rem + 0.5px), transparent calc(50% + 3.2rem + 0.5px)),
+    /* concentric sonar rings around the character */
+    repeating-radial-gradient(circle at 50% calc(50% + 3.2rem), transparent 0 54px, rgba(var(--ink), var(--a-soft)) 54px 55px);
+  -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% calc(50% + 3.2rem), #000 18%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 78% at 50% calc(50% + 3.2rem), #000 18%, transparent 100%);
+}
+
+/* ==========================================================
+   PROJECTS: blueprint hatch in the margins + ruler edge
+   ========================================================== */
+.projects-section {
+  background-image: radial-gradient(circle at 1px 1px, rgba(var(--ink), 0.05) 1.2px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* Diagonal hatch only in the side margins so the cards and path stay clean */
+.projects-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(135deg, rgba(var(--ink), calc(0.09 * var(--bg-strength))) 0 1px, transparent 1px 12px);
+  -webkit-mask-image:
+    linear-gradient(90deg, #000 0%, #000 9%, transparent 26%, transparent 74%, #000 91%, #000 100%),
+    linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, #000 0%, #000 9%, transparent 26%, transparent 74%, #000 91%, #000 100%),
+    linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* Ruler along the left edge: short ticks every 24px, long ticks every 120px */
+.projects-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 20px;
+  pointer-events: none;
+  border-right: 1px solid rgba(var(--ink), var(--a-soft));
+  background:
+    repeating-linear-gradient(180deg, rgba(var(--ink), var(--a-strong)) 0 1px, transparent 1px 120px) 0 0 / 20px 100% no-repeat,
+    repeating-linear-gradient(180deg, rgba(var(--ink), var(--a-mid)) 0 1px, transparent 1px 24px) 0 0 / 10px 100% no-repeat;
+}
+
+/* ==========================================================
+   CONTACT: halftone corners + caution-tape footer edge
+   ========================================================== */
+.contact-section {
+  background-image: radial-gradient(circle at 1px 1px, rgba(var(--ink), 0.10) 1.2px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(var(--ink), var(--a-strong)) 1.6px, transparent 2.1px) 0 0 / 12px 12px;
+  -webkit-mask-image:
+    radial-gradient(circle 420px at 0% 100%, #000 0%, transparent 100%),
+    radial-gradient(circle 360px at 100% 0%, #000 0%, transparent 100%);
+  mask-image:
+    radial-gradient(circle 420px at 0% 100%, #000 0%, transparent 100%),
+    radial-gradient(circle 360px at 100% 0%, #000 0%, transparent 100%);
+}
+
+.contact-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  height: 14px;
+  pointer-events: none;
+  border-top: 2px solid rgb(var(--ink));
+  background: repeating-linear-gradient(-45deg, rgb(var(--ink)) 0 8px, transparent 8px 16px);
+}
+
+/* ==========================================================
+   RESPONSIVE / MOTION
+   ========================================================== */
+@media (max-width: 859.98px) {
+  .about::after { display: none; }                 /* margin line would run under the text */
+  .about::before { background-position: 8px 20px, 0 0; }
+  .projects-section::before { opacity: 0.6; }
+  .hero::after {
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 50%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 50%, transparent 100%);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .doodle { scale: 1.1; }
+  .projects-section::after { width: 12px; }
+  .contact-section::after { height: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doodle { animation: none !important; }
 }

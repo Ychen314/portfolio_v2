@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SecureRide Carpooling System - Teh Yu Chen</title>
+  <meta name="description" content="SecureRide: a secure carpooling mobile app and web admin portal built for UTHM students.">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Design tokens, shared page styles, then project-page styles -->
+  <link href="variables.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link href="project.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Ambient cursor spotlight (same as index) -->
+  <div class="cursor-spotlight" aria-hidden="true"></div>
+
+  <!-- ===== Header (identical to index.html) ===== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand site-logo" href="index.html" aria-label="Home">
+          <img src="media/logo.png" alt="Logo" height="40">
+        </a>
+        <div class="header-actions d-flex align-items-center gap-2 gap-sm-3">
+          <a href="index.html#projects" class="btn btn-site btn-site-outline">Projects</a>
+          <a href="resume.pdf" class="btn btn-site btn-site-solid" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="proj-main">
+
+    <!-- ===== Hero Section (consistent with index.html) ===== -->
+    <section class="hero proj-hero" id="top">
+      <!-- Subtle cartoon background doodles -->
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-sparkle" style="top: 5%; left: 2%; width: 24px; height: 24px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-bracket" style="top: 50%; left: 2.5%; width: 20px; height: 32px;">
+          <svg viewBox="0 0 24 36"><path d="M18 4 C10 4 10 14 4 18 C10 22 10 32 18 32"/></svg>
+        </div>
+        <div class="doodle doodle-plus" style="bottom: 14%; left: 18%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+        <div class="doodle doodle-wave" style="bottom: 8%; right: 6%; width: 34px; height: 14px;">
+          <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+        </div>
+      </div>
+
+      <!-- Scan shimmer that sweeps once on load -->
+      <div class="hero-scan" aria-hidden="true"></div>
+
+      <!-- Floating developer code tokens -->
+      <div class="hero-tokens" aria-hidden="true">
+        <span class="hero-token">Flutter</span>
+        <span class="hero-token">Firebase</span>
+        <span class="hero-token">&#x3C;App /&#x3E;</span>
+        <span class="hero-token">GPS.live</span>
+        <span class="hero-token">Dart</span>
+        <span class="hero-token">async</span>
+      </div>
+
+      <div class="container hero-container proj-hero-container">
+        <div class="hero-content">
+
+          <h1 class="hero-title" aria-label="SecureRide Carpooling System">
+            <span>SECURE</span><span>RIDE<span class="hero-title-period">.</span><span class="hero-cursor" aria-hidden="true"></span></span>
+          </h1>
+
+          <p class="hero-desc">A centralized, secure mobile carpooling app and web admin portal built exclusively for UTHM students.</p>
+
+          <div class="proj-hero-specs">
+            <dl class="proj-hero-specs-facts">
+              <div>
+                <dt>Role</dt>
+                <dd>Full-Stack Developer</dd>
+              </div>
+              <div>
+                <dt>Platform</dt>
+                <dd>Mobile App &amp; Web Admin</dd>
+              </div>
+            </dl>
+            <div class="proj-hero-specs-stack">
+              <span class="stack-label">Stack</span>
+              <ul class="card-tags">
+                <li>Flutter</li>
+                <li>Dart</li>
+                <li>Firebase</li>
+                <li>Google Cloud APIs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-hero-visual" aria-hidden="true">
+          <div class="proj-phone"><div class="proj-screen" data-label="Mobile screen"><img src="media/secure_ride_mobile1.png" alt=""></div></div>
+          <div class="proj-phone"><div class="proj-screen" data-label="Mobile screen"><img src="media/secure_ride_mobile2.png" alt=""></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About the project ===== -->
+    <section class="proj-section is-alt" id="about">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-bracket" style="top: 8%; right: 6%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M7 8 L3 12 L7 16 M17 8 L21 12 L17 16"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="bottom: 8%; left: 5%; width: 22px; height: 22px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">Overview</span>
+          <h2 class="proj-title">About The Project</h2>
+          <p class="proj-sub">Solving daily campus transportation challenges with trusted student ride sharing</p>
+        </header>
+
+        <div class="proj-overview">
+          <p class="proj-lead">SecureRide is a carpooling mobile app designed around the transport problems UTHM students face every day. It works as one central platform that matches students who have vehicles with students who need a ride.</p>
+
+          <div class="problem-scene" id="problemScene" role="group" aria-label="A student thinks about the transportation problems SecureRide addresses">
+            <article class="problem-bubble problem-bubble--cost">
+              <span class="problem-bubble-mark problem-bubble-mark--rm" aria-hidden="true">RM</span>
+              <span><strong>High e-hailing costs</strong><small>A cheaper way to share the trip</small></span>
+            </article>
+            <article class="problem-bubble problem-bubble--parking">
+              <span class="problem-bubble-mark" aria-hidden="true">P</span>
+              <span><strong>Limited campus parking</strong><small>Fewer cars needed on campus</small></span>
+            </article>
+            <article class="problem-bubble problem-bubble--trust">
+              <span class="problem-bubble-mark" aria-hidden="true">?</span>
+              <span><strong>Uncertified ride groups</strong><small>Replaces unverified Telegram groups</small></span>
+            </article>
+
+            <div class="problem-student" role="img" aria-label="University student thinking about transportation problems">
+              <span class="student-question question-one" aria-hidden="true">?</span>
+              <span class="student-question question-two" aria-hidden="true">?</span>
+              <svg class="student-coder-svg" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- ground shadow -->
+                <ellipse cx="120" cy="270" rx="85" ry="6.5" fill="rgba(0,0,0,0.10)"/>
+
+                <g class="coder-body student-body">
+                  <!-- neck -->
+                  <path d="M108 124h24v30c-7 7-17 7-24 0z" fill="#e3b693"/>
+                  <!-- torso (hoodie) -->
+                  <path d="M50 258C50 178 76 150 120 150C164 150 190 178 190 258Z" fill="#1a1a1a"/>
+                  <!-- hood / collar -->
+                  <path d="M90 156C96 176 144 176 150 156" fill="none" stroke="#3a3a3a" stroke-width="6" stroke-linecap="round"/>
+                  <!-- drawstrings -->
+                  <path d="M111 170v18M129 170v18" stroke="#e8e8e8" stroke-width="1.6" stroke-linecap="round"/>
+                  <circle cx="111" cy="189" r="1.6" fill="#e8e8e8"/>
+                  <circle cx="129" cy="189" r="1.6" fill="#e8e8e8"/>
+
+                  <!-- Student ID Badge (UTHM card around neck) -->
+                  <path d="M115 174 L120 205 M125 174 L120 205" stroke="#737373" stroke-width="1.5" stroke-linecap="round"/>
+                  <rect x="108" y="205" width="24" height="32" rx="3" fill="#ffffff" stroke="#000" stroke-width="1.6"/>
+                  <rect x="112" y="210" width="16" height="11" rx="1.5" fill="#38bdf8"/>
+                  <line x1="112" y1="226" x2="128" y2="226" stroke="#525252" stroke-width="1.6" stroke-linecap="round"/>
+                  <line x1="112" y1="230" x2="124" y2="230" stroke="#a3a3a3" stroke-width="1.4" stroke-linecap="round"/>
+
+                  <!-- Left arm resting naturally -->
+                  <path d="M64 186 Q54 220 76 250" fill="none" stroke="#2e2e2e" stroke-width="22" stroke-linecap="round"/>
+                  <circle cx="76" cy="250" r="7" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
+
+                  <!-- Right arm (raised thinking gesture to chin/head) -->
+                  <path d="M176 186 Q190 216 166 226 L144 204" fill="none" stroke="#2e2e2e" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="142" cy="200" r="7.5" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
+                </g>
+
+                <!-- head (identical structure & coordinates to index.html coder) -->
+                <g class="coder-head student-head">
+                  <ellipse cx="120" cy="100" rx="34" ry="38" fill="#f1cdb0"/>
+                  <!-- hair -->
+                  <path d="M85 100C80 64 100 52 122 52C148 52 162 70 155 100C150 86 142 78 120 78C100 78 91 86 85 100Z" fill="#1a1a1a"/>
+                  <!-- headphones -->
+                  <path d="M80 104C76 32 164 32 160 104" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+                  <rect x="74" y="95" width="14" height="26" rx="7" fill="#000"/>
+                  <rect x="152" y="95" width="14" height="26" rx="7" fill="#000"/>
+                  <rect x="77" y="100" width="3" height="14" rx="1.5" fill="#fff" opacity="0.35"/>
+                  <rect x="160" y="100" width="3" height="14" rx="1.5" fill="#fff" opacity="0.35"/>
+                  <!-- brows (puzzled thinking expression) -->
+                  <path class="student-brow" d="M101 91q7-5 14 -1M125 89q7 4 14 0" fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+                  <!-- glasses -->
+                  <g fill="rgba(255,255,255,0.35)" stroke="#000" stroke-width="2.2">
+                    <rect x="99" y="96" width="19" height="15" rx="5.5"/>
+                    <rect x="122" y="96" width="19" height="15" rx="5.5"/>
+                  </g>
+                  <path d="M118 102h4" stroke="#000" stroke-width="2.2"/>
+                  <!-- eyes (puzzled looking up/side at problems) -->
+                  <g class="coder-eyes" fill="#000">
+                    <circle cx="109" cy="102" r="2.3"/>
+                    <circle cx="132" cy="102" r="2.3"/>
+                  </g>
+                  <!-- nose, cheeks, mouth (slight wavy puzzled mouth) -->
+                  <path d="M120 108q-3 7 1 8" fill="none" stroke="#d29c78" stroke-width="1.8" stroke-linecap="round"/>
+                  <circle cx="100" cy="119" r="4" fill="#e8a48f" opacity="0.35"/>
+                  <circle cx="140" cy="119" r="4" fill="#e8a48f" opacity="0.35"/>
+                  <path d="M114 125q6 -3 12 1" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Key features ===== -->
+    <section class="proj-section" id="features">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-plus" style="top: 6%; left: 4%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="top: 8%; right: 6%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-wave" style="bottom: 5%; right: 8%; width: 34px; height: 14px;">
+          <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">What It Does</span>
+          <h2 class="proj-title">Key Features</h2>
+          <p class="proj-sub">Four core pillars that make rides safer, cheaper, and easier to arrange</p>
+        </header>
+
+        <div class="features-split">
+          <!-- Left side: 3D Car with 4 Passengers (2x2 Seating in Depth) -->
+          <div class="car-stage">
+            <div class="car-svg-wrap">
+              <svg class="car-3d-svg" viewBox="0 0 540 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive 3D carpool car with 4 passengers">
+                <defs>
+                  <!-- Soft ambient 3D ground shadow -->
+                  <radialGradient id="groundShadow3D" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="rgba(15, 23, 42, 0.3)"/>
+                    <stop offset="60%" stop-color="rgba(15, 23, 42, 0.12)"/>
+                    <stop offset="100%" stop-color="rgba(15, 23, 42, 0)"/>
+                  </radialGradient>
+
+                  <!-- 3D Car Body Volumetric Lighting Gradients -->
+                  <linearGradient id="bodyRoofGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="50%" stop-color="#f8fafc"/>
+                    <stop offset="100%" stop-color="#e2e8f0"/>
+                  </linearGradient>
+
+                  <linearGradient id="hoodShine3D" x1="0.5" y1="0" x2="0.5" y2="1">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="40%" stop-color="#f1f5f9"/>
+                    <stop offset="100%" stop-color="#cbd5e1"/>
+                  </linearGradient>
+
+                  <linearGradient id="bumperShine3D" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f8fafc"/>
+                    <stop offset="50%" stop-color="#e2e8f0"/>
+                    <stop offset="100%" stop-color="#cbd5e1"/>
+                  </linearGradient>
+
+                  <linearGradient id="windshieldGradient3D" x1="0" y1="0" x2="0.8" y2="1">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+                    <stop offset="25%" stop-color="#e0f2fe" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.12"/>
+                  </linearGradient>
+
+                  <linearGradient id="tireRubberGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#334155"/>
+                    <stop offset="50%" stop-color="#1e293b"/>
+                    <stop offset="100%" stop-color="#0f172a"/>
+                  </linearGradient>
+
+                  <radialGradient id="headlight3DGlow" cx="42%" cy="38%" r="62%">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="45%" stop-color="#fef08a"/>
+                    <stop offset="100%" stop-color="#f59e0b"/>
+                  </radialGradient>
+                </defs>
+
+                <!-- ========================================================
+                     1. GROUND PERSPECTIVE SHADOWS
+                     ======================================================== -->
+                <g class="ground-shadows">
+                  <!-- Broad soft vehicle shadow -->
+                  <ellipse cx="270" cy="352" rx="200" ry="36" fill="url(#groundShadow3D)"/>
+                  <!-- Deep contact shadows under tires -->
+                  <ellipse cx="120" cy="358" rx="28" ry="9" fill="rgba(0,0,0,0.35)"/>
+                  <ellipse cx="420" cy="358" rx="28" ry="9" fill="rgba(0,0,0,0.35)"/>
+                  <ellipse cx="78"  cy="332" rx="20" ry="7" fill="rgba(0,0,0,0.2)"/>
+                  <ellipse cx="462" cy="332" rx="20" ry="7" fill="rgba(0,0,0,0.2)"/>
+                </g>
+
+                <!-- ========================================================
+                     2. REAR WHEELS IN 3D PERSPECTIVE (PEEKING FROM BACK)
+                     ======================================================== -->
+                <!-- Rear Left Wheel -->
+                <g class="wheel-rear-left">
+                  <rect x="68" y="295" width="20" height="42" rx="7" fill="#0f172a" stroke="#000" stroke-width="2"/>
+                  <line x1="76" y1="300" x2="76" y2="330" stroke="#475569" stroke-width="2.5" stroke-dasharray="3 4"/>
+                </g>
+                <!-- Rear Right Wheel -->
+                <g class="wheel-rear-right">
+                  <rect x="452" y="295" width="20" height="42" rx="7" fill="#0f172a" stroke="#000" stroke-width="2"/>
+                  <line x1="460" y1="300" x2="460" y2="330" stroke="#475569" stroke-width="2.5" stroke-dasharray="3 4"/>
+                </g>
+
+                <!-- ========================================================
+                     3. 3D CAR CHASSIS SHELL (ROUNDED CUTE ROOF & CABIN DOME)
+                     ======================================================== -->
+                <!-- Rear Body Dome & Roof Pillars (Receding back in 3D) -->
+                <path d="M 145 125 Q 270 70 395 125 Q 460 170 465 240 L 460 295 Q 270 310 80 295 L 75 240 Q 80 170 145 125 Z" 
+                      fill="url(#bodyRoofGradient)" stroke="#000" stroke-width="2.8" stroke-linejoin="round"/>
+
+                <!-- Dark Interior Cavity / Cabin Tub -->
+                <path d="M 120 185 Q 270 162 420 185 L 430 262 Q 270 282 110 262 Z" 
+                      fill="#0b1120" stroke="#000" stroke-width="2.5"/>
+
+                <!-- ========================================================
+                     4. REAR SEAT BACKRESTS (ELEVATED IN 3D PERSPECTIVE)
+                     ======================================================== -->
+                <!-- Rear Right Seat (Admin) -->
+                <g class="rear-seat-admin">
+                  <rect x="325" y="152" width="70" height="50" rx="12" fill="#1e293b" stroke="#7c3aed" stroke-width="2"/>
+                  <rect x="342" y="130" width="36" height="22" rx="8" fill="#334155" stroke="#000" stroke-width="1.8"/>
+                  <line x1="352" y1="152" x2="352" y2="148" stroke="#94a3b8" stroke-width="2"/>
+                  <line x1="368" y1="152" x2="368" y2="148" stroke="#94a3b8" stroke-width="2"/>
+                </g>
+                <!-- Rear Left Seat (Commuter) -->
+                <g class="rear-seat-commuter">
+                  <rect x="145" y="152" width="70" height="50" rx="12" fill="#1e293b" stroke="#d97706" stroke-width="2"/>
+                  <rect x="162" y="130" width="36" height="22" rx="8" fill="#334155" stroke="#000" stroke-width="1.8"/>
+                  <line x1="172" y1="152" x2="172" y2="148" stroke="#94a3b8" stroke-width="2"/>
+                  <line x1="188" y1="152" x2="188" y2="148" stroke="#94a3b8" stroke-width="2"/>
+                </g>
+
+                <!-- ========================================================
+                     5. REAR PASSENGERS (DEPTH SORTED - RENDERED BEHIND FRONT SEATS)
+                     ======================================================== -->
+                
+                <!-- PASSENGER 4: ADMIN (Rear Right) - Seat 4 -->
+                <g class="passenger-unit is-dimmed" id="passenger-3" data-index="3" role="button" tabindex="0" aria-label="Seat 4: Admin" aria-pressed="false">
+                  <ellipse cx="360" cy="158" rx="38" ry="46" fill="transparent"/>
+                  <!-- Torso & Purple Hoodie -->
+                  <path d="M 334 198 Q 360 172 386 198 Z" fill="#7c3aed" stroke="#000" stroke-width="2.2"/>
+                  <!-- Mini Tablet on Lap -->
+                  <rect x="348" y="186" width="25" height="16" rx="3" fill="#f8fafc" stroke="#000" stroke-width="1.5"/>
+                  <line x1="352" y1="192" x2="369" y2="192" stroke="#7c3aed" stroke-width="2"/>
+
+                  <!-- Head & Face -->
+                  <g class="passenger-head">
+                    <path d="M340 145 C338 108 382 108 380 145" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
+                    <rect x="337" y="139" width="7" height="16" rx="3.5" fill="#171717" stroke="#000" stroke-width="1"/><rect x="376" y="139" width="7" height="16" rx="3.5" fill="#171717" stroke="#000" stroke-width="1"/>
+                    <circle cx="360" cy="144" r="18" fill="#f1cdb0" stroke="#000" stroke-width="2.2"/>
+                    <!-- Hair / Beanie -->
+                    <path d="M 344 140 C 342 121 359 119 370 121 C 381 120 385 130 380 142 C 374 131 366 129 359 129 C 351 129 347 134 344 140 Z" 
+                          fill="#475569" stroke="#000" stroke-width="2"/>
+                    <!-- Glasses -->
+                    <rect x="348" y="140" width="10" height="8" rx="2.5" fill="rgba(255,255,255,0.4)" stroke="#000" stroke-width="1.5"/>
+                    <rect x="362" y="140" width="10" height="8" rx="2.5" fill="rgba(255,255,255,0.4)" stroke="#000" stroke-width="1.5"/>
+                    <line x1="358" y1="144" x2="362" y2="144" stroke="#000" stroke-width="1.5"/>
+                    <!-- Eyes & Smile -->
+                    <path d="M 351 144 Q 353 142 355 144" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M 365 144 Q 367 142 369 144" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round"/>
+                    <ellipse cx="347" cy="150" rx="3.5" ry="2" fill="#ff8da1" opacity="0.6"/>
+                    <ellipse cx="373" cy="150" rx="3.5" ry="2" fill="#ff8da1" opacity="0.6"/>
+                    <path d="M 356 152 Q 360 157 364 152" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- 3D Speech Pop Bubble -->
+                  <g transform="translate(360, 112)">
+                    <g class="passenger-emotion">
+                      <rect x="-38" y="-22" width="76" height="22" rx="11" fill="#7c3aed" stroke="#000" stroke-width="1.8"/>
+                      <polygon points="-4,-1 4,-1 0,5" fill="#7c3aed" stroke="#000" stroke-width="1.2"/>
+                      <text x="0" y="-8" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="bold" font-family="sans-serif">Admin</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- PASSENGER 3: COMMUTER (Rear Left) - Seat 3 -->
+                <g class="passenger-unit is-dimmed" id="passenger-2" data-index="2" role="button" tabindex="0" aria-label="Seat 3: Commuter" aria-pressed="false">
+                  <ellipse cx="180" cy="158" rx="38" ry="46" fill="transparent"/>
+                  <!-- Torso & Amber Sweater -->
+                  <path d="M 154 198 Q 180 172 206 198 Z" fill="#d97706" stroke="#000" stroke-width="2.2"/>
+                  <!-- Backpack Strap -->
+                  <line x1="162" y1="180" x2="171" y2="198" stroke="#78350f" stroke-width="3" stroke-linecap="round"/>
+                  <!-- Thumbs Up Hand -->
+                  <circle cx="202" cy="188" r="4.5" fill="#f1cdb0" stroke="#000" stroke-width="1.5"/>
+
+                  <!-- Head & Face -->
+                  <g class="passenger-head">
+                    <path d="M160 145 C158 108 202 108 200 145" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
+                    <rect x="157" y="139" width="7" height="16" rx="3.5" fill="#171717" stroke="#000" stroke-width="1"/><rect x="196" y="139" width="7" height="16" rx="3.5" fill="#171717" stroke="#000" stroke-width="1"/>
+                    <circle cx="180" cy="144" r="18" fill="#f1cdb0" stroke="#000" stroke-width="2.2"/>
+                    <!-- Curly Hair -->
+                    <path d="M 164 140 C 162 121 179 119 190 121 C 201 120 205 130 200 142 C 194 131 186 129 179 129 C 171 129 167 134 164 140 Z" 
+                          fill="#78350f" stroke="#000" stroke-width="2"/>
+                    <!-- Eyes & Smile -->
+                    <path d="M 172 144 Q 174 142 176 144" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M 184 144 Q 186 142 188 144" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round"/>
+                    <ellipse cx="167" cy="150" rx="3.5" ry="2" fill="#ff8da1" opacity="0.6"/>
+                    <ellipse cx="193" cy="150" rx="3.5" ry="2" fill="#ff8da1" opacity="0.6"/>
+                    <path d="M 176 152 Q 180 157 184 152" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- 3D Speech Pop Bubble -->
+                  <g transform="translate(180, 112)">
+                    <g class="passenger-emotion">
+                      <rect x="-42" y="-22" width="84" height="22" rx="11" fill="#d97706" stroke="#000" stroke-width="1.8"/>
+                      <polygon points="-4,-1 4,-1 0,5" fill="#d97706" stroke="#000" stroke-width="1.2"/>
+                      <text x="0" y="-8" text-anchor="middle" fill="#ffffff" font-size="9.5" font-weight="bold" font-family="sans-serif">Commuter</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- ========================================================
+                     6. FRONT SEAT BACKRESTS & SEATBELTS
+                     ======================================================== -->
+                <!-- Front Right Seat Backrest (Co-pilot) -->
+                <rect x="296" y="202" width="84" height="56" rx="14" fill="#1e293b" stroke="#059669" stroke-width="2.2"/>
+                <rect x="317" y="180" width="42" height="24" rx="8" fill="#334155" stroke="#000" stroke-width="2"/>
+                <line x1="330" y1="202" x2="330" y2="198" stroke="#94a3b8" stroke-width="2"/>
+                <line x1="346" y1="202" x2="346" y2="198" stroke="#94a3b8" stroke-width="2"/>
+
+                <!-- Front Left Seat Backrest (Driver) -->
+                <rect x="160" y="202" width="84" height="56" rx="14" fill="#1e293b" stroke="#2563eb" stroke-width="2.2"/>
+                <rect x="181" y="180" width="42" height="24" rx="8" fill="#334155" stroke="#000" stroke-width="2"/>
+                <line x1="194" y1="202" x2="194" y2="198" stroke="#94a3b8" stroke-width="2"/>
+                <line x1="210" y1="202" x2="210" y2="198" stroke="#94a3b8" stroke-width="2"/>
+
+                <!-- ========================================================
+                     7. FRONT ROW PASSENGERS (DRIVER & CO-PILOT)
+                     ======================================================== -->
+                
+                <!-- PASSENGER 2: CO-PILOT (Front Right) - Seat 2 -->
+                <g class="passenger-unit is-dimmed" id="passenger-1" data-index="1" role="button" tabindex="0" aria-label="Seat 2: Co-pilot" aria-pressed="false">
+                  <ellipse cx="338" cy="216" rx="44" ry="52" fill="transparent"/>
+                  <!-- Torso & Emerald Green Jacket -->
+                  <path d="M 304 258 Q 338 220 372 258 Z" fill="#059669" stroke="#000" stroke-width="2.5"/>
+                  <!-- Seatbelt -->
+                  <line x1="322" y1="225" x2="368" y2="258" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                  <!-- Phone in Hand with Live GPS Navigation -->
+                  <rect x="354" y="230" width="18" height="26" rx="3.5" fill="#1e293b" stroke="#000" stroke-width="1.8" transform="rotate(-6 363 243)"/>
+                  <rect x="356" y="232" width="14" height="17" rx="1.5" fill="#6ee7b7" transform="rotate(-6 363 243)"/>
+                  <circle cx="363" cy="240" r="3" fill="#ef4444"/>
+                  <circle cx="354" cy="248" r="5" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
+
+                  <!-- Head & Expression -->
+                  <g class="passenger-head">
+                    <path d="M314 198 C312 157 364 157 362 198" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+                    <rect x="311" y="190" width="8" height="18" rx="4" fill="#171717" stroke="#000" stroke-width="1"/><rect x="357" y="190" width="8" height="18" rx="4" fill="#171717" stroke="#000" stroke-width="1"/>
+                    <circle cx="338" cy="196" r="21" fill="#f1cdb0" stroke="#000" stroke-width="2.4"/>
+                    <!-- Hair -->
+                    <path d="M 319 190 C 317 165 338 163 350 165 C 363 164 368 178 362 192 C 354 180 346 177 338 177 C 329 177 323 181 319 190 Z" 
+                          fill="#334155" stroke="#000" stroke-width="2.2"/>
+                    <!-- Happy Eyes -->
+                    <path d="M 328 195 Q 331 193 334 195" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M 344 194 Q 347 192 350 194" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                    <ellipse cx="323" cy="202" rx="4.5" ry="2.4" fill="#ff8da1" opacity="0.6"/>
+                    <ellipse cx="353" cy="201" rx="4.5" ry="2.4" fill="#ff8da1" opacity="0.6"/>
+                    <path d="M 334 204 Q 340 211 346 204" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- 3D Speech Pop Bubble -->
+                  <g transform="translate(338, 160)">
+                    <g class="passenger-emotion">
+                      <rect x="-46" y="-24" width="92" height="24" rx="12" fill="#059669" stroke="#000" stroke-width="2"/>
+                      <polygon points="-4,-1 4,-1 0,6" fill="#059669" stroke="#000" stroke-width="1.2"/>
+                      <text x="0" y="-8.5" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold" font-family="sans-serif">GPS Co-pilot</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- PASSENGER 1: DRIVER (Front Left) - Seat 1 -->
+                <g class="passenger-unit is-active" id="passenger-0" data-index="0" role="button" tabindex="0" aria-label="Seat 1: Driver" aria-pressed="true">
+                  <ellipse cx="202" cy="216" rx="44" ry="52" fill="transparent"/>
+                  <!-- Torso & Blue Hoodie -->
+                  <path d="M 168 258 Q 202 220 236 258 Z" fill="#2563eb" stroke="#000" stroke-width="2.5"/>
+                  <!-- Seatbelt -->
+                  <line x1="184" y1="225" x2="232" y2="258" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                  <!-- Student Lanyard & ID Badge -->
+                  <path d="M 196 230 L 202 246 L 208 230" fill="none" stroke="#facc15" stroke-width="2"/>
+                  <rect x="197" y="244" width="10" height="9" rx="1.5" fill="#ffffff" stroke="#000" stroke-width="1.4"/>
+                  <!-- Steering Wheel & Hands -->
+                  <ellipse cx="202" cy="250" rx="19" ry="7.5" fill="none" stroke="#0f172a" stroke-width="4"/>
+                  <circle cx="187" cy="248" r="5" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
+                  <circle cx="217" cy="248" r="5" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
+
+                  <!-- Head & Expression -->
+                  <g class="passenger-head">
+                    <path d="M178 198 C176 157 228 157 226 198" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+                    <rect x="175" y="190" width="8" height="18" rx="4" fill="#171717" stroke="#000" stroke-width="1"/><rect x="221" y="190" width="8" height="18" rx="4" fill="#171717" stroke="#000" stroke-width="1"/>
+                    <circle cx="202" cy="196" r="21" fill="#f1cdb0" stroke="#000" stroke-width="2.4"/>
+                    <!-- Hair -->
+                    <path d="M 183 190 C 181 165 202 163 214 165 C 227 164 232 178 226 192 C 218 180 210 177 202 177 C 193 177 187 181 183 190 Z" 
+                          fill="#1e293b" stroke="#000" stroke-width="2.2"/>
+                    <!-- Glasses -->
+                    <rect x="187" y="191" width="11" height="9" rx="2.5" fill="rgba(255,255,255,0.4)" stroke="#000" stroke-width="1.6"/>
+                    <rect x="204" y="191" width="11" height="9" rx="2.5" fill="rgba(255,255,255,0.4)" stroke="#000" stroke-width="1.6"/>
+                    <line x1="198" y1="196" x2="204" y2="196" stroke="#000" stroke-width="1.6"/>
+                    <!-- Happy Eyes -->
+                    <path d="M 191 196 Q 194 194 197 196" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M 208 195 Q 211 193 214 195" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                    <!-- Rosy Cheeks -->
+                    <ellipse cx="186" cy="203" rx="4.5" ry="2.4" fill="#ff8da1" opacity="0.65"/>
+                    <ellipse cx="218" cy="202" rx="4.5" ry="2.4" fill="#ff8da1" opacity="0.65"/>
+                    <!-- Cheerful Smile -->
+                    <path d="M 197 205 Q 202 212 207 205" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- 3D Speech Pop Bubble -->
+                  <g transform="translate(202, 160)">
+                    <g class="passenger-emotion">
+                      <rect x="-42" y="-24" width="84" height="24" rx="12" fill="#2563eb" stroke="#000" stroke-width="2"/>
+                      <polygon points="-4,-1 4,-1 0,6" fill="#2563eb" stroke="#000" stroke-width="1.2"/>
+                      <text x="0" y="-8.5" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold" font-family="sans-serif">✓ Driver</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- ========================================================
+                     8. 3D FRONT WINDSHIELD (CRYSTAL CLEAR GLASS WITH SHINE)
+                     ======================================================== -->
+                <path class="car-windshield" d="M 96 244 L 142 120 Q 270 92 398 120 L 444 244 Q 270 268 96 244 Z" 
+                      fill="url(#windshieldGradient3D)" stroke="#000" stroke-width="2.8" stroke-linejoin="round"/>
+                
+                <!-- Soft Subtle Windshield Glass Reflections (Non-intrusive) -->
+                <path d="M 120 220 Q 155 160 190 125" stroke="rgba(255,255,255,0.6)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M 350 125 Q 385 160 420 220" stroke="rgba(255,255,255,0.6)" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+                <!-- Cute 3D Side Mirrors (Mounted on A-Pillars) -->
+                <!-- Left Mirror -->
+                <path d="M 94 228 L 68 220 Q 60 234 74 240 L 94 235 Z" fill="#f8fafc" stroke="#000" stroke-width="2.2"/>
+                <ellipse cx="74" cy="230" rx="6.5" ry="4.5" fill="#38bdf8"/>
+                <!-- Right Mirror -->
+                <path d="M 446 228 L 472 220 Q 480 234 466 240 L 446 235 Z" fill="#f8fafc" stroke="#000" stroke-width="2.2"/>
+                <ellipse cx="466" cy="230" rx="6.5" ry="4.5" fill="#38bdf8"/>
+
+                <!-- ========================================================
+                     9. 3D FRONT HOOD (CURVED, GLOSSY HOOD SLOPING DOWN)
+                     ======================================================== -->
+                <path d="M 96 244 Q 270 268 444 244 L 436 298 Q 270 322 104 298 Z" 
+                      fill="url(#hoodShine3D)" stroke="#000" stroke-width="2.8" stroke-linejoin="round"/>
+                
+                <!-- Sculpted Hood Feature Lines -->
+                <path d="M 155 256 Q 270 270 385 256" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+                <path d="M 165 262 Q 150 282 125 298" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+                <path d="M 375 262 Q 390 282 415 298" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+
+                <!-- ========================================================
+                     10. 3D FRONT BUMPER & WHEEL ARCHES (INTEGRATED CURVED FENDERS)
+                     ======================================================== -->
+                <!-- Unified 3D front bumper with rounded wheel arches -->
+                <path d="M 104 298 Q 270 322 436 298 L 442 335 Q 450 348 436 352 L 400 352 Q 390 328 360 328 Q 330 328 320 346 L 220 346 Q 210 328 180 328 Q 150 328 140 352 L 104 352 Q 90 348 98 335 Z" 
+                      fill="url(#bumperShine3D)" stroke="#000" stroke-width="2.8" stroke-linejoin="round"/>
+
+                <!-- Big Round Expressive LED Halo Headlights -->
+                <!-- Left Headlight -->
+                <g class="headlight-l">
+                  <ellipse cx="145" cy="310" rx="17" ry="14" fill="#ffffff" stroke="#000" stroke-width="2.2"/>
+                  <ellipse cx="145" cy="310" rx="13" ry="10.5" fill="url(#headlight3DGlow)"/>
+                  <ellipse cx="142" cy="307" rx="5" ry="3.5" fill="#ffffff"/>
+                </g>
+                <!-- Right Headlight -->
+                <g class="headlight-r">
+                  <ellipse cx="395" cy="310" rx="17" ry="14" fill="#ffffff" stroke="#000" stroke-width="2.2"/>
+                  <ellipse cx="395" cy="310" rx="13" ry="10.5" fill="url(#headlight3DGlow)"/>
+                  <ellipse cx="392" cy="307" rx="5" ry="3.5" fill="#ffffff"/>
+                </g>
+
+                <!-- Center LED Accent Lightbar & Grille Bar -->
+                <rect x="210" y="306" width="120" height="13" rx="4" fill="#0f172a" stroke="#000" stroke-width="1.8"/>
+                <line x1="224" y1="312.5" x2="316" y2="312.5" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+
+                <!-- License Plate: UTHM 2026 -->
+                <rect x="235" y="326" width="70" height="19" rx="4" fill="#ffffff" stroke="#000" stroke-width="2"/>
+                <text x="270" y="339" text-anchor="middle" font-size="9" font-weight="bold" font-family="monospace">UTHM 2026</text>
+
+                <!-- Lower Cheerful Smile Air Lip -->
+                <path d="M 210 352 Q 270 358 330 352" fill="none" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>
+
+                <!-- ========================================================
+                     11. FRONT WHEELS (TUCKED CLEANLY UNDER ARCHES ON ROAD)
+                     ======================================================== -->
+                <!-- Front Left Wheel -->
+                <g class="front-wheel-l">
+                  <rect x="80" y="295" width="28" height="62" rx="9" fill="url(#tireRubberGradient)" stroke="#000" stroke-width="2.6"/>
+                  <line x1="90" y1="302" x2="90" y2="348" stroke="#64748b" stroke-width="2.8" stroke-dasharray="4 5"/>
+                </g>
+                <!-- Front Right Wheel -->
+                <g class="front-wheel-r">
+                  <rect x="432" y="295" width="28" height="62" rx="9" fill="url(#tireRubberGradient)" stroke="#000" stroke-width="2.6"/>
+                  <line x1="442" y1="302" x2="442" y2="348" stroke="#64748b" stroke-width="2.8" stroke-dasharray="4 5"/>
+                </g>
+              </svg>
+            </div>
+
+            <p class="character-hint"><span aria-hidden="true">✦</span> Pick a passenger to explore a feature</p>
+          </div>
+
+          <!-- Right side: Simple Clean Title & Description ONLY -->
+          <div class="feature-card-display">
+            <!-- Feature Panel 01: Driver -->
+            <article class="feature-panel is-active" id="feature-panel-0">
+              <h3 class="feature-clean-title">Verified community</h3>
+              <p class="feature-clean-desc">
+                Students must verify their identity with the official UTHM email domain, so only legitimate students can use the platform. Unverified accounts cannot book or offer rides, ensuring everyone in the car is an authentic campus peer.
+              </p>
+            </article>
+
+            <!-- Feature Panel 02: Co-pilot -->
+            <article class="feature-panel" id="feature-panel-1">
+              <h3 class="feature-clean-title">Live GPS tracking</h3>
+              <p class="feature-clean-desc">
+                Passengers can see the driver's live location and share their trip progress with authorized trusted contacts. Real-time updates give friends and family peace of mind from pickup until safe drop-off on or off campus.
+              </p>
+            </article>
+
+            <!-- Feature Panel 03: Commuter -->
+            <article class="feature-panel" id="feature-panel-2">
+              <h3 class="feature-clean-title">Ride matching</h3>
+              <p class="feature-clean-desc">
+                Drivers post ride offers with their route, departure time, and available seats. Passengers can browse matching trips, reserve a seat securely, and split petrol costs seamlessly without messy chat groups.
+              </p>
+            </article>
+
+            <!-- Feature Panel 04: Admin -->
+            <article class="feature-panel" id="feature-panel-3">
+              <h3 class="feature-clean-title">Web admin portal</h3>
+              <p class="feature-clean-desc">
+                Administrators get a comprehensive dashboard to oversee student user accounts, verify university credentials, review trip logs, and monitor campus carpooling safety in real time.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Mobile app ===== -->
+    <section class="proj-section is-alt" id="mobile">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-bracket" style="top: 6%; left: 5%; width: 22px; height: 32px;">
+          <svg viewBox="0 0 24 36"><path d="M18 4 C10 4 10 14 4 18 C10 22 10 32 18 32"/></svg>
+        </div>
+        <div class="doodle doodle-bracket" style="top: 6%; right: 5%; width: 22px; height: 32px;">
+          <svg viewBox="0 0 24 36"><path d="M6 4 C14 4 14 14 20 18 C14 22 14 32 6 32"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">App Screenshots</span>
+          <h2 class="proj-title">Mobile Application</h2>
+          <p class="proj-sub">The Flutter app used by drivers and passengers. Tap a screen to enlarge it.</p>
+        </header>
+
+        <div class="mobile-showcase">
+          <div class="proj-phones">
+          <button type="button" class="proj-zoom phone-shot shot-one" aria-label="Enlarge mobile screen 1">
+            <div class="proj-phone"><div class="proj-screen" data-label="Mobile Screen 1"><img src="media/secure_ride_mobile1.png" alt="SecureRide mobile app, screen 1"></div></div>
+            <span class="shot-caption"><b>01</b><span>Find a ride</span></span>
+          </button>
+          <button type="button" class="proj-zoom phone-shot shot-two" aria-label="Enlarge mobile screen 2">
+            <div class="proj-phone"><div class="proj-screen" data-label="Mobile Screen 2"><img src="media/secure_ride_mobile2.png" alt="SecureRide mobile app, screen 2"></div></div>
+            <span class="shot-caption"><b>02</b><span>Plan the trip</span></span>
+          </button>
+          <button type="button" class="proj-zoom phone-shot shot-three" aria-label="Enlarge mobile screen 3">
+            <div class="proj-phone"><div class="proj-screen" data-label="Mobile Screen 3"><img src="media/secure_ride_mobile3.png" alt="SecureRide mobile app, screen 3"></div></div>
+            <span class="shot-caption"><b>03</b><span>Travel together</span></span>
+          </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Web admin ===== -->
+    <section class="proj-section" id="admin">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-sparkle" style="top: 6%; right: 7%; width: 24px; height: 24px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-plus" style="bottom: 7%; left: 5%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">Admin Dashboard</span>
+          <h2 class="proj-title">Web Admin Portal</h2>
+          <p class="proj-sub">The dashboard administrators use to manage users and trips</p>
+        </header>
+
+        <div class="admin-showcase">
+          <div class="proj-browsers">
+          <button type="button" class="proj-zoom admin-shot admin-shot-one" aria-label="Enlarge admin portal screen 1">
+            <div class="browser">
+              <div class="browser-bar">
+                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                <span class="browser-url">SecureRide Admin</span>
+              </div>
+              <div class="proj-screen" data-label="Admin Portal 1"><img src="media/secure_ride_admin1.png" alt="SecureRide admin portal, screen 1"></div>
+            </div>
+            <span class="admin-caption"><b>01 / OVERVIEW</b><span>One clear view of the network</span></span>
+          </button>
+          <button type="button" class="proj-zoom admin-shot admin-shot-two" aria-label="Enlarge admin portal screen 2">
+            <div class="browser">
+              <div class="browser-bar">
+                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                <span class="browser-url">SecureRide Admin</span>
+              </div>
+              <div class="proj-screen" data-label="Admin Portal 2"><img src="media/secure_ride_admin2.png" alt="SecureRide admin portal, screen 2"></div>
+            </div>
+            <span class="admin-caption"><b>02 / OPERATIONS</b><span>Manage every journey</span></span>
+          </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== End nav ===== -->
+    <section class="proj-end">
+      <div class="container text-center">
+        <span class="proj-eyebrow">Next Steps</span>
+        <h2 class="proj-title">Want to see more?</h2>
+        <p class="proj-sub mb-4">Browse other selected projects, or get in touch about internship opportunities.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="index.html#projects" class="btn btn-site btn-site-lg btn-site-outline">Back to all projects</a>
+          <a href="index.html#contact" class="btn btn-site btn-site-lg btn-site-solid">Contact me <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <p class="proj-copy mb-0">&copy; 2026 Teh Yu Chen &middot; +60-166391090</p>
+  </main>
+
+  <!-- Image viewer -->
+  <dialog class="proj-viewer" id="projViewer" aria-label="Enlarged screenshot">
+    <form method="dialog"><button aria-label="Close">&times;</button></form>
+    <img id="projViewerImg" src="" alt="">
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

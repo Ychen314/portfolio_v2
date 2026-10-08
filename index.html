@@ -12,6 +12,8 @@
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Ambient cursor spotlight -->
+  <div class="cursor-spotlight" aria-hidden="true"></div>
 
 <!-- ===== Header ===== -->
   <header class="site-header" id="siteHeader">
@@ -20,7 +22,7 @@
 
         <!-- Logo (left) -->
         <a class="navbar-brand site-logo" href="index.html" aria-label="Home">
-          <img src="logo.png" alt="Logo" height="40">
+          <img src="media/logo.png" alt="Logo" height="40">
         </a>
 
         <!-- Navigation Links & Actions (right) -->
@@ -36,13 +38,49 @@
   <main>
     <!-- ===== Hero Section ===== -->
     <section class="hero" id="home">
+      <!-- Subtle cartoon background doodles -->
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-sparkle" style="top: 14%; left: 4%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-bracket" style="top: 48%; left: 2.5%; width: 20px; height: 32px;">
+          <svg viewBox="0 0 24 36"><path d="M18 4 C10 4 10 14 4 18 C10 22 10 32 18 32"/></svg>
+        </div>
+        <div class="doodle doodle-plus" style="bottom: 15%; left: 18%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+        <div class="doodle doodle-wave" style="bottom: 10%; left: 48%; width: 34px; height: 14px;">
+          <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+        </div>
+      </div>
+
+      <!-- Radial signal pulses (emanate from right/photo side) -->
+      <div class="hero-pulse p1" aria-hidden="true"></div>
+      <div class="hero-pulse p2" aria-hidden="true"></div>
+      <div class="hero-pulse p3" aria-hidden="true"></div>
+
+      <!-- Scan shimmer that sweeps once on load -->
+      <div class="hero-scan" aria-hidden="true"></div>
+
+      <!-- Floating developer code tokens -->
+      <div class="hero-tokens" aria-hidden="true">
+        <span class="hero-token">const</span>
+        <span class="hero-token">=&gt; {}</span>
+        <span class="hero-token">&#x3C;/&#x3E;</span>
+        <span class="hero-token">build()</span>
+        <span class="hero-token">import</span>
+        <span class="hero-token">01010</span>
+        <span class="hero-token">async</span>
+        <span class="hero-token">&#123;&#125;</span>
+      </div>
+
       <div class="hero-photo">
-        <img src="hero.jpg" alt="Teh Yu Chen">
+        <img src="media/hero.jpg" alt="Teh Yu Chen">
       </div>
 
       <div class="container hero-container">
         <div class="hero-content">
-          <h1 class="hero-title"><span>TEH YU</span><span>CHEN<span class="hero-title-period">.</span></span></h1>
+          <h1 class="hero-title"><span>TEH YU</span><span>CHEN<span class="hero-title-period">.</span><span class="hero-cursor" aria-hidden="true"></span></span></h1>
           <p class="hero-desc">I build thoughtful, responsive web experiences with a focus on clear design and useful details.</p>
           <div class="hero-meta" aria-label="Academic information">
           </div>
@@ -56,6 +94,25 @@
 
 <!-- ===== About Section (autoplay: characters deliver the content) ===== -->
     <section class="site-section about" id="about">
+      <!-- Subtle cartoon background doodles -->
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-bracket" style="top: 5%; left: 5%; width: 28px; height: 28px;">
+          <svg viewBox="0 0 24 24"><path d="M7 8 L3 12 L7 16 M17 8 L21 12 L17 16"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="top: 6%; right: 6%; width: 28px; height: 28px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-plus" style="top: 45%; left: 3%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="bottom: 8%; left: 6%; width: 22px; height: 22px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-wave" style="bottom: 9%; right: 5%; width: 32px; height: 14px;">
+          <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+        </div>
+      </div>
+
       <div class="about-stage" id="aboutStage">
 
         <div class="container">
@@ -65,20 +122,31 @@
             <p class="about-subtitle">A quick introduction to my education, experience, and aspirations</p>
           </header>
 
-          <div class="about-cards">
-            <article class="about-card">
-              <div class="card-meta"><span class="card-index">Education</span><span class="card-rule"></span></div>
-              <p class="about-text" data-split>Web Technology student at Universiti Tun Hussein Onn Malaysia (UTHM) with a CGPA of 3.93 and a strong foundation in HTML, CSS, PHP, and JavaScript.</p>
-            </article>
-            <article class="about-card">
-              <div class="card-meta"><span class="card-index">Experience</span><span class="card-rule"></span></div>
-              <p class="about-text" data-split>Experienced in building dynamic and responsive websites through academic and personal projects.</p>
-            </article>
-            <article class="about-card">
-              <div class="card-meta"><span class="card-index">Next step</span><span class="card-rule"></span></div>
-              <p class="about-text" data-split>Passionate about technology, detail-oriented, and currently seeking a 24-week internship from August 2026 to January 2027.</p>
-            </article>
-          </div>
+        <div class="about-cards">
+          <!-- Card 1: Education -->
+          <article class="about-card about-card--edu">
+            <div class="card-meta"><span class="card-index">01</span><span class="card-rule"></span><span>Education</span></div>
+            <h3 class="about-card-title">Web Technology · UTHM</h3>
+            <p class="about-card-kicker">CGPA 3.93</p>
+            <p class="about-text" data-split>Student at Universiti Tun Hussein Onn Malaysia with a strong foundation in front-end and back-end web development.</p>
+          </article>
+
+          <!-- Card 2: Experience -->
+          <article class="about-card about-card--exp">
+            <div class="card-meta"><span class="card-index">02</span><span class="card-rule"></span><span>Experience</span></div>
+            <h3 class="about-card-title">Hands-on Web Dev</h3>
+            <p class="about-card-kicker">Academic &amp; personal projects</p>
+            <p class="about-text" data-split>Experienced in building dynamic and responsive websites, from car pooling to stock management systems.</p>
+          </article>
+
+          <!-- Card 3: Next Step -->
+          <article class="about-card about-card--goal">
+            <div class="card-meta"><span class="card-index">03</span><span class="card-rule"></span><span>Next Step</span></div>
+            <h3 class="about-card-title">Internship 2026</h3>
+            <p class="about-card-kicker"><i class="status-dot" aria-hidden="true"></i>Available · 24 weeks</p>
+            <p class="about-text" data-split>Passionate about technology and detail-oriented, currently seeking a 24-week internship from August 2026 to January 2027.</p>  
+          </article>
+        </div>
         </div>
 
         <!-- Lane 1: the courier delivers the three cards -->
@@ -106,6 +174,24 @@
     <!-- ===== Scroll-Driven Skills Pin Section ===== -->
     <section class="skills-scroll-track bg-secondary-section" id="skills">
       <div class="skills-sticky-viewport">
+        <!-- Subtle cartoon background doodles -->
+        <div class="bg-doodles" aria-hidden="true">
+          <div class="doodle doodle-bracket" style="top: 8%; left: 5%; width: 22px; height: 32px;">
+            <svg viewBox="0 0 24 36"><path d="M18 4 C10 4 10 14 4 18 C10 22 10 32 18 32"/></svg>
+          </div>
+          <div class="doodle doodle-sparkle" style="top: 9%; right: 7%; width: 26px; height: 26px;">
+            <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+          </div>
+          <div class="doodle doodle-plus" style="top: 55%; left: 4%; width: 18px; height: 18px;">
+            <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+          </div>
+          <div class="doodle doodle-bracket" style="top: 52%; right: 4%; width: 22px; height: 32px;">
+            <svg viewBox="0 0 24 36"><path d="M6 4 C14 4 14 14 20 18 C14 22 14 32 6 32"/></svg>
+          </div>
+          <div class="doodle doodle-wave" style="bottom: 8%; left: 7%; width: 34px; height: 14px;">
+            <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+          </div>
+        </div>
 
         <div class="skills-header text-center">
           <span class="skills-eyebrow">Tech Stack</span>
@@ -216,6 +302,24 @@
 
     <!-- ===== Projects Section (alternating cards + S-path journey) ===== -->
     <section class="projects-section" id="projects">
+      <!-- Subtle cartoon background doodles -->
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-sparkle" style="top: 3%; left: 5%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-bracket" style="top: 4%; right: 6%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M7 8 L3 12 L7 16 M17 8 L21 12 L17 16"/></svg>
+        </div>
+        <div class="doodle doodle-plus" style="top: 35%; left: 3%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="top: 65%; right: 4%; width: 22px; height: 22px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-wave" style="bottom: 4%; left: 5%; width: 34px; height: 14px;">
+          <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+        </div>
+      </div>
 
       <div class="projects-header text-center">
         <span class="projects-eyebrow">Selected Work</span>
@@ -397,13 +501,15 @@
                 <span class="browser-url">Car Pooling System</span>
               </div>
               <div class="browser-screen" data-label="Car Pooling System">
-                <img src="project-carpool.jpg" alt="Car Pooling System screenshot" onerror="this.remove()">
+                <a href="carpool.html" target="_blank">
+                  <img src="media/project-carpool.png" alt="Car Pooling System screenshot" onerror="this.remove()">
+                </a>
               </div>
             </div>
             <div class="card-meta"><span class="card-index">01</span><span class="card-rule"></span><span>Web App</span></div>
             <h3 class="card-title">Car Pooling System</h3>
             <p class="card-desc">A centralized car pooling platform for UTHM students</p>
-            <ul class="card-tags"><li>PHP</li><li>MySQL</li><li>JavaScript</li></ul>
+            <ul class="card-tags"><li>Flutter</li><li>Dart</li><li>Firebase</li></ul>
           </div>
         </article>
 
@@ -416,13 +522,13 @@
                 <span class="browser-url">Stock Management System</span>
               </div>
               <div class="browser-screen" data-label="Stock Management System">
-                <img src="project-stock.jpg" alt="Stock Management System screenshot" onerror="this.remove()">
+                <img src="media/project-stock.jpg" alt="Stock Management System screenshot" onerror="this.remove()">
               </div>
             </div>
             <div class="card-meta"><span class="card-index">02</span><span class="card-rule"></span><span>Business System</span></div>
             <h3 class="card-title">Stock Management System</h3>
             <p class="card-desc">A stock management solution for Kluang Kolo Mee Restaurant</p>
-            <ul class="card-tags"><li>PHP</li><li>MySQL</li><li>Bootstrap</li></ul>
+            <ul class="card-tags"><li>PHP</li><li>MySQL</li></ul>
           </div>
         </article>
 
@@ -435,13 +541,13 @@
                 <span class="browser-url">Recipe Sharing Platform</span>
               </div>
               <div class="browser-screen" data-label="Recipe Sharing Platform">
-                <img src="project-recipe.jpg" alt="Recipe Sharing Platform screenshot" onerror="this.remove()">
+                <img src="media/project-recipe.jpg" alt="Recipe Sharing Platform screenshot" onerror="this.remove()">
               </div>
             </div>
             <div class="card-meta"><span class="card-index">03</span><span class="card-rule"></span><span>Community</span></div>
             <h3 class="card-title">Recipe Sharing Platform</h3>
             <p class="card-desc">A platform for sharing and discovering new recipes</p>
-            <ul class="card-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <ul class="card-tags"><li>C#</li><li>.NET MVC</li></ul>
           </div>
         </article>
 
@@ -454,13 +560,13 @@
                 <span class="browser-url">Job Portal Platform</span>
               </div>
               <div class="browser-screen" data-label="Job Portal Platform">
-                <img src="project-job.jpg" alt="Job Portal Platform screenshot" onerror="this.remove()">
+                <img src="media/project-job.jpg" alt="Job Portal Platform screenshot" onerror="this.remove()">
               </div>
             </div>
             <div class="card-meta"><span class="card-index">04</span><span class="card-rule"></span><span>Web Platform</span></div>
             <h3 class="card-title">Job Portal Platform</h3>
             <p class="card-desc">A job portal for connecting employers and job seekers</p>
-            <ul class="card-tags"><li>PHP</li><li>MySQL</li><li>Bootstrap</li></ul>
+            <ul class="card-tags"><li>PHP</li><li>Laravel</li><li>MySQL</li></ul>
           </div>
         </article>
 
@@ -469,6 +575,18 @@
 
     <!-- ===== Contact Section ===== -->
     <section class="contact-section" id="contact">
+      <!-- Subtle cartoon background doodles -->
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-sparkle" style="top: 8%; left: 5%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-chat" style="top: 7%; right: 8%; width: 28px; height: 24px;">
+          <svg viewBox="0 0 28 24"><path d="M4 4 h20 a2 2 0 0 1 2 2 v10 a2 2 0 0 1 -2 2 h-8 l-5 4 v-4 h-7 a2 2 0 0 1 -2 -2 v-10 a2 2 0 0 1 2 -2 z"/></svg>
+        </div>
+        <div class="doodle doodle-plus" style="bottom: 12%; left: 6%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+      </div>
 
       <!-- Hidden template: the tech-stack character's head (copied in by JS) -->
       <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
