@@ -73,6 +73,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Reveal project copy as the overview and feature descriptions enter view.
+  const copySections = document.querySelectorAll(".proj-intro, .features-split");
+  if ("IntersectionObserver" in window) {
+    const copyObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-inview");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.18 });
+    copySections.forEach((section) => copyObserver.observe(section));
+  } else {
+    copySections.forEach((section) => section.classList.add("is-inview"));
+  }
+
   // 3. Missing screenshots: drop the broken <img> so the striped placeholder + label show
   document.querySelectorAll(".proj-screen img").forEach((img) => {
     img.addEventListener("error", () => img.remove());
@@ -98,20 +113,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === viewer) viewer.close();
   });
 
-  // 5. Interactive Carpool Features (2x2 car passenger seat selection)
+    // 5. Interactive Carpool Features (click a passenger)
   const passengers = document.querySelectorAll(".passenger-unit");
   const featurePanels = document.querySelectorAll(".feature-panel");
-
   if (passengers.length && featurePanels.length) {
     const setActiveSeat = (index) => {
       passengers.forEach((p) => {
-        const pIdx = parseInt(p.getAttribute("data-index"), 10);
-        const isActive = pIdx === index;
+        const isActive = parseInt(p.getAttribute("data-index"), 10) === index;
         p.classList.toggle("is-active", isActive);
         p.classList.toggle("is-dimmed", !isActive);
         p.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
-
       featurePanels.forEach((panel) => {
         panel.classList.toggle("is-active", panel.id === `feature-panel-${index}`);
       });
@@ -127,6 +139,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-
   }
 });
