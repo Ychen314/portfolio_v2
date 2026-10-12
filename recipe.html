@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fork &amp; Pen Recipe Sharing Platform - Teh Yu Chen</title>
+  <meta name="description" content="Fork &amp; Pen: a community-driven recipe sharing platform connecting home cooks and culinary enthusiasts.">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Design tokens, shared page styles, then project-page styles -->
+  <link href="variables.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link href="project.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Ambient cursor spotlight (same as index) -->
+  <div class="cursor-spotlight" aria-hidden="true"></div>
+
+  <!-- ===== Header (identical to index.html) ===== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand site-logo" href="index.html" aria-label="Home">
+          <img src="media/logo.png" alt="Logo" height="40">
+        </a>
+        <div class="header-actions d-flex align-items-center gap-2 gap-sm-3">
+          <a href="index.html#projects" class="btn btn-site btn-site-outline">Projects</a>
+          <a href="resume.pdf" class="btn btn-site btn-site-solid" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="proj-main">
+
+    <!-- ===== Hero Section ===== -->
+    <section class="hero proj-hero" id="top">
+      <!-- Subtle cartoon background doodles -->
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-sparkle" style="top: 5%; left: 2%; width: 24px; height: 24px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-bracket" style="top: 50%; left: 2.5%; width: 20px; height: 32px;">
+          <svg viewBox="0 0 24 36"><path d="M18 4 C10 4 10 14 4 18 C10 22 10 32 18 32"/></svg>
+        </div>
+        <div class="doodle doodle-plus" style="bottom: 14%; left: 18%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+        <div class="doodle doodle-wave" style="bottom: 8%; right: 6%; width: 34px; height: 14px;">
+          <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+        </div>
+      </div>
+
+      <!-- Scan shimmer that sweeps once on load -->
+      <div class="hero-scan" aria-hidden="true"></div>
+
+      <!-- Floating developer code tokens -->
+      <div class="hero-tokens" aria-hidden="true">
+        <span class="hero-token">C#</span>
+        <span class="hero-token">ASP.NET</span>
+        <span class="hero-token">&#x3C;Recipe /&#x3E;</span>
+        <span class="hero-token">MVC</span>
+        <span class="hero-token">SQL Server</span>
+        <span class="hero-token">Community</span>
+      </div>
+
+      <div class="container hero-container proj-hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title" aria-label="Fork &amp; Pen Recipe Sharing Platform">
+            <span>FORK &amp;</span><span>PEN<span class="hero-title-period">.</span><span class="hero-cursor" aria-hidden="true"></span></span>
+          </h1>
+
+          <p class="hero-desc">A community-driven social network that connects passionate home cooks and culinary enthusiasts to discover and share recipes.</p>
+
+          <div class="proj-hero-specs">
+            <dl class="proj-hero-specs-facts">
+              <div>
+                <dt>Role</dt>
+                <dd>.NET Developer</dd>
+              </div>
+              <div>
+                <dt>Platform</dt>
+                <dd>Web Application</dd>
+              </div>
+            </dl>
+            <div class="proj-hero-specs-stack">
+              <span class="stack-label">Stack</span>
+              <ul class="card-tags">
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="" aria-hidden="true"></span>C#</li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg" alt="" aria-hidden="true"></span>ASP.NET MVC</li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="" aria-hidden="true"></span>SQL Server</li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg" alt="" aria-hidden="true"></span>Entity Framework</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-hero-visual is-browser" aria-hidden="true">
+          <div class="browser">
+            <div class="browser-bar">
+              <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+              <span class="browser-url">forknpen.community/recipes</span>
+            </div>
+            <div class="proj-screen" data-label="Fork &amp; Pen Platform">
+              <img src="media/forknpen1.jpg" alt="Fork &amp; Pen recipe platform overview">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About the project ===== -->
+    <section class="proj-section is-alt" id="about">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-bracket" style="top: 8%; right: 6%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M7 8 L3 12 L7 16 M17 8 L21 12 L17 16"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="bottom: 8%; left: 5%; width: 22px; height: 22px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">Overview</span>
+          <h2 class="proj-title">About The Project</h2>
+          <p class="proj-sub">Bridging the gap between recipe discovery and community feedback for home cooks</p>
+        </header>
+
+        <div class="proj-overview">
+          <div class="proj-intro">
+            <p class="proj-lead"><span class="proj-brand">Fork &amp; Pen</span> transforms traditional one-way cooking blogs into a <mark class="hl hl-green">collaborative culinary community</mark>, empowering cooks to exchange verified recipe techniques, upload finished dishes, and <mark class="hl hl-blue">curate custom collections</mark> on ASP.NET.</p>
+          </div>
+
+          <div class="problem-scene" id="problemScene" role="group" aria-label="A home cook thinks about recipe sharing challenges">
+            <article class="problem-bubble problem-bubble--cost">
+              <span class="problem-bubble-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="13" y2="13"/></svg>
+              </span>
+              <strong>Scattered recipe bookmarks</strong>
+            </article>
+            <article class="problem-bubble problem-bubble--parking">
+              <span class="problem-bubble-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/><circle cx="12" cy="12" r="10"/></svg>
+              </span>
+              <strong>No real cook feedback</strong>
+            </article>
+            <article class="problem-bubble problem-bubble--trust">
+              <span class="problem-bubble-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+              </span>
+              <strong>Rigid portion calculations</strong>
+            </article>
+
+            <div class="problem-student" role="img" aria-label="A home chef thinking about recipe creation">
+              <span class="student-question question-one" aria-hidden="true">?</span>
+              <span class="student-question question-two" aria-hidden="true">?</span>
+
+              <svg class="student-coder-svg" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- ground shadow -->
+                <ellipse cx="120" cy="273" rx="96" ry="5" fill="rgba(0,0,0,0.10)"/>
+
+                <!-- Kitchen shelf background elements -->
+                <rect x="25" y="150" width="38" height="120" rx="4" fill="#faf5ef" stroke="#000" stroke-width="2"/>
+                <line x1="25" y1="190" x2="63" y2="190" stroke="#000" stroke-width="1.8"/>
+                <line x1="25" y1="230" x2="63" y2="230" stroke="#000" stroke-width="1.8"/>
+                <!-- Spice jars -->
+                <circle cx="38" cy="175" r="7" fill="#ef4444" stroke="#000" stroke-width="1.4"/>
+                <circle cx="52" cy="175" r="5" fill="#f59e0b" stroke="#000" stroke-width="1.4"/>
+                <rect x="33" y="205" width="22" height="18" rx="3" fill="#10b981" stroke="#000" stroke-width="1.4"/>
+
+                <!-- Right cookbook stack -->
+                <rect x="178" y="160" width="40" height="110" rx="4" fill="#faf5ef" stroke="#000" stroke-width="2"/>
+                <rect x="184" y="180" width="28" height="10" rx="2" fill="#3b82f6" stroke="#000" stroke-width="1.4"/>
+                <rect x="184" y="200" width="28" height="10" rx="2" fill="#ec4899" stroke="#000" stroke-width="1.4"/>
+                <rect x="184" y="220" width="28" height="10" rx="2" fill="#8b5cf6" stroke="#000" stroke-width="1.4"/>
+
+                <!-- ===== Character body (Chef) ===== -->
+                <g class="coder-body student-body">
+                  <!-- neck -->
+                  <path d="M108 132h24v24c-7 6-17 6-24 0z" fill="#e3b693" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                  <!-- chef coat -->
+                  <path d="M62 268C62 186 82 152 120 152C158 152 178 186 178 268Z" fill="#ffffff" stroke="#000" stroke-width="2.4" stroke-linejoin="round"/>
+                  <!-- double breasted buttons -->
+                  <circle cx="108" cy="174" r="3" fill="#000"/>
+                  <circle cx="132" cy="174" r="3" fill="#000"/>
+                  <circle cx="108" cy="194" r="3" fill="#000"/>
+                  <circle cx="132" cy="194" r="3" fill="#000"/>
+                  <circle cx="108" cy="214" r="3" fill="#000"/>
+                  <circle cx="132" cy="214" r="3" fill="#000"/>
+                  <!-- red neckerchief -->
+                  <path d="M108 148L120 162L132 148Z" fill="#ef4444" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
+                </g>
+
+                <!-- Frying pan held in left hand -->
+                <g transform="rotate(12 70 230)">
+                  <ellipse cx="65" cy="235" rx="24" ry="14" fill="#334155" stroke="#000" stroke-width="2.2"/>
+                  <ellipse cx="65" cy="233" rx="18" ry="9" fill="#1e293b"/>
+                  <line x1="88" y1="235" x2="114" y2="238" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+                </g>
+
+                <!-- Wooden spoon held in right hand -->
+                <g transform="rotate(-15 170 220)">
+                  <ellipse cx="174" cy="200" rx="9" ry="13" fill="#d97706" stroke="#000" stroke-width="1.8"/>
+                  <line x1="174" y1="213" x2="174" y2="250" stroke="#b45309" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+                </g>
+
+                <!-- Arms & Hands -->
+                <path d="M72 188Q58 224 86 234" fill="none" stroke="#000" stroke-width="18" stroke-linecap="round"/>
+                <path d="M72 188Q58 224 86 234" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+                <circle cx="88" cy="234" r="7" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+
+                <path d="M168 188Q182 224 154 234" fill="none" stroke="#000" stroke-width="18" stroke-linecap="round"/>
+                <path d="M168 188Q182 224 154 234" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+                <circle cx="152" cy="234" r="7" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+
+                <!-- ===== Head ===== -->
+                <g class="coder-head student-head">
+                  <!-- ears -->
+                  <ellipse cx="86" cy="108" rx="5" ry="7" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
+                  <ellipse cx="154" cy="108" rx="5" ry="7" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
+                  <!-- face -->
+                  <ellipse cx="120" cy="100" rx="34" ry="38" fill="#f1cdb0" stroke="#000" stroke-width="2.2"/>
+                  <!-- side hair -->
+                  <path d="M86 86L91 86L91 108L87 108Z M154 86L149 86L149 108L153 108Z" fill="#1a1a1a"/>
+
+                  <!-- eyes looking up at ideas -->
+                  <g fill="#fff" stroke="#000" stroke-width="2">
+                    <ellipse cx="108" cy="108" rx="6" ry="6.5"/>
+                    <ellipse cx="132" cy="108" rx="6" ry="6.5"/>
+                  </g>
+                  <g class="coder-eyes" fill="#000">
+                    <circle cx="110" cy="105.5" r="2.7"/>
+                    <circle cx="134" cy="105.5" r="2.7"/>
+                  </g>
+                  <!-- brows -->
+                  <path class="student-brow" d="M99 99q9-3 17 0M126 96q9-6 17 1" fill="none" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+                  <!-- nose -->
+                  <path d="M120 112q-3.5 8 2 9" fill="none" stroke="#d29c78" stroke-width="1.8" stroke-linecap="round"/>
+                  <!-- cheeks -->
+                  <circle cx="98" cy="121" r="4" fill="#e8a48f" opacity="0.35"/>
+                  <circle cx="142" cy="121" r="4" fill="#e8a48f" opacity="0.35"/>
+                  <!-- smile -->
+                  <path d="M112 128q8 6 16 0" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+
+                  <!-- White Chef Hat (Toque Blanche) -->
+                  <path d="M88 78C80 40 100 24 120 24C140 24 160 40 152 78Z" fill="#ffffff" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                  <ellipse cx="104" cy="40" rx="14" ry="12" fill="#ffffff" stroke="#000" stroke-width="1.8"/>
+                  <ellipse cx="136" cy="40" rx="14" ry="12" fill="#ffffff" stroke="#000" stroke-width="1.8"/>
+                  <ellipse cx="120" cy="30" rx="16" ry="14" fill="#ffffff" stroke="#000" stroke-width="2"/>
+                  <!-- Hat band -->
+                  <rect x="86" y="74" width="68" height="14" rx="2" fill="#ffffff" stroke="#000" stroke-width="2"/>
+                  <line x1="94" y1="81" x2="146" y2="81" stroke="#cbd5e1" stroke-width="1.5"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Key features ===== -->
+    <section class="proj-section" id="features">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-plus" style="top: 6%; left: 4%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="top: 8%; right: 6%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-wave" style="bottom: 5%; right: 8%; width: 34px; height: 14px;">
+          <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">What It Does</span>
+          <h2 class="proj-title">Key Features</h2>
+          <p class="proj-sub">Four core pillars that inspire everyday cooking and collaborative recipe creation</p>
+        </header>
+
+        <div class="features-split">
+          <div class="car-stage">
+            <div class="car-svg-wrap">
+              <svg class="car-3d-svg" viewBox="0 0 540 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive culinary studio stage">
+                <!-- Ground shadow -->
+                <ellipse cx="270" cy="360" rx="210" ry="12" fill="rgba(0,0,0,0.12)"/>
+
+                <!-- Kitchen Prep Counter -->
+                <path d="M90 220 L450 220 L480 340 L60 340 Z" fill="#fffdfa" stroke="#000" stroke-width="2.6" stroke-linejoin="round"/>
+                <path d="M60 340 L480 340 L470 358 L70 358 Z" fill="#eaddd0" stroke="#000" stroke-width="2.2"/>
+                <!-- Wooden butcher block cutting surface -->
+                <path d="M120 230 L420 230 L435 270 L105 270 Z" fill="#fae8d4" stroke="#000" stroke-width="1.8"/>
+
+                <!-- Station 0: Recipe Publisher & 10MB Resizer (Top Left) -->
+                <g class="passenger-unit is-active" id="passenger-0" data-index="0" role="button" tabindex="0" aria-label="Feature 1: Recipe Management" aria-pressed="true">
+                  <ellipse class="passenger-hit" cx="160" cy="150" rx="54" ry="58" fill="transparent"/>
+                  <!-- Recipe notebook / tablet -->
+                  <rect x="125" y="105" width="70" height="60" rx="8" fill="#ffffff" stroke="#000" stroke-width="2.2"/>
+                  <rect x="133" y="113" width="54" height="28" rx="4" fill="#f1f5f9" stroke="#000" stroke-width="1.5"/>
+                  <path d="M137 132 L146 122 L154 128 L166 116 L178 126" stroke="#10b981" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <!-- Auto-resize tag -->
+                  <rect x="133" y="146" width="30" height="12" rx="3" fill="#c9efb9" stroke="#000" stroke-width="1.2"/>
+                  <text x="148" y="155" text-anchor="middle" font-size="7" font-weight="bold">10MB</text>
+                  <!-- Pen floating -->
+                  <g class="passenger-head">
+                    <line x1="176" y1="86" x2="186" y2="98" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="174" cy="84" r="5" fill="#f59e0b" stroke="#000" stroke-width="1.5"/>
+                  </g>
+                  <!-- Tooltip -->
+                  <g transform="translate(160 52)">
+                    <g class="passenger-emotion">
+                      <rect x="-48" y="-24" width="96" height="24" rx="12"/>
+                      <polygon points="-5,0 5,0 0,7"/>
+                      <text x="0" y="-8" text-anchor="middle">Recipe Lab</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- Station 1: Social Networking & Community (Top Right) -->
+                <g class="passenger-unit is-dimmed" id="passenger-1" data-index="1" role="button" tabindex="0" aria-label="Feature 2: Social Networking" aria-pressed="false">
+                  <ellipse class="passenger-hit" cx="380" cy="150" rx="54" ry="58" fill="transparent"/>
+                  <!-- Two chef friend avatars connecting -->
+                  <rect x="345" y="110" width="70" height="54" rx="8" fill="#ffffff" stroke="#000" stroke-width="2.2"/>
+                  <circle cx="366" cy="132" r="11" fill="#bfcfff" stroke="#000" stroke-width="1.8"/>
+                  <circle cx="394" cy="132" r="11" fill="#ffd0a6" stroke="#000" stroke-width="1.8"/>
+                  <path d="M377 132h6" stroke="#000" stroke-width="2"/>
+                  <!-- Heart / connect icon -->
+                  <g class="passenger-head">
+                    <circle cx="380" cy="85" r="13" fill="#ec4899" stroke="#000" stroke-width="2"/>
+                    <path d="M375 84 a2.5 2.5 0 0 1 5 0 a2.5 2.5 0 0 1 5 0 c0 3-5 5.5-5 5.5 s-5-2.5-5-5.5 z" fill="#fff"/>
+                  </g>
+                  <!-- Tooltip -->
+                  <g transform="translate(380 52)">
+                    <g class="passenger-emotion">
+                      <rect x="-48" y="-24" width="96" height="24" rx="12"/>
+                      <polygon points="-5,0 5,0 0,7"/>
+                      <text x="0" y="-8" text-anchor="middle">Cook Friends</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- Station 2: 'I Had Made This' Photo Reviews (Bottom Left) -->
+                <g class="passenger-unit is-dimmed" id="passenger-2" data-index="2" role="button" tabindex="0" aria-label="Feature 3: Interactive Reviews & Ratings" aria-pressed="false">
+                  <ellipse class="passenger-hit" cx="170" cy="245" rx="52" ry="52" fill="transparent"/>
+                  <!-- Plate with star & camera review badge -->
+                  <ellipse cx="170" cy="240" rx="36" ry="22" fill="#ffffff" stroke="#000" stroke-width="2.2"/>
+                  <ellipse cx="170" cy="240" rx="26" ry="14" fill="#ffd0a6" stroke="#000" stroke-width="1.5"/>
+                  <g class="passenger-head">
+                    <!-- Rating Star badge -->
+                    <circle cx="170" cy="192" r="14" fill="#fbbf24" stroke="#000" stroke-width="2"/>
+                    <path d="M170 184 L172.5 190.5 L179 191 L174 195 L175.5 201 L170 197.5 L164.5 201 L166 195 L161 191 L167.5 190.5 Z" fill="#fff" stroke="#000" stroke-width="1"/>
+                  </g>
+                  <!-- Tooltip -->
+                  <g transform="translate(170 52)">
+                    <g class="passenger-emotion">
+                      <rect x="-54" y="-24" width="108" height="24" rx="12"/>
+                      <polygon points="-5,0 5,0 0,7"/>
+                      <text x="0" y="-8" text-anchor="middle">I Made This!</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- Station 3: Custom Themed Collections (Bottom Right) -->
+                <g class="passenger-unit is-dimmed" id="passenger-3" data-index="3" role="button" tabindex="0" aria-label="Feature 4: Custom Collections" aria-pressed="false">
+                  <ellipse class="passenger-hit" cx="370" cy="245" rx="52" ry="52" fill="transparent"/>
+                  <!-- Recipe binder books -->
+                  <rect x="335" y="212" width="68" height="54" rx="6" fill="#8b5cf6" stroke="#000" stroke-width="2.2"/>
+                  <rect x="340" y="217" width="58" height="44" rx="4" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+                  <line x1="348" y1="228" x2="388" y2="228" stroke="#4b5563" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="348" y1="238" x2="388" y2="238" stroke="#4b5563" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="348" y1="248" x2="376" y2="248" stroke="#9ca3af" stroke-width="2" stroke-linecap="round"/>
+                  <g class="passenger-head">
+                    <!-- Bookmark tag -->
+                    <circle cx="370" cy="190" r="13" fill="#dfc3f5" stroke="#000" stroke-width="2"/>
+                    <path d="M366 184h8v12l-4-3-4 3z" fill="#7c3aed" stroke="#000" stroke-width="1.2"/>
+                  </g>
+                  <!-- Tooltip -->
+                  <g transform="translate(370 52)">
+                    <g class="passenger-emotion">
+                      <rect x="-52" y="-24" width="104" height="24" rx="12"/>
+                      <polygon points="-5,0 5,0 0,7"/>
+                      <text x="0" y="-8" text-anchor="middle">My Collections</text>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+
+            <p class="character-hint"><span aria-hidden="true">✦</span> Pick a culinary station to explore a feature</p>
+          </div>
+
+          <div class="feature-card-display">
+            <article class="feature-panel is-active" id="feature-panel-0" style="--tint:#c9efb9">
+              <div class="card-meta"><span class="card-index">01</span><span class="card-rule"></span><span>Creation</span></div>
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10M6 14h6"/></svg>
+              </span>
+              <h3 class="feature-title">Recipe management</h3>
+              <p class="feature-desc">Upload detailed recipes complete with ingredient ratios, step-by-step directions, cooking times, and automated 10MB photo-resizing for instant web optimization.</p>
+              <ul class="card-tags"><li>Ingredient scaling</li><li>10MB auto-resize</li><li>Step-by-step steps</li></ul>
+            </article>
+
+            <article class="feature-panel" id="feature-panel-1" style="--tint:#bfcfff">
+              <div class="card-meta"><span class="card-index">02</span><span class="card-rule"></span><span>Community</span></div>
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <h3 class="feature-title">Social networking</h3>
+              <p class="feature-desc">A built-in friend system connects culinary enthusiasts, allowing users to follow home cooks, share activity feeds, and tailor recommendations by diet.</p>
+              <ul class="card-tags"><li>Cook friend system</li><li>Dietary preferences</li><li>Personal profiles</li></ul>
+            </article>
+
+            <article class="feature-panel" id="feature-panel-2" style="--tint:#ffd0a6">
+              <div class="card-meta"><span class="card-index">03</span><span class="card-rule"></span><span>Validation</span></div>
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </span>
+              <h3 class="feature-title">"I had made this" reviews</h3>
+              <p class="feature-desc">Go beyond star ratings: community cooks upload photos of their completed dishes with honest cooking notes, verifying that recipes truly work at home.</p>
+              <ul class="card-tags"><li>"I Had Made This"</li><li>Dish photo uploads</li><li>Star ratings &amp; tips</li></ul>
+            </article>
+
+            <article class="feature-panel" id="feature-panel-3" style="--tint:#dfc3f5">
+              <div class="card-meta"><span class="card-index">04</span><span class="card-rule"></span><span>Organization</span></div>
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+              </span>
+              <h3 class="feature-title">Custom collections</h3>
+              <p class="feature-desc">Organize saved recipes into personalized, themed recipe binders (e.g., Weeknight Dinners, Holiday Baking) and share them seamlessly with friends.</p>
+              <ul class="card-tags"><li>Themed binders</li><li>One-click saving</li><li>Social recipe sharing</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== System Interface ===== -->
+    <section class="proj-section is-alt" id="interface">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-bracket" style="top: 6%; left: 5%; width: 22px; height: 32px;">
+          <svg viewBox="0 0 24 36"><path d="M18 4 C10 4 10 14 4 18 C10 22 10 32 18 32"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="top: 6%; right: 7%; width: 24px; height: 24px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">Interface Showcase</span>
+          <h2 class="proj-title">System Interface</h2>
+          <p class="proj-sub">The responsive community platform for food creators. Tap a screen to enlarge it.</p>
+        </header>
+
+        <div class="admin-showcase">
+          <div class="proj-browsers is-three">
+            <button type="button" class="proj-zoom admin-shot admin-shot-one" aria-label="Enlarge Fork &amp; Pen Explore Feed">
+              <div class="browser">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">forknpen.community/explore</span>
+                </div>
+                <div class="proj-screen" data-label="Recipe Feed"><img src="media/forknpen1.jpg" alt="Fork &amp; Pen recipe explore feed"></div>
+              </div>
+              <span class="admin-caption"><b>01 / DISCOVERY</b><span>Interactive recipe feed &amp; category discovery</span></span>
+            </button>
+
+            <button type="button" class="proj-zoom admin-shot" aria-label="Enlarge Fork &amp; Pen Recipe Detail View">
+              <div class="browser">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">forknpen.community/recipes/view</span>
+                </div>
+                <div class="proj-screen" data-label="Recipe Detail"><img src="media/forknpen2.jpg" alt="Fork &amp; Pen recipe detail and review page"></div>
+              </div>
+              <span class="admin-caption"><b>02 / RECIPE VIEW</b><span>Ingredients, step-by-step directions &amp; ratings</span></span>
+            </button>
+
+            <button type="button" class="proj-zoom admin-shot" aria-label="Enlarge Fork &amp; Pen Cook Profile &amp; Collections">
+              <div class="browser">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">forknpen.community/user/collections</span>
+                </div>
+                <div class="proj-screen" data-label="User Collections"><img src="media/forknpen3.jpg" alt="Fork &amp; Pen user profile and collections"></div>
+              </div>
+              <span class="admin-caption"><b>03 / COLLECTIONS</b><span>Cook profiles &amp; curated recipe binders</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== End nav ===== -->
+    <section class="proj-end">
+      <div class="container text-center">
+        <span class="proj-eyebrow">Next Steps</span>
+        <h2 class="proj-title">Want to see more?</h2>
+        <p class="proj-sub mb-4">Browse other selected projects, or get in touch about internship opportunities.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="index.html#projects" class="btn btn-site btn-site-lg btn-site-outline">Back to all projects</a>
+          <a href="index.html#contact" class="btn btn-site btn-site-lg btn-site-solid">Contact me <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <p class="proj-copy mb-0">&copy; 2026 Teh Yu Chen &middot; +60-166391090</p>
+  </main>
+
+  <!-- Image viewer -->
+  <dialog class="proj-viewer" id="projViewer" aria-label="Enlarged screenshot">
+    <form method="dialog"><button aria-label="Close">&times;</button></form>
+    <img id="projViewerImg" src="" alt="">
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>

@@ -88,10 +88,10 @@
             <div class="proj-hero-specs-stack">
               <span class="stack-label">Stack</span>
               <ul class="card-tags">
-                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" alt="" aria-hidden="true"></span><span>Flutter</span></li>
-                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" alt="" aria-hidden="true"></span><span>Dart</span></li>
-                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg" alt="" aria-hidden="true"></span><span>Firebase</span></li>
-                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="" aria-hidden="true"></span><span>Google Cloud APIs</span></li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" alt="" aria-hidden="true"></span>Flutter</li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" alt="" aria-hidden="true"></span>Dart</li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg" alt="" aria-hidden="true"></span>Firebase</li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="" aria-hidden="true"></span>Google Cloud APIs</li>
               </ul>
             </div>
           </div>
@@ -126,7 +126,7 @@
         <div class="proj-intro">
           <p class="proj-lead"><span class="proj-brand">SecureRide</span> is one central app that matches students who <mark class="hl hl-green">have a vehicle</mark> with students who <mark class="hl hl-blue">need a ride</mark>, built around the transport problems UTHM students face every day.</p>
         </div>
-
+        
           <div class="problem-scene" id="problemScene" role="group" aria-label="A student thinks about the transportation problems SecureRide addresses">
             <article class="problem-bubble problem-bubble--cost">
               <span class="problem-bubble-mark" aria-hidden="true">
@@ -147,81 +147,119 @@
               <strong>Uncertified ride groups</strong>
             </article>
 
-            <div class="problem-student" role="img" aria-label="University student wearing glasses, driving with a seatbelt">
+            <div class="problem-student" role="img" aria-label="A driver thinking about transportation problems">
+              <span class="student-question question-one" aria-hidden="true">?</span>
+              <span class="student-question question-two" aria-hidden="true">?</span>
+
               <svg class="student-coder-svg" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <!-- ground shadow -->
-                <ellipse cx="120" cy="270" rx="85" ry="6.5" fill="rgba(0,0,0,0.10)"/>
+                <ellipse cx="120" cy="273" rx="96" ry="5" fill="rgba(0,0,0,0.10)"/>
 
+                <!-- ===== Car cabin ===== -->
+                <!-- seat backrest + headrest -->
+                <rect x="64" y="132" width="112" height="140" rx="22" fill="#333" stroke="#000" stroke-width="2.2"/>
+                <rect x="92" y="118" width="56" height="40" rx="12" fill="#525252" stroke="#000" stroke-width="2.2"/>
+
+                <!-- A-pillars -->
+                <path d="M18 0H42L36 196H20Z" fill="#333" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M222 0H198L204 196H220Z" fill="#333" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <!-- roof liner -->
+                <path d="M18 0H222L214 13Q120 26 26 13Z" fill="#1a1a1a" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <!-- rear-view mirror -->
+                <path d="M120 14V19" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+                <rect x="103" y="19" width="34" height="11" rx="5" fill="#e8e8e8" stroke="#000" stroke-width="2"/>
+                <path d="M109 23.5H122" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+
+                <!-- door panels -->
+                <path d="M2 196H38V274H2Z" fill="#e8e8e8" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <rect x="8" y="226" width="24" height="7" rx="3.5" fill="#a3a3a3" stroke="#000" stroke-width="1.6"/>
+                <path d="M238 196H202V274H238Z" fill="#e8e8e8" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                <rect x="208" y="226" width="24" height="7" rx="3.5" fill="#a3a3a3" stroke="#000" stroke-width="1.6"/>
+
+                <!-- ===== Driver body ===== -->
                 <g class="coder-body student-body">
                   <!-- neck -->
-                  <path d="M108 124h24v30c-7 7-17 7-24 0z" fill="#e3b693"/>
-                  <!-- torso (hoodie) -->
-                  <path d="M50 258C50 178 76 150 120 150C164 150 190 178 190 258Z" fill="#1a1a1a"/>
-                  <!-- hood / collar -->
-                  <path d="M90 156C96 176 144 176 150 156" fill="none" stroke="#3a3a3a" stroke-width="6" stroke-linecap="round"/>
-                  <!-- drawstrings -->
-                  <path d="M111 170v18M129 170v18" stroke="#e8e8e8" stroke-width="1.6" stroke-linecap="round"/>
-                  <circle cx="111" cy="189" r="1.6" fill="#e8e8e8"/>
-                  <circle cx="129" cy="189" r="1.6" fill="#e8e8e8"/>
-
-                  <!-- Seatbelt makes the driver pose clear -->
-                  <path d="M78 176L165 252" fill="none" stroke="#111" stroke-width="11" stroke-linecap="round"/>
-                  <path d="M78 176L165 252" fill="none" stroke="#d4d4d4" stroke-width="6" stroke-linecap="round"/>
-
-                  <!-- Student ID Badge (UTHM card around neck) -->
-                  <path d="M115 174 L120 205 M125 174 L120 205" stroke="#737373" stroke-width="1.5" stroke-linecap="round"/>
-                  <rect x="108" y="205" width="24" height="32" rx="3" fill="#ffffff" stroke="#000" stroke-width="1.6"/>
-                  <rect x="112" y="210" width="16" height="11" rx="1.5" fill="#38bdf8"/>
-                  <line x1="112" y1="226" x2="128" y2="226" stroke="#525252" stroke-width="1.6" stroke-linecap="round"/>
-                  <line x1="112" y1="230" x2="124" y2="230" stroke="#a3a3a3" stroke-width="1.4" stroke-linecap="round"/>
-
-                  <!-- Steering column & wheel: high-contrast so the driving pose reads clearly -->
-                  <path d="M120 236 L120 270" stroke="#111" stroke-width="11" stroke-linecap="round"/>
-                  <path d="M120 236 L120 270" stroke="#d4d4d4" stroke-width="5" stroke-linecap="round"/>
-                  <!-- Double-line rim -->
-                  <circle cx="120" cy="236" r="35" fill="none" stroke="#111" stroke-width="11"/>
-                  <circle cx="120" cy="236" r="35" fill="none" stroke="#fff" stroke-width="5"/>
-                  <!-- Contrasting spokes and horn hub -->
-                  <path d="M120 201V222 M87 232Q101 237 120 236Q139 237 153 232 M120 250V270" fill="none" stroke="#111" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M120 201V222 M87 232Q101 237 120 236Q139 237 153 232 M120 250V270" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="120" cy="236" r="12" fill="#fff" stroke="#111" stroke-width="3.5"/>
-                  <circle cx="120" cy="236" r="4" fill="#111"/>
-
-                  <!-- Left arm reaching to 9-10 o'clock on steering wheel -->
-                  <path d="M64 186 Q62 222 92 230" fill="none" stroke="#2e2e2e" stroke-width="19" stroke-linecap="round"/>
-                  <!-- Left hand gripping wheel -->
-                  <ellipse cx="91" cy="230" rx="7.5" ry="6.5" fill="#f1cdb0" stroke="#000" stroke-width="1.6" transform="rotate(-20 91 230)"/>
-
-                  <!-- Right arm reaching to 2-3 o'clock on steering wheel -->
-                  <path d="M176 186 Q178 222 148 230" fill="none" stroke="#2e2e2e" stroke-width="19" stroke-linecap="round"/>
-                  <!-- Right hand gripping wheel -->
-                  <ellipse cx="149" cy="230" rx="7.5" ry="6.5" fill="#f1cdb0" stroke="#000" stroke-width="1.6" transform="rotate(20 149 230)"/>
+                  <path d="M108 132h24v24c-7 6-17 6-24 0z" fill="#e3b693" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                  <!-- jacket -->
+                  <path d="M52 266C52 184 78 152 120 152C162 152 188 184 188 266Z" fill="#2a2a2a" stroke="#000" stroke-width="2.4" stroke-linejoin="round"/>
+                  <!-- shirt V + collar -->
+                  <path d="M102 152L120 184L138 152Z" fill="#fff" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M102 152L112 150L120 164L108 160Z M138 152L128 150L120 164L132 160Z" fill="#fff" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
+                  <!-- lapels -->
+                  <path d="M102 152L90 182L112 200M138 152L150 182L128 200" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- tie -->
+                  <path d="M115 162h10l-2 7h-6z" fill="#737373" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
+                  <path d="M117 169L112 204L120 212L128 204L123 169Z" fill="#525252" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/>
+                  <!-- seatbelt -->
+                  <path d="M160 160L90 262" stroke="#000" stroke-width="12" stroke-linecap="round"/>
+                  <path d="M160 160L90 262" stroke="#d4d4d4" stroke-width="7.5" stroke-linecap="round"/>
+                  <rect x="100" y="226" width="14" height="10" rx="2.5" fill="#a3a3a3" stroke="#000" stroke-width="1.6" transform="rotate(-35 107 231)"/>
                 </g>
 
-                <!-- Focused student-driver head: glasses and natural hair, no headset -->
+                <!-- dashboard -->
+                <path d="M20 252Q120 238 220 252V276Q120 282 20 276Z" fill="#e8e8e8" stroke="#000" stroke-width="2.4" stroke-linejoin="round"/>
+                <circle cx="52" cy="262" r="6" fill="#fff" stroke="#000" stroke-width="1.6"/>
+                <path d="M52 262l3-3" stroke="#000" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="188" cy="262" r="6" fill="#fff" stroke="#000" stroke-width="1.6"/>
+                <path d="M188 262l-3-3" stroke="#000" stroke-width="1.4" stroke-linecap="round"/>
+
+                <!-- steering wheel (front view) -->
+                <circle cx="120" cy="230" r="36" fill="none" stroke="#000" stroke-width="10"/>
+                <circle cx="120" cy="230" r="36" fill="none" stroke="#525252" stroke-width="5.5"/>
+                <path d="M85 236L108 232M155 236L132 232M120 266V244" stroke="#000" stroke-width="9" stroke-linecap="round"/>
+                <path d="M85 236L108 232M155 236L132 232M120 266V244" stroke="#737373" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="120" cy="232" r="12" fill="#e8e8e8" stroke="#000" stroke-width="2.2"/>
+                <circle cx="120" cy="232" r="4" fill="#1a1a1a"/>
+
+                <!-- arms + gloved hands at 10 and 2 -->
+                <path d="M68 184Q50 220 88 214" fill="none" stroke="#000" stroke-width="24" stroke-linecap="round"/>
+                <path d="M68 184Q50 220 88 214" fill="none" stroke="#2a2a2a" stroke-width="20" stroke-linecap="round"/>
+                <path d="M172 184Q190 220 152 214" fill="none" stroke="#000" stroke-width="24" stroke-linecap="round"/>
+                <path d="M172 184Q190 220 152 214" fill="none" stroke="#2a2a2a" stroke-width="20" stroke-linecap="round"/>
+                <circle cx="90" cy="213" r="9" fill="#d4d4d4" stroke="#000" stroke-width="2"/>
+                <path d="M85 209h8M85 213h8" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/>
+                <circle cx="150" cy="213" r="9" fill="#d4d4d4" stroke="#000" stroke-width="2"/>
+                <path d="M147 209h8M147 213h8" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/>
+
+                <!-- ===== Head ===== -->
                 <g class="coder-head student-head">
-                  <ellipse cx="120" cy="100" rx="34" ry="38" fill="#f1cdb0"/>
-                  <!-- hair -->
-                  <path d="M85 101C81 68 96 52 119 49C148 45 165 65 156 101C150 82 139 72 119 73C101 74 91 84 85 101Z" fill="#1a1a1a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
-                  <path d="M99 62Q119 54 137 63" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round"/>
-                  <!-- attentive brows -->
-                  <path class="student-brow" d="M101 90q7-3 14 0M125 90q7-3 14 0" fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-                  <!-- glasses -->
-                  <g fill="rgba(255,255,255,0.35)" stroke="#000" stroke-width="2.2">
-                    <rect x="99" y="96" width="19" height="15" rx="5.5"/>
-                    <rect x="122" y="96" width="19" height="15" rx="5.5"/>
+                  <!-- ears -->
+                  <ellipse cx="86" cy="108" rx="5" ry="7" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
+                  <ellipse cx="154" cy="108" rx="5" ry="7" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
+                  <!-- face -->
+                  <ellipse cx="120" cy="100" rx="34" ry="38" fill="#f1cdb0" stroke="#000" stroke-width="2.2"/>
+                  <!-- sideburns -->
+                  <path d="M86 86L91 86L91 108L87 108Z M154 86L149 86L149 108L153 108Z" fill="#1a1a1a"/>
+
+                  <!-- eyes looking up toward the thoughts -->
+                  <g fill="#fff" stroke="#000" stroke-width="2">
+                    <ellipse cx="108" cy="108" rx="6" ry="6.5"/>
+                    <ellipse cx="132" cy="108" rx="6" ry="6.5"/>
                   </g>
-                  <path d="M118 102h4" stroke="#000" stroke-width="2.2"/>
-                  <!-- eyes looking ahead -->
                   <g class="coder-eyes" fill="#000">
-                    <circle cx="109" cy="102" r="2.3"/>
-                    <circle cx="132" cy="102" r="2.3"/>
+                    <circle cx="110" cy="105.5" r="2.7"/>
+                    <circle cx="134" cy="105.5" r="2.7"/>
                   </g>
-                  <!-- nose, cheeks, calm smile -->
-                  <path d="M120 108q-3 7 1 8" fill="none" stroke="#d29c78" stroke-width="1.8" stroke-linecap="round"/>
-                  <circle cx="100" cy="119" r="4" fill="#e8a48f" opacity="0.35"/>
-                  <circle cx="140" cy="119" r="4" fill="#e8a48f" opacity="0.35"/>
-                  <path d="M113 125q7 7 14 0" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+                  <!-- brows: one flat, one raised (puzzled) -->
+                  <path class="student-brow" d="M99 99q9-3 17 0M126 96q9-6 17 1" fill="none" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+                  <!-- nose -->
+                  <path d="M120 112q-3.5 8 2 9" fill="none" stroke="#d29c78" stroke-width="1.8" stroke-linecap="round"/>
+                  <!-- cheeks -->
+                  <circle cx="98" cy="121" r="4" fill="#e8a48f" opacity="0.35"/>
+                  <circle cx="142" cy="121" r="4" fill="#e8a48f" opacity="0.35"/>
+                  <!-- mustache -->
+                  <path d="M106 124Q113 118 120 122Q127 118 134 124Q127 128 120 125.5Q113 128 106 124Z" fill="#1a1a1a" stroke="#000" stroke-width="1.2" stroke-linejoin="round"/>
+                  <!-- pursed, unsure mouth -->
+                  <path d="M113 132q7-3 14 1" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+                  <!-- sweat drop -->
+                  <path d="M160 92q-4 6 0 9.5q4-3.5 0-9.5z" fill="#bfe3ff" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/>
+
+                  <!-- chauffeur cap -->
+                  <path d="M84 76C82 42 102 34 122 34C144 34 160 46 156 76Z" fill="#333" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                  <path d="M84 78Q120 87 156 78L156 67Q120 76 84 67Z" fill="#1a1a1a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M86 81Q120 95 156 81Q160 91 150 92Q120 99 92 92Q82 91 86 81Z" fill="#111" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="120" cy="64" r="5.5" fill="#f5c542" stroke="#000" stroke-width="1.8"/>
+                  <path d="M117.5 64h5M120 61.5v5" stroke="#000" stroke-width="1.2" stroke-linecap="round"/>
                 </g>
               </svg>
             </div>
@@ -398,6 +436,9 @@
                   <path d="M196 238v10M208 238v10" stroke="#e8e8e8" stroke-width="1.6" stroke-linecap="round"/>
                   <path d="M184 228L232 258" stroke="#000" stroke-width="4.5" stroke-linecap="round"/>
                   <path d="M184 228L232 258" stroke="#737373" stroke-width="2" stroke-linecap="round"/>
+                  <ellipse cx="202" cy="248" rx="19" ry="7.5" fill="none" stroke="#000" stroke-width="3.5"/>
+                  <circle cx="187" cy="247" r="5" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
+                  <circle cx="217" cy="247" r="5" fill="#f1cdb0" stroke="#000" stroke-width="1.6"/>
                   <g class="passenger-head">
                     <g transform="translate(202 236) scale(0.85)">
                       <use href="#carHead"/>
@@ -419,15 +460,6 @@
                       fill="rgba(255,255,255,0.38)" stroke="#000" stroke-width="2.6" stroke-linejoin="round"/>
                 <path d="M 120 220 Q 155 160 190 125" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.75"/>
                 <path d="M 350 125 Q 385 160 420 220" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.75"/>
-
-                <!-- Draw the driver's wheel over the glass so the driving role reads clearly -->
-                <g class="driver-steering-wheel" aria-hidden="true">
-                  <circle cx="202" cy="230" r="19" fill="rgba(255,255,255,.78)" stroke="#000" stroke-width="5"/>
-                  <path d="M202 211V230 M184 226Q193 231 202 230Q211 231 220 226 M202 230L193 245 M202 230L211 245" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="202" cy="230" r="4.5" fill="#fff" stroke="#000" stroke-width="2.5"/>
-                  <circle cx="183" cy="226" r="5.5" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
-                  <circle cx="221" cy="226" r="5.5" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
-                </g>
 
                 <!-- Side mirrors -->
                 <path d="M 94 228 L 68 220 Q 60 234 74 240 L 94 235 Z" fill="#e8e8e8" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
@@ -465,7 +497,6 @@
                 <line x1="94" y1="302" x2="94" y2="350" stroke="#fff" stroke-width="3" stroke-dasharray="5 7"/>
                 <rect x="432" y="295" width="28" height="62" rx="9" fill="#000"/>
                 <line x1="446" y1="302" x2="446" y2="350" stroke="#fff" stroke-width="3" stroke-dasharray="5 7"/>
-
               </svg>
             </div>
 

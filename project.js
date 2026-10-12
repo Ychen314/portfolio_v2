@@ -113,8 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === viewer) viewer.close();
   });
 
-    // 5. Interactive Carpool Features (click a passenger)
-  const passengers = document.querySelectorAll(".passenger-unit");
+  // 5. Interactive Project Features (click an interactive unit / passenger)
+  const passengers = document.querySelectorAll(".passenger-unit, .feature-unit");
   const featurePanels = document.querySelectorAll(".feature-panel");
   if (passengers.length && featurePanels.length) {
     const setActiveSeat = (index) => {

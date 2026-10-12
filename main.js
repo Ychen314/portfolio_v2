@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 6. Contact: character drags the card in on first view
   initContactIntro();
+  
+  initGallery();
 
   // 7. Ambient background spotlight tracking
   let pointerTicking = false;
@@ -1549,4 +1551,124 @@ function initHeroAnimations() {
       photo.style.transform = "";
     });
   }
+}
+
+/* ==========================================================
+   FRONTEND DESIGN GALLERY
+   Clean 2x2 gallery wall.
+   When the user scrolls, the hanging frames smoothly shake
+   like pictures on a wall reacting to vibration/movement.
+   Clicking any frame opens the zoom modal viewer.
+   ========================================================== */
+function initGallery() {
+  const wall = document.getElementById("galleryWall");
+  if (!wall) return;
+
+  const hangs = Array.from(wall.querySelectorAll(".frame-hang"));
+  const frames = Array.from(wall.querySelectorAll(".frame"));
+  const viewer = document.getElementById("galleryViewer");
+  const viewerImg = viewer ? viewer.querySelector("img") : null;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Click to zoom ---------- */
+  frames.forEach((btn) => {
+    const img = btn.querySelector(".frame-screen img");
+    btn.addEventListener("click", () => {
+      if (!viewer || !viewerImg) return;
+      if (img && (img.currentSrc || img.src)) {
+        viewerImg.src = img.currentSrc || img.src;
+        viewerImg.alt = img.alt || "Design preview";
+      } else {
+        const screen = btn.querySelector(".frame-screen");
+        const label = screen ? screen.getAttribute("data-label") : "Design preview";
+        viewerImg.src = "";
+        viewerImg.alt = label;
+      }
+      if (typeof viewer.showModal === "function") viewer.showModal();
+    });
+  });
+
+  if (viewer) {
+    viewer.addEventListener("click", (e) => {
+      if (e.target === viewer) viewer.close();
+    });
+  }
+
+  /* ---------- Smooth scrolling shake animation ---------- */
+  if (reduce || hangs.length === 0) return;
+
+  // Phase offset for each frame so they sway organically in subtle counter-rhythms
+  const phases = [0, Math.PI * 0.85, Math.PI * 0.45, Math.PI * 1.3];
+  const FREQ = 0.015; // smooth ~2.4Hz frequency
+
+  let currentAmp = 0;
+  let targetAmp = 0;
+  let lastScrollY = window.scrollY;
+  let isRunning = false;
+  let inView = false;
+  let stopTimer = null;
+
+  function render(time) {
+    // Interpolate amplitude smoothly
+    currentAmp += (targetAmp - currentAmp) * 0.18;
+    if (targetAmp === 0) {
+      currentAmp *= 0.93; // smooth exponential decay
+    }
+
+    if (currentAmp < 0.01 && targetAmp === 0) {
+      // Settled to resting position
+      hangs.forEach((h) => { h.style.transform = ""; });
+      currentAmp = 0;
+      isRunning = false;
+      return;
+    }
+
+    hangs.forEach((hang, i) => {
+      const phase = phases[i % phases.length];
+      const angle = Math.sin(time * FREQ + phase) * currentAmp;
+      hang.style.transform = `rotate(${angle.toFixed(2)}deg)`;
+    });
+
+    requestAnimationFrame(render);
+  }
+
+  function onScroll() {
+    if (!inView) return;
+
+    const sy = window.scrollY;
+    const dy = Math.abs(sy - lastScrollY);
+    lastScrollY = sy;
+
+    // Scale impulse based on scroll delta, smoothly clamped
+    const impulse = Math.min(2.5, 1.2 + Math.min(dy * 0.04, 1.3));
+    targetAmp = Math.max(targetAmp, impulse);
+
+    clearTimeout(stopTimer);
+    stopTimer = setTimeout(() => {
+      targetAmp = 0;
+    }, 120);
+
+    if (!isRunning) {
+      isRunning = true;
+      requestAnimationFrame(render);
+    }
+  }
+
+  // Only animate when gallery is near/in viewport
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        inView = entries.some((e) => e.isIntersecting);
+        if (!inView && isRunning) {
+          targetAmp = 0;
+        }
+      },
+      { rootMargin: "250px 0px" }
+    );
+    observer.observe(wall);
+  } else {
+    inView = true;
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
 }

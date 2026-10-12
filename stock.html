@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stock Management System - Teh Yu Chen</title>
+  <meta name="description" content="Stock Management System: a real-time inventory and supplier management web application tailored for Kluang Sarawak Kolo Mee.">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Design tokens, shared page styles, then project-page styles -->
+  <link href="variables.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link href="project.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Ambient cursor spotlight (same as index) -->
+  <div class="cursor-spotlight" aria-hidden="true"></div>
+
+  <!-- ===== Header (identical to index.html) ===== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand site-logo" href="index.html" aria-label="Home">
+          <img src="media/logo.png" alt="Logo" height="40">
+        </a>
+        <div class="header-actions d-flex align-items-center gap-2 gap-sm-3">
+          <a href="index.html#projects" class="btn btn-site btn-site-outline">Projects</a>
+          <a href="resume.pdf" class="btn btn-site btn-site-solid" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="proj-main">
+
+    <!-- ===== Hero Section ===== -->
+    <section class="hero proj-hero" id="top">
+      <!-- Subtle cartoon background doodles -->
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-sparkle" style="top: 5%; left: 2%; width: 24px; height: 24px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-bracket" style="top: 50%; left: 2.5%; width: 20px; height: 32px;">
+          <svg viewBox="0 0 24 36"><path d="M18 4 C10 4 10 14 4 18 C10 22 10 32 18 32"/></svg>
+        </div>
+        <div class="doodle doodle-plus" style="bottom: 14%; left: 18%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+        <div class="doodle doodle-wave" style="bottom: 8%; right: 6%; width: 34px; height: 14px;">
+          <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+        </div>
+      </div>
+
+      <!-- Scan shimmer that sweeps once on load -->
+      <div class="hero-scan" aria-hidden="true"></div>
+
+      <!-- Floating developer code tokens -->
+      <div class="hero-tokens" aria-hidden="true">
+        <span class="hero-token">PHP</span>
+        <span class="hero-token">MySQL</span>
+        <span class="hero-token">&#x3C;Inventory /&#x3E;</span>
+        <span class="hero-token">SQL.query</span>
+        <span class="hero-token">Alerts</span>
+        <span class="hero-token">Realtime</span>
+      </div>
+
+      <div class="container hero-container proj-hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title" aria-label="Stock Management System">
+            <span>STOCK</span><span>TRACK<span class="hero-title-period">.</span><span class="hero-cursor" aria-hidden="true"></span></span>
+          </h1>
+
+          <p class="hero-desc">A real-time inventory and supplier management web application tailored for Kluang Sarawak Kolo Mee.</p>
+
+          <div class="proj-hero-specs">
+            <dl class="proj-hero-specs-facts">
+              <div>
+                <dt>Role</dt>
+                <dd>Database &amp; Web Developer</dd>
+              </div>
+              <div>
+                <dt>Platform</dt>
+                <dd>Web Application</dd>
+              </div>
+            </dl>
+            <div class="proj-hero-specs-stack">
+              <span class="stack-label">Stack</span>
+              <ul class="card-tags">
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="" aria-hidden="true"></span>PHP</li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="" aria-hidden="true"></span>MySQL</li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="" aria-hidden="true"></span>JavaScript</li>
+                <li><span class="stack-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="" aria-hidden="true"></span>HTML5 / CSS3</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-hero-visual is-browser" aria-hidden="true">
+          <div class="browser">
+            <div class="browser-bar">
+              <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+              <span class="browser-url">kolomee.internal/stock</span>
+            </div>
+            <div class="proj-screen" data-label="Stock Dashboard">
+              <img src="media/stock1.jpg" alt="Stock Management System dashboard preview">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About the project ===== -->
+    <section class="proj-section is-alt" id="about">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-bracket" style="top: 8%; right: 6%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M7 8 L3 12 L7 16 M17 8 L21 12 L17 16"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="bottom: 8%; left: 5%; width: 22px; height: 22px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">Overview</span>
+          <h2 class="proj-title">About The Project</h2>
+          <p class="proj-sub">Eliminating manual paperwork and inventory shortages for Kluang Sarawak Kolo Mee</p>
+        </header>
+
+        <div class="proj-overview">
+          <div class="proj-intro">
+            <p class="proj-lead"><span class="proj-brand">StockTrack</span> replaces error-prone daily paper logbooks with <mark class="hl hl-green">real-time stock monitoring</mark>, automated usage logs, and <mark class="hl hl-blue">instant shortage alerts</mark> to prevent kitchen service disruptions and minimize food waste.</p>
+          </div>
+
+          <div class="problem-scene" id="problemScene" role="group" aria-label="A restaurant manager thinks about stock problems">
+            <article class="problem-bubble problem-bubble--cost">
+              <span class="problem-bubble-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </span>
+              <strong>Manual paper logbooks</strong>
+            </article>
+            <article class="problem-bubble problem-bubble--parking">
+              <span class="problem-bubble-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </span>
+              <strong>Stockout during peak hours</strong>
+            </article>
+            <article class="problem-bubble problem-bubble--trust">
+              <span class="problem-bubble-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </span>
+              <strong>Perishable food waste</strong>
+            </article>
+
+            <div class="problem-student" role="img" aria-label="A restaurant manager inspecting stock">
+              <span class="student-question question-one" aria-hidden="true">?</span>
+              <span class="student-question question-two" aria-hidden="true">?</span>
+
+              <svg class="student-coder-svg" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- ground shadow -->
+                <ellipse cx="120" cy="273" rx="96" ry="5" fill="rgba(0,0,0,0.10)"/>
+
+                <!-- Storage shelves / crate background -->
+                <rect x="25" y="140" width="40" height="130" rx="6" fill="#f0ede6" stroke="#000" stroke-width="2"/>
+                <line x1="25" y1="180" x2="65" y2="180" stroke="#000" stroke-width="1.8"/>
+                <line x1="25" y1="220" x2="65" y2="220" stroke="#000" stroke-width="1.8"/>
+                <rect x="32" y="152" width="26" height="22" rx="3" fill="#dfc3f5" stroke="#000" stroke-width="1.5"/>
+                <rect x="32" y="192" width="26" height="22" rx="3" fill="#c9efb9" stroke="#000" stroke-width="1.5"/>
+                <rect x="32" y="232" width="26" height="22" rx="3" fill="#ffd0a6" stroke="#000" stroke-width="1.5"/>
+
+                <rect x="175" y="140" width="40" height="130" rx="6" fill="#f0ede6" stroke="#000" stroke-width="2"/>
+                <line x1="175" y1="180" x2="215" y2="180" stroke="#000" stroke-width="1.8"/>
+                <line x1="175" y1="220" x2="215" y2="220" stroke="#000" stroke-width="1.8"/>
+                <rect x="182" y="152" width="26" height="22" rx="3" fill="#bfcfff" stroke="#000" stroke-width="1.5"/>
+                <rect x="182" y="192" width="26" height="22" rx="3" fill="#ffb8b8" stroke="#000" stroke-width="1.5"/>
+                <rect x="182" y="232" width="26" height="22" rx="3" fill="#fff0a8" stroke="#000" stroke-width="1.5"/>
+
+                <!-- ===== Character body (Stock Keeper) ===== -->
+                <g class="coder-body student-body">
+                  <!-- neck -->
+                  <path d="M108 132h24v24c-7 6-17 6-24 0z" fill="#e3b693" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                  <!-- shirt / apron -->
+                  <path d="M62 268C62 186 82 152 120 152C158 152 178 186 178 268Z" fill="#334155" stroke="#000" stroke-width="2.4" stroke-linejoin="round"/>
+                  <!-- restaurant apron overlay -->
+                  <path d="M88 174H152V268H88Z" fill="#e2e8f0" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M96 174L108 152M144 174L132 152" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+                  <rect x="100" y="210" width="40" height="32" rx="4" fill="#cbd5e1" stroke="#000" stroke-width="1.8"/>
+                  <path d="M120 216v20" stroke="#64748b" stroke-width="1.6" stroke-linecap="round"/>
+                </g>
+
+                <!-- Clipboard in hand -->
+                <g transform="rotate(-6 120 230)">
+                  <rect x="85" y="186" width="70" height="78" rx="6" fill="#f8fafc" stroke="#000" stroke-width="2.2"/>
+                  <rect x="105" y="178" width="30" height="12" rx="3" fill="#94a3b8" stroke="#000" stroke-width="1.8"/>
+                  <!-- checklist lines -->
+                  <line x1="96" y1="204" x2="104" y2="204" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="110" y1="204" x2="144" y2="204" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="96" y1="218" x2="104" y2="218" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="110" y1="218" x2="144" y2="218" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="96" y1="232" x2="104" y2="232" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="110" y1="232" x2="140" y2="232" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="96" y1="246" x2="132" y2="246" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                </g>
+
+                <!-- Arms & hands holding clipboard -->
+                <path d="M72 188Q64 226 92 232" fill="none" stroke="#000" stroke-width="18" stroke-linecap="round"/>
+                <path d="M72 188Q64 226 92 232" fill="none" stroke="#334155" stroke-width="14" stroke-linecap="round"/>
+                <circle cx="94" cy="232" r="7" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+
+                <path d="M168 188Q176 226 148 232" fill="none" stroke="#000" stroke-width="18" stroke-linecap="round"/>
+                <path d="M168 188Q176 226 148 232" fill="none" stroke="#334155" stroke-width="14" stroke-linecap="round"/>
+                <circle cx="146" cy="232" r="7" fill="#f1cdb0" stroke="#000" stroke-width="1.8"/>
+
+                <!-- Pen in hand -->
+                <line x1="148" y1="236" x2="162" y2="216" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+                <line x1="148" y1="236" x2="152" y2="230" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+
+                <!-- ===== Head ===== -->
+                <g class="coder-head student-head">
+                  <!-- ears -->
+                  <ellipse cx="86" cy="108" rx="5" ry="7" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
+                  <ellipse cx="154" cy="108" rx="5" ry="7" fill="#f1cdb0" stroke="#000" stroke-width="2"/>
+                  <!-- face -->
+                  <ellipse cx="120" cy="100" rx="34" ry="38" fill="#f1cdb0" stroke="#000" stroke-width="2.2"/>
+                  <!-- side hair -->
+                  <path d="M86 86L91 86L91 108L87 108Z M154 86L149 86L149 108L153 108Z" fill="#1a1a1a"/>
+
+                  <!-- eyes looking toward the thought bubbles -->
+                  <g fill="#fff" stroke="#000" stroke-width="2">
+                    <ellipse cx="108" cy="108" rx="6" ry="6.5"/>
+                    <ellipse cx="132" cy="108" rx="6" ry="6.5"/>
+                  </g>
+                  <g class="coder-eyes" fill="#000">
+                    <circle cx="110" cy="105.5" r="2.7"/>
+                    <circle cx="134" cy="105.5" r="2.7"/>
+                  </g>
+                  <!-- brows: one thoughtful, one raised -->
+                  <path class="student-brow" d="M99 99q9-3 17 0M126 96q9-6 17 1" fill="none" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+                  <!-- nose -->
+                  <path d="M120 112q-3.5 8 2 9" fill="none" stroke="#d29c78" stroke-width="1.8" stroke-linecap="round"/>
+                  <!-- cheeks -->
+                  <circle cx="98" cy="121" r="4" fill="#e8a48f" opacity="0.35"/>
+                  <circle cx="142" cy="121" r="4" fill="#e8a48f" opacity="0.35"/>
+                  <!-- mustache / smile -->
+                  <path d="M106 124Q113 118 120 122Q127 118 134 124Q127 128 120 125.5Q113 128 106 124Z" fill="#1a1a1a" stroke="#000" stroke-width="1.2" stroke-linejoin="round"/>
+                  <path d="M113 132q7-3 14 1" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+                  <!-- sweat drop -->
+                  <path d="M160 92q-4 6 0 9.5q4-3.5 0-9.5z" fill="#bfe3ff" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/>
+
+                  <!-- neat restaurant flat cap / hair -->
+                  <path d="M84 76C82 42 102 34 122 34C144 34 160 46 156 76Z" fill="#1e293b" stroke="#000" stroke-width="2.2" stroke-linejoin="round"/>
+                  <path d="M84 78Q120 87 156 78L156 67Q120 76 84 67Z" fill="#0f172a" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M86 81Q120 95 156 81Q160 91 150 92Q120 99 92 92Q82 91 86 81Z" fill="#020617" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Key features ===== -->
+    <section class="proj-section" id="features">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-plus" style="top: 6%; left: 4%; width: 18px; height: 18px;">
+          <svg viewBox="0 0 20 20"><path d="M10 2 V18 M2 10 H18"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="top: 8%; right: 6%; width: 26px; height: 26px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+        <div class="doodle doodle-wave" style="bottom: 5%; right: 8%; width: 34px; height: 14px;">
+          <svg viewBox="0 0 36 14"><path d="M2 7 Q 9 0 18 7 T 34 7"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">What It Does</span>
+          <h2 class="proj-title">Key Features</h2>
+          <p class="proj-sub">Four core modules that keep ingredients stocked, tracked, and cost-controlled</p>
+        </header>
+
+        <div class="features-split">
+          <div class="car-stage">
+            <div class="car-svg-wrap">
+              <svg class="car-3d-svg" viewBox="0 0 540 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive inventory management station">
+                <!-- Ground shadow -->
+                <ellipse cx="270" cy="360" rx="210" ry="12" fill="rgba(0,0,0,0.12)"/>
+
+                <!-- Main Console Table / Counter -->
+                <path d="M90 220 L450 220 L480 340 L60 340 Z" fill="#f8fafc" stroke="#000" stroke-width="2.6" stroke-linejoin="round"/>
+                <path d="M60 340 L480 340 L470 358 L70 358 Z" fill="#e2e8f0" stroke="#000" stroke-width="2.2"/>
+                <!-- Counter front panel border -->
+                <line x1="120" y1="260" x2="420" y2="260" stroke="#cbd5e1" stroke-width="2"/>
+                <rect x="235" y="280" width="70" height="42" rx="5" fill="#fff" stroke="#000" stroke-width="1.8"/>
+                <text x="270" y="306" text-anchor="middle" font-size="10" font-weight="bold" font-family="monospace">KOLO MEE</text>
+
+                <!-- Station 0: Real-Time Alerts Beacon (Top Left) -->
+                <g class="passenger-unit is-active" id="passenger-0" data-index="0" role="button" tabindex="0" aria-label="Module 1: Real-Time Monitoring & Alerts" aria-pressed="true">
+                  <ellipse class="passenger-hit" cx="160" cy="150" rx="54" ry="58" fill="transparent"/>
+                  <!-- Terminal screen with alert graph -->
+                  <rect x="125" y="105" width="70" height="60" rx="8" fill="#1e293b" stroke="#000" stroke-width="2.2"/>
+                  <rect x="132" y="112" width="56" height="42" rx="4" fill="#0f172a"/>
+                  <path d="M136 142 L146 130 L158 138 L170 120 L182 132" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="170" cy="120" r="3" fill="#ef4444"/>
+                  <!-- Stand -->
+                  <path d="M152 165h16v18h-16z" fill="#64748b" stroke="#000" stroke-width="2"/>
+                  <ellipse cx="160" cy="183" rx="18" ry="5" fill="#475569" stroke="#000" stroke-width="2"/>
+                  <!-- Pulsing red warning light -->
+                  <g class="passenger-head">
+                    <circle cx="160" cy="94" r="9" fill="#ef4444" stroke="#000" stroke-width="2"/>
+                    <circle cx="160" cy="94" r="4" fill="#fff"/>
+                  </g>
+                  <!-- Tooltip -->
+                  <g transform="translate(160 52)">
+                    <g class="passenger-emotion">
+                      <rect x="-48" y="-24" width="96" height="24" rx="12"/>
+                      <polygon points="-5,0 5,0 0,7"/>
+                      <text x="0" y="-8" text-anchor="middle">Stock Alerts</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- Station 1: Stock Entry & Withdrawal (Top Right) -->
+                <g class="passenger-unit is-dimmed" id="passenger-1" data-index="1" role="button" tabindex="0" aria-label="Module 2: Stock Entry & Withdrawal" aria-pressed="false">
+                  <ellipse class="passenger-hit" cx="380" cy="150" rx="54" ry="58" fill="transparent"/>
+                  <!-- Crate & Barcode terminal -->
+                  <rect x="345" y="112" width="70" height="52" rx="6" fill="#f59e0b" stroke="#000" stroke-width="2.2"/>
+                  <path d="M345 112L380 134L415 112" fill="none" stroke="#000" stroke-width="2"/>
+                  <line x1="380" y1="134" x2="380" y2="164" stroke="#000" stroke-width="2"/>
+                  <!-- In/Out Arrows -->
+                  <g class="passenger-head">
+                    <circle cx="380" cy="85" r="14" fill="#10b981" stroke="#000" stroke-width="2"/>
+                    <path d="M375 88L380 82L385 88M380 82V91" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+                  </g>
+                  <!-- Barcode stripes -->
+                  <rect x="360" y="172" width="40" height="18" rx="3" fill="#fff" stroke="#000" stroke-width="1.8"/>
+                  <line x1="366" y1="176" x2="366" y2="186" stroke="#000" stroke-width="2"/>
+                  <line x1="371" y1="176" x2="371" y2="186" stroke="#000" stroke-width="1"/>
+                  <line x1="376" y1="176" x2="376" y2="186" stroke="#000" stroke-width="3"/>
+                  <line x1="383" y1="176" x2="383" y2="186" stroke="#000" stroke-width="1.5"/>
+                  <line x1="389" y1="176" x2="389" y2="186" stroke="#000" stroke-width="2"/>
+                  <!-- Tooltip -->
+                  <g transform="translate(380 52)">
+                    <g class="passenger-emotion">
+                      <rect x="-46" y="-24" width="92" height="24" rx="12"/>
+                      <polygon points="-5,0 5,0 0,7"/>
+                      <text x="0" y="-8" text-anchor="middle">Entry &amp; Usage</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- Station 2: Reporting & Analytics Module (Bottom Left) -->
+                <g class="passenger-unit is-dimmed" id="passenger-2" data-index="2" role="button" tabindex="0" aria-label="Module 3: Log & Reporting Module" aria-pressed="false">
+                  <ellipse class="passenger-hit" cx="170" cy="245" rx="52" ry="52" fill="transparent"/>
+                  <rect x="135" y="210" width="70" height="64" rx="6" fill="#fff" stroke="#000" stroke-width="2.2"/>
+                  <rect x="145" y="200" width="30" height="12" rx="3" fill="#cbd5e1" stroke="#000" stroke-width="1.8"/>
+                  <!-- Analytical Bars -->
+                  <g class="passenger-head">
+                    <rect x="146" y="244" width="8" height="20" rx="1.5" fill="#3b82f6" stroke="#000" stroke-width="1.2"/>
+                    <rect x="158" y="234" width="8" height="30" rx="1.5" fill="#6366f1" stroke="#000" stroke-width="1.2"/>
+                    <rect x="170" y="224" width="8" height="40" rx="1.5" fill="#8b5cf6" stroke="#000" stroke-width="1.2"/>
+                    <rect x="182" y="238" width="8" height="26" rx="1.5" fill="#a855f7" stroke="#000" stroke-width="1.2"/>
+                  </g>
+                  <!-- Tooltip -->
+                  <g transform="translate(170 52)">
+                    <g class="passenger-emotion">
+                      <rect x="-44" y="-24" width="88" height="24" rx="12"/>
+                      <polygon points="-5,0 5,0 0,7"/>
+                      <text x="0" y="-8" text-anchor="middle">Log Reports</text>
+                    </g>
+                  </g>
+                </g>
+
+                <!-- Station 3: Supplier & Access Management (Bottom Right) -->
+                <g class="passenger-unit is-dimmed" id="passenger-3" data-index="3" role="button" tabindex="0" aria-label="Module 4: Supplier Directory & Role Security" aria-pressed="false">
+                  <ellipse class="passenger-hit" cx="370" cy="245" rx="52" ry="52" fill="transparent"/>
+                  <!-- Keycard & Supplier Badge -->
+                  <rect x="336" y="212" width="68" height="60" rx="8" fill="#fff" stroke="#000" stroke-width="2.2"/>
+                  <circle cx="370" cy="232" r="10" fill="#f1f5f9" stroke="#000" stroke-width="1.8"/>
+                  <path d="M362 254c0-6 4-9 8-9s8 3 8 9" fill="#94a3b8" stroke="#000" stroke-width="1.8"/>
+                  <g class="passenger-head">
+                    <!-- Security shield / check -->
+                    <circle cx="370" cy="194" r="13" fill="#8b5cf6" stroke="#000" stroke-width="2"/>
+                    <path d="M365 194L369 198L376 190" stroke="#fff" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                  </g>
+                  <!-- Tooltip -->
+                  <g transform="translate(370 52)">
+                    <g class="passenger-emotion">
+                      <rect x="-50" y="-24" width="100" height="24" rx="12"/>
+                      <polygon points="-5,0 5,0 0,7"/>
+                      <text x="0" y="-8" text-anchor="middle">Vendors &amp; Roles</text>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+
+            <p class="character-hint"><span aria-hidden="true">✦</span> Pick an inventory module to explore a feature</p>
+          </div>
+
+          <div class="feature-card-display">
+            <article class="feature-panel is-active" id="feature-panel-0" style="--tint:#ffb8b8">
+              <div class="card-meta"><span class="card-index">01</span><span class="card-rule"></span><span>Monitoring</span></div>
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              </span>
+              <h3 class="feature-title">Real-time alerts</h3>
+              <p class="feature-desc">Continuously tracks inventory thresholds and flags low-stock ingredients with an instant red highlight to prevent dining service disruptions.</p>
+              <ul class="card-tags"><li>Live stock levels</li><li>Visual threshold alerts</li><li>Zero kitchen downtime</li></ul>
+            </article>
+
+            <article class="feature-panel" id="feature-panel-1" style="--tint:#c9efb9">
+              <div class="card-meta"><span class="card-index">02</span><span class="card-rule"></span><span>Operations</span></div>
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </span>
+              <h3 class="feature-title">Stock entry &amp; withdrawal</h3>
+              <p class="feature-desc">Automates daily kitchen intake and ingredient withdrawal logging with instant balance adjustments, replacing handwritten paper sheets.</p>
+              <ul class="card-tags"><li>One-click deductions</li><li>Purchase logging</li><li>Usage verification</li></ul>
+            </article>
+
+            <article class="feature-panel" id="feature-panel-2" style="--tint:#bfcfff">
+              <div class="card-meta"><span class="card-index">03</span><span class="card-rule"></span><span>Analytics</span></div>
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </span>
+              <h3 class="feature-title">Log &amp; reporting module</h3>
+              <p class="feature-desc">Maintains comprehensive historical logs of every stock transaction, generating analytical reports to evaluate food costs and eliminate waste.</p>
+              <ul class="card-tags"><li>Audit trails</li><li>Analytical reports</li><li>Waste prevention</li></ul>
+            </article>
+
+            <article class="feature-panel" id="feature-panel-3" style="--tint:#ffd0a6">
+              <div class="card-meta"><span class="card-index">04</span><span class="card-rule"></span><span>Governance</span></div>
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <h3 class="feature-title">Suppliers &amp; role access</h3>
+              <p class="feature-desc">Digitally organizes supplier contacts for streamlined purchasing, with role-based authentication restricting administrative changes to authorized managers.</p>
+              <ul class="card-tags"><li>Supplier directory</li><li>Role permissions</li><li>Secure session control</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== System Interface ===== -->
+    <section class="proj-section is-alt" id="interface">
+      <div class="bg-doodles" aria-hidden="true">
+        <div class="doodle doodle-bracket" style="top: 6%; left: 5%; width: 22px; height: 32px;">
+          <svg viewBox="0 0 24 36"><path d="M18 4 C10 4 10 14 4 18 C10 22 10 32 18 32"/></svg>
+        </div>
+        <div class="doodle doodle-sparkle" style="top: 6%; right: 7%; width: 24px; height: 24px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 9.5 L21 11 L13.5 12.5 L12 20 L10.5 12.5 L3 11 L10.5 9.5 Z"/></svg>
+        </div>
+      </div>
+
+      <div class="container">
+        <header class="proj-head text-center">
+          <span class="proj-eyebrow">Interface Showcase</span>
+          <h2 class="proj-title">System Interface</h2>
+          <p class="proj-sub">The responsive web application used by Kluang Sarawak Kolo Mee. Tap a screen to enlarge it.</p>
+        </header>
+
+        <div class="admin-showcase">
+          <div class="proj-browsers is-grid">
+            <button type="button" class="proj-zoom admin-shot admin-shot-one" aria-label="Enlarge Stock Dashboard screen">
+              <div class="browser">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">kolomee.internal/dashboard</span>
+                </div>
+                <div class="proj-screen" data-label="Stock Dashboard"><img src="media/stock1.jpg" alt="Stock Management System dashboard overview"></div>
+              </div>
+              <span class="admin-caption"><b>01 / DASHBOARD</b><span>Real-time inventory levels &amp; critical stock warnings</span></span>
+            </button>
+
+            <button type="button" class="proj-zoom admin-shot" aria-label="Enlarge Stock Entry screen">
+              <div class="browser">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">kolomee.internal/transactions</span>
+                </div>
+                <div class="proj-screen" data-label="Stock Transactions"><img src="media/stock2.jpg" alt="Stock Management System transactions and entry module"></div>
+              </div>
+              <span class="admin-caption"><b>02 / TRANSACTIONS</b><span>Daily stock entry, usage deductions, and batch logging</span></span>
+            </button>
+
+            <button type="button" class="proj-zoom admin-shot" aria-label="Enlarge Reporting Module screen">
+              <div class="browser">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">kolomee.internal/reports</span>
+                </div>
+                <div class="proj-screen" data-label="Log &amp; Reports"><img src="media/stock3.jpg" alt="Stock Management System reports and analytics"></div>
+              </div>
+              <span class="admin-caption"><b>03 / REPORTING</b><span>Automated activity logs &amp; monthly consumption analysis</span></span>
+            </button>
+
+            <button type="button" class="proj-zoom admin-shot" aria-label="Enlarge Supplier Management screen">
+              <div class="browser">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">kolomee.internal/suppliers</span>
+                </div>
+                <div class="proj-screen" data-label="Suppliers Directory"><img src="media/stock4.jpg" alt="Stock Management System supplier management"></div>
+              </div>
+              <span class="admin-caption"><b>04 / SUPPLIERS</b><span>Vendor directory, contact management, and procurement flow</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== End nav ===== -->
+    <section class="proj-end">
+      <div class="container text-center">
+        <span class="proj-eyebrow">Next Steps</span>
+        <h2 class="proj-title">Want to see more?</h2>
+        <p class="proj-sub mb-4">Browse other selected projects, or get in touch about internship opportunities.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="index.html#projects" class="btn btn-site btn-site-lg btn-site-outline">Back to all projects</a>
+          <a href="index.html#contact" class="btn btn-site btn-site-lg btn-site-solid">Contact me <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <p class="proj-copy mb-0">&copy; 2026 Teh Yu Chen &middot; +60-166391090</p>
+  </main>
+
+  <!-- Image viewer -->
+  <dialog class="proj-viewer" id="projViewer" aria-label="Enlarged screenshot">
+    <form method="dialog"><button aria-label="Close">&times;</button></form>
+    <img id="projViewerImg" src="" alt="">
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>
