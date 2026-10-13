@@ -359,14 +359,36 @@
 .car-3d-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .car-windshield { pointer-events: none; }
 
-.passenger-unit, .feature-unit { cursor: pointer; outline: none; transition: opacity 0.25s ease; }
+.passenger-unit, .feature-unit { cursor: pointer; outline: none; transition: opacity 0.25s ease, filter 0.25s ease; }
 .passenger-unit.is-dimmed, .feature-unit.is-dimmed { opacity: 0.55; }
+.recipe-stage .passenger-unit.is-dimmed { opacity: 1; filter: saturate(0.35) brightness(0.92); }
+.job-stage .passenger-unit {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease, filter 0.25s ease;
+}
+.job-stage .passenger-unit.is-dimmed {
+  opacity: 0.65;
+  filter: saturate(0.35) brightness(0.95);
+}
+.job-stage .passenger-unit.is-dimmed .job-card-bg {
+  stroke: #cbd5e1;
+  stroke-width: 1.6;
+}
+.job-stage .passenger-unit.is-active {
+  transform: translateY(-4px);
+  opacity: 1;
+  filter: none;
+}
+.job-stage .passenger-unit.is-active .job-card-bg {
+  stroke: var(--seat-tint, #000);
+  stroke-width: 2.8;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08));
+}
 .passenger-unit:hover,
 .passenger-unit:focus-visible,
 .passenger-unit.is-active,
 .feature-unit:hover,
 .feature-unit:focus-visible,
-.feature-unit.is-active { opacity: 1; }
+.feature-unit.is-active { opacity: 1; filter: none; }
 
 #passenger-0, #feature-0 { --seat-tint: #c9efb9; }
 #passenger-1, #feature-1 { --seat-tint: #bfcfff; }
@@ -377,6 +399,8 @@
 .passenger-hit { transition: fill-opacity 0.25s ease; }
 .passenger-unit.is-active .passenger-hit,
 .feature-unit.is-active .passenger-hit { fill: var(--seat-tint); fill-opacity: 0.55; }
+.recipe-stage .passenger-unit.is-active .passenger-hit,
+.job-stage .passenger-unit.is-active .passenger-hit { fill: transparent; fill-opacity: 0; }
 .passenger-unit:focus-visible .passenger-hit,
 .feature-unit:focus-visible .passenger-hit {
   stroke: var(--color-gray-500);
